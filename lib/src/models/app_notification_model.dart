@@ -6,8 +6,8 @@ import 'package:life_shared/src/core/base_firebase_model.dart';
 part 'app_notification_model.g.dart';
 
 @JsonSerializable()
-class AppNotificationModel extends BaseFirebaseConvert<AppNotificationModel>
-    with EquatableMixin {
+final class AppNotificationModel
+    extends BaseFirebaseConvert<AppNotificationModel> with EquatableMixin {
   AppNotificationModel({
     this.body,
     this.id = '',

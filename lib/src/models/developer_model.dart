@@ -5,7 +5,7 @@ import 'package:life_shared/src/core/base_firebase_model.dart';
 part 'developer_model.g.dart';
 
 @JsonSerializable()
-class DeveloperModel extends BaseFirebaseConvert<DeveloperModel>
+final class DeveloperModel extends BaseFirebaseConvert<DeveloperModel>
     with EquatableMixin {
   DeveloperModel({
     this.name,

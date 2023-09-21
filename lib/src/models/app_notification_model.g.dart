@@ -7,7 +7,8 @@ part of 'app_notification_model.dart';
 // **************************************************************************
 
 AppNotificationModel _$AppNotificationModelFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     AppNotificationModel(
       body: json['body'] as String?,
       id: json['id'] as String? ?? '',
@@ -16,7 +17,8 @@ AppNotificationModel _$AppNotificationModelFromJson(
     );
 
 Map<String, dynamic> _$AppNotificationModelToJson(
-        AppNotificationModel instance) =>
+  AppNotificationModel instance,
+) =>
     <String, dynamic>{
       'body': instance.body,
       'id': instance.id,
