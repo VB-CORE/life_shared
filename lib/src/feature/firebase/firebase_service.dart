@@ -5,7 +5,7 @@ import 'package:life_shared/src/feature/firebase/enum/collection_paths.dart';
 import 'package:life_shared/src/utility/custom_logger.dart';
 
 @immutable
-final class FirebaseService implements CustomService {
+class FirebaseService extends CustomService {
   @override
   Future<String?> add<T extends BaseFirebaseModel<T>>({
     required T model,

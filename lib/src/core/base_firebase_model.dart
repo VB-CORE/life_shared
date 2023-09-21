@@ -6,8 +6,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 /// @mhmtkrnlk
 /// ----
 
-abstract class BaseFirebaseModel<T> {
+abstract class BaseFirebaseModel<T> extends BaseFirebaseConvert<T> {
   Map<String, dynamic> toJson();
+  @override
+  String get documentId;
 }
 
 abstract class BaseFirebaseConvert<T> {
