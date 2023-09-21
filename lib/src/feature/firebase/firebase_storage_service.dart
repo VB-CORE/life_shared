@@ -6,6 +6,8 @@ import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
 
 import 'package:life_shared/src/feature/firebase/enum/stroage_types.dart';
 
+import 'package:life_shared/src/utility/custom_logger.dart';
+
 class FirebaseStorageService with StorageCustomService {
   /// We need to test images png,jpg,webp,svg, and other file types.
   @override
@@ -23,7 +25,9 @@ class FirebaseStorageService with StorageCustomService {
           .putData(fileBytes, SettableMetadata(contentType: type.value));
 
       return storage.ref(name).getDownloadURL();
-    } catch (_) {}
+    } catch (error) {
+      CustomLogger.log(error);
+    }
     return null;
   }
 }
