@@ -8,7 +8,7 @@ import 'package:life_shared/src/core/constant/package_constants.dart';
 part 'special_agency_model.g.dart';
 
 @JsonSerializable()
-class SpecialAgencyModel extends BaseFirebaseConvert<SpecialAgencyModel> with EquatableMixin {
+final class SpecialAgencyModel extends BaseFirebaseConvert<SpecialAgencyModel> with EquatableMixin {
   SpecialAgencyModel({
     this.name,
     this.phone,
