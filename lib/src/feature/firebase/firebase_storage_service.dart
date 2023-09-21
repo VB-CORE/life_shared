@@ -21,8 +21,8 @@ class FirebaseStorageService with StorageCustomService {
       await storage
           .ref(name)
           .putData(fileBytes, SettableMetadata(contentType: type.value));
-      final downloadURL = await storage.ref(name).getDownloadURL();
-      return downloadURL;
+
+      return storage.ref(name).getDownloadURL();
     } catch (_) {}
     return null;
   }

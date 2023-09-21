@@ -19,6 +19,9 @@ dependencies:
   cloud_firestore: ^4.9.2
   firebase_storage: ^11.2.6
 
+  # Util
+  logger: ^2.0.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

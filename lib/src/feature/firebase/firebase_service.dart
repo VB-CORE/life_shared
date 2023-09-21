@@ -1,10 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:life_shared/src/core/base_firebase_model.dart';
 import 'package:life_shared/src/feature/firebase/custom_service.dart';
 import 'package:life_shared/src/feature/firebase/enum/collection_paths.dart';
-import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
+import 'package:life_shared/src/utility/custom_logger.dart';
 
 @immutable
 final class FirebaseService implements CustomService {
@@ -16,7 +14,9 @@ final class FirebaseService implements CustomService {
     try {
       final response = await path.collection.add(model.toJson());
       return response.id;
-    } catch (_) {}
+    } catch (error) {
+      CustomLogger.log(error);
+    }
     return null;
   }
 
@@ -32,6 +32,7 @@ final class FirebaseService implements CustomService {
         try {
           return model.fromFirebase(snapshot);
         } catch (e) {
+          CustomLogger.log(e);
           return null;
         }
       },
@@ -65,6 +66,7 @@ final class FirebaseService implements CustomService {
         try {
           return model.fromFirebase(snapshot);
         } catch (e) {
+          CustomLogger.log(e);
           return null;
         }
       },
