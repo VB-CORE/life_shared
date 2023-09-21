@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 @immutable
-class GeoParser {
+final class GeoParser {
   const GeoParser._();
 
   static GeoPoint fromJsonGeoPoint(GeoPoint geoPoint) {
