@@ -7,7 +7,8 @@ import 'package:life_shared/src/core/base_firebase_model.dart';
 part 'town_model.g.dart';
 
 @JsonSerializable()
-class TownModel extends BaseFirebaseConvert<TownModel> with EquatableMixin {
+final class TownModel extends BaseFirebaseConvert<TownModel>
+    with EquatableMixin {
   TownModel({
     this.code,
     this.name,
