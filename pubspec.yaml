@@ -21,6 +21,7 @@ dependencies:
 
   # Util
   logger: ^2.0.2
+  kartal: ^3.4.1
 
 dev_dependencies:
   flutter_test:

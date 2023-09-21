@@ -20,7 +20,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
     required this.createdAt,
     required this.updatedAt,
     required this.isApproved,
-    required this.deviceID,
+    this.deviceID,
     this.description,
     this.documentId = '',
   });

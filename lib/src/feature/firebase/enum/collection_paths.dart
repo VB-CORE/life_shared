@@ -5,8 +5,13 @@ enum CollectionPaths {
   unApprovedApplications,
   approvedApplications,
   notifications,
+  logs,
+  allowedAdminClaims,
   developers,
-  specialAgency;
+  specialAgency,
+  approvedCampaigns,
+  unApprovedCampaigns,
+  ;
 
   CollectionReference<Map<String, dynamic>> get collection {
     return FirebaseFirestore.instance.collection(name);

@@ -1,11 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:kartal/kartal.dart';
 import 'package:life_shared/src/feature/firebase/custom_service.dart';
 import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
-
 import 'package:life_shared/src/feature/firebase/enum/stroage_types.dart';
-
 import 'package:life_shared/src/utility/custom_logger.dart';
 
 class FirebaseStorageService with StorageCustomService {
@@ -29,5 +28,15 @@ class FirebaseStorageService with StorageCustomService {
       CustomLogger.log(error);
     }
     return null;
+  }
+
+  @override
+  Future<void> deleteAssets({required List<String>? paths}) async {
+    final storage = FirebaseStorage.instance;
+    if (paths.ext.isNullOrEmpty) return;
+    for (final path in paths!) {
+      if (path.isEmpty) continue;
+      await storage.refFromURL(path).delete();
+    }
   }
 }
