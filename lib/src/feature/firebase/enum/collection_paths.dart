@@ -8,6 +8,7 @@ enum CollectionPaths {
   logs,
   allowedAdminClaims,
   developers,
+  specialAgency,
   approvedCampaigns,
   unApprovedCampaigns,
   ;
