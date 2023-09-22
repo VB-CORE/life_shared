@@ -5,3 +5,4 @@ export 'notification_model.dart';
 export 'special_agency_model.dart';
 export 'store_model.dart';
 export 'town_model.dart';
+export 'category_model.dart';
