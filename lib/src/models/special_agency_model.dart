@@ -8,7 +8,7 @@ import 'package:life_shared/src/core/constant/package_constants.dart';
 part 'special_agency_model.g.dart';
 
 @JsonSerializable()
-final class SpecialAgencyModel extends BaseFirebaseConvert<SpecialAgencyModel> with EquatableMixin {
+final class SpecialAgencyModel extends BaseFirebaseModel<SpecialAgencyModel> with EquatableMixin {
   SpecialAgencyModel({
     this.name,
     this.phone,
@@ -30,8 +30,10 @@ final class SpecialAgencyModel extends BaseFirebaseConvert<SpecialAgencyModel> w
   )
   GeoPoint latLong;
   @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   final String documentId;
 
+  @override
   Map<String, dynamic> toJson() => _$SpecialAgencyModelToJson(this);
 
   @override

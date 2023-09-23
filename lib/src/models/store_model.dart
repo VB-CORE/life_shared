@@ -1,15 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 import 'package:life_shared/src/core/base_firebase_model.dart';
 import 'package:life_shared/src/utility/firebase_time_parse.dart';
 
 part 'store_model.g.dart';
 
-@immutable
 @JsonSerializable()
-final class StoreModel extends BaseFirebaseModel<StoreModel>
-    implements BaseFirebaseConvert<StoreModel> {
+@immutable
+final class StoreModel extends BaseFirebaseModel<StoreModel> with EquatableMixin {
   StoreModel({
     required this.name,
     required this.owner,
@@ -111,5 +113,20 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
     return _$StoreModelFromJson(snapshot.data()!).copyWith(
       documentId: snapshot.id,
     );
+  }
+
+  @override
+  List<Object?> get props {
+    return [
+      name,
+      owner,
+      description,
+      address,
+      townCode,
+      documentId,
+      createdAt,
+      updatedAt,
+      isApproved,
+    ];
   }
 }
