@@ -15,11 +15,11 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       startDate: json['startDate'] == null
           ? DateTime.now()
           : FirebaseTimeParse.datetimeFromTimestamp(
-              json['startDate'] as Timestamp?),
+              json['startDate'] as Timestamp?,),
       endDate: json['endDate'] == null
           ? DateTime.now()
           : FirebaseTimeParse.datetimeFromTimestamp(
-              json['endDate'] as Timestamp?),
+              json['endDate'] as Timestamp?,),
       photo: json['photo'] as String?,
       coverPhoto: json['coverPhoto'] as String?,
       isApproved: json['isApproved'] as bool?,
