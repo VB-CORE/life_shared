@@ -25,6 +25,9 @@ StoreModel _$StoreModelFromJson(Map<String, dynamic> json) => StoreModel(
       isApproved: json['isApproved'] as bool,
       deviceID: json['deviceID'] as String?,
       description: json['description'] as String?,
+      category: json['category'] == null
+          ? null
+          : CategoryModel.fromJson(json['category'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$StoreModelToJson(StoreModel instance) =>
@@ -36,8 +39,9 @@ Map<String, dynamic> _$StoreModelToJson(StoreModel instance) =>
       'phone': instance.phone,
       'images': instance.images,
       'townCode': instance.townCode,
-      'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
-      'updatedAt': FirebaseTimeParse.dateTimeToTimestamp(instance.updatedAt),
       'isApproved': instance.isApproved,
       'deviceID': instance.deviceID,
+      'category': instance.category?.toJson(),
+      'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
+      'updatedAt': FirebaseTimeParse.dateTimeToTimestamp(instance.updatedAt),
     };

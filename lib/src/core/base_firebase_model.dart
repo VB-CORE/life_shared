@@ -7,12 +7,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 /// ----
 
 abstract class BaseFirebaseModel<T> extends BaseFirebaseConvert<T> {
+  const BaseFirebaseModel();
   Map<String, dynamic> toJson();
-  @override
-  String get documentId;
+  T fromJson(Map<String, dynamic> json);
 }
 
 abstract class BaseFirebaseConvert<T> {
+  const BaseFirebaseConvert();
   T fromFirebase(DocumentSnapshot<Map<String, dynamic>> json);
   String get documentId;
 }
