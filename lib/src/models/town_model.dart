@@ -2,13 +2,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:life_shared/life_shared.dart';
 import 'package:life_shared/src/core/base_firebase_model.dart';
 
 part 'town_model.g.dart';
 
 @JsonSerializable()
 final class TownModel extends BaseFirebaseConvert<TownModel>
-    with EquatableMixin {
+    with EquatableMixin, BaseDropDownModel {
   TownModel({
     this.code,
     this.name,
@@ -48,4 +49,7 @@ final class TownModel extends BaseFirebaseConvert<TownModel>
       documentId: documentId ?? this.documentId,
     );
   }
+
+  @override
+  String get displayName => name ?? '';
 }

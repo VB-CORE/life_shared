@@ -5,14 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:life_shared/src/core/base_firebase_model.dart';
+import 'package:life_shared/src/models/category_model.dart';
 import 'package:life_shared/src/utility/firebase_time_parse.dart';
 
 part 'store_model.g.dart';
 
-@JsonSerializable()
 @immutable
-final class StoreModel extends BaseFirebaseModel<StoreModel> with EquatableMixin {
-  StoreModel({
+@JsonSerializable(explicitToJson: true)
+final class StoreModel extends BaseFirebaseModel<StoreModel>
+    implements BaseFirebaseConvert<StoreModel> {
+  const StoreModel({
     required this.name,
     required this.owner,
     required this.address,
@@ -25,6 +27,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel> with EquatableMixin
     this.deviceID,
     this.description,
     this.documentId = '',
+    this.category,
   });
 
   factory StoreModel.empty() {
@@ -51,6 +54,10 @@ final class StoreModel extends BaseFirebaseModel<StoreModel> with EquatableMixin
   final List<String> images;
   final int townCode;
 
+  final bool isApproved;
+  final String? deviceID;
+  final CategoryModel? category;
+
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   final String documentId;
@@ -61,15 +68,12 @@ final class StoreModel extends BaseFirebaseModel<StoreModel> with EquatableMixin
     defaultValue: DateTime.now,
   )
   final DateTime? createdAt;
-
   @JsonKey(
     toJson: FirebaseTimeParse.dateTimeToTimestamp,
     fromJson: FirebaseTimeParse.datetimeFromTimestamp,
     defaultValue: DateTime.now,
   )
   final DateTime? updatedAt;
-  final bool isApproved;
-  final String? deviceID;
 
   StoreModel copyWith({
     String? name,
@@ -84,6 +88,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel> with EquatableMixin
     bool? isApproved,
     String? deviceID,
     String? documentId,
+    CategoryModel? category,
   }) {
     return StoreModel(
       name: name ?? this.name,
@@ -98,13 +103,12 @@ final class StoreModel extends BaseFirebaseModel<StoreModel> with EquatableMixin
       isApproved: isApproved ?? this.isApproved,
       deviceID: deviceID ?? this.deviceID,
       documentId: documentId ?? this.documentId,
+      category: category ?? this.category,
     );
   }
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$StoreModelToJson(this);
-  }
+  Map<String, dynamic> toJson() => _$StoreModelToJson(this);
 
   @override
   StoreModel fromFirebase(DocumentSnapshot<Map<String, dynamic>> snapshot) {
@@ -116,6 +120,10 @@ final class StoreModel extends BaseFirebaseModel<StoreModel> with EquatableMixin
   }
 
   @override
+  StoreModel fromJson(Map<String, dynamic> json) {
+    return _$StoreModelFromJson(json);
+  }
+
   List<Object?> get props {
     return [
       name,

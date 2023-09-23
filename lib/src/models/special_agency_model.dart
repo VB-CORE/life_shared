@@ -8,7 +8,8 @@ import 'package:life_shared/src/core/constant/package_constants.dart';
 part 'special_agency_model.g.dart';
 
 @JsonSerializable()
-final class SpecialAgencyModel extends BaseFirebaseModel<SpecialAgencyModel> with EquatableMixin {
+final class SpecialAgencyModel extends BaseFirebaseModel<SpecialAgencyModel>
+    with EquatableMixin {
   SpecialAgencyModel({
     this.name,
     this.phone,
@@ -17,7 +18,8 @@ final class SpecialAgencyModel extends BaseFirebaseModel<SpecialAgencyModel> wit
     this.documentId = '',
   });
 
-  factory SpecialAgencyModel.fromJson(Map<String, dynamic> json) => _$SpecialAgencyModelFromJson(json);
+  factory SpecialAgencyModel.fromJson(Map<String, dynamic> json) =>
+      _$SpecialAgencyModelFromJson(json);
 
   final String? name;
   final String? phone;
@@ -71,5 +73,10 @@ final class SpecialAgencyModel extends BaseFirebaseModel<SpecialAgencyModel> wit
       latLong: latLong ?? this.latLong,
       documentId: documentId ?? this.documentId,
     );
+  }
+
+  @override
+  SpecialAgencyModel fromJson(Map<String, dynamic> json) {
+    return _$SpecialAgencyModelFromJson(json);
   }
 }

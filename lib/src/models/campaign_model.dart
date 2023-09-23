@@ -98,4 +98,9 @@ final class CampaignModel extends BaseFirebaseModel<CampaignModel>
       documentId: json.id,
     );
   }
+
+  @override
+  CampaignModel fromJson(Map<String, dynamic> json) {
+    return _$CampaignModelFromJson(json);
+  }
 }
