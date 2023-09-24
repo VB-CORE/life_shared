@@ -13,7 +13,7 @@ SpecialAgencyModel _$SpecialAgencyModelFromJson(Map<String, dynamic> json) =>
       address: json['adress'] as String?,
       latLong: json['latlong'] == null
           ? PackageConstants.hatayLatLong
-          : GeoParser.fromJsonGeoPoint(json['latlong'] as GeoPoint),
+          : GeoParser.fromJsonGeoPoint(json['latlong'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$SpecialAgencyModelToJson(SpecialAgencyModel instance) =>
