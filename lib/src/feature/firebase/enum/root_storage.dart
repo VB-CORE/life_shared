@@ -4,6 +4,5 @@ enum RootStorageName {
   approvedApplications,
   product,
   user,
-  pendingCampaigns,
   approvedCampaigns,
 }
