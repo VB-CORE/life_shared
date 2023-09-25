@@ -133,8 +133,6 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
       townCode,
       documentId,
       createdAt,
-      updatedAt,
-      isApproved,
     ];
   }
 }
