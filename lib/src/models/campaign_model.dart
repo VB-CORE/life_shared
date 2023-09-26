@@ -23,6 +23,20 @@ final class CampaignModel extends BaseFirebaseModel<CampaignModel>
     this.documentId = '',
   });
 
+  factory CampaignModel.empty() {
+    return CampaignModel(
+      name: '',
+      topic: '',
+      description: '',
+      publisher: '',
+      startDate: DateTime.now(),
+      endDate: DateTime.now(),
+      photo: '',
+      coverPhoto: '',
+      isApproved: false,
+    );
+  }
+
   final String? name;
   final String? topic;
   final String? description;
