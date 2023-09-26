@@ -32,7 +32,7 @@ abstract class CustomService {
   }) async {
     try {
       final collectionRef = ref.collection;
-      await collectionRef.doc(key).set(model.toJson());
+      await collectionRef.doc(key ?? model.documentId).set(model.toJson());
       return true;
     } catch (e) {
       return false;
