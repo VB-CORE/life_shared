@@ -13,6 +13,7 @@ AppNotificationModel _$AppNotificationModelFromJson(
       id: json['id'] as String? ?? '',
       title: json['title'] as String?,
       documentId: json['documentId'] as String? ?? '',
+      type: json['type'] as String?,
     );
 
 Map<String, dynamic> _$AppNotificationModelToJson(
@@ -21,5 +22,6 @@ Map<String, dynamic> _$AppNotificationModelToJson(
       'body': instance.body,
       'id': instance.id,
       'title': instance.title,
+      'type': instance.type,
       'documentId': instance.documentId,
     };
