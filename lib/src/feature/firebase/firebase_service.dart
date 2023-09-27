@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:life_shared/src/core/base_firebase_model.dart';
 import 'package:life_shared/src/feature/firebase/custom_service.dart';
@@ -5,21 +8,18 @@ import 'package:life_shared/src/feature/firebase/enum/collection_paths.dart';
 import 'package:life_shared/src/utility/custom_logger.dart';
 
 @immutable
-class FirebaseService extends CustomService {
+class FirebaseService extends CustomService with _FirebaseServiceError {
   FirebaseService({super.timeoutDuration});
+
   @override
   Future<String?> add<T extends BaseFirebaseModel<T>>({
     required T model,
     required CollectionPaths path,
   }) async {
-    try {
-      final response =
-          await path.collection.add(model.toJson()).timeout(timeoutDuration);
-      return response.id;
-    } catch (error) {
-      CustomLogger.log(error);
-    }
-    return null;
+    final request = path.collection.add(model.toJson());
+    final response = await _withTimeout(request);
+    if (response == null) return null;
+    return response.id;
   }
 
   @override
@@ -27,35 +27,21 @@ class FirebaseService extends CustomService {
     required T model,
     required CollectionPaths path,
   }) async {
-    final response = await path.collection
+    final request = path.collection
         .withConverter<T?>(
-          fromFirestore: (snapshot, options) {
-            final data = snapshot.data();
-            if (data == null) return null;
-            try {
-              return model.fromFirebase(snapshot);
-            } catch (e) {
-              CustomLogger.log(e);
-              return null;
-            }
-          },
-          toFirestore: (value, options) {
-            throw UnimplementedError();
-          },
+          fromFirestore: (snapshot, options) => _dataConvert(snapshot, model),
+          toFirestore: (value, options) => throw UnimplementedError(),
         )
-        .get()
-        .timeout(timeoutDuration);
+        .get();
 
-    if (response.docs.isNotEmpty) {
-      final values = response.docs
-          .map((e) => e.data())
-          .where((element) => element != null)
-          .cast<T>()
-          .toList();
-      return values;
-    }
-
-    return [];
+    final response = await _withTimeout(request);
+    if (response == null) return [];
+    if (response.docs.isEmpty) return [];
+    return response.docs
+        .map((e) => e.data())
+        .where((element) => element != null)
+        .cast<T>()
+        .toList();
   }
 
   @override
@@ -64,26 +50,43 @@ class FirebaseService extends CustomService {
     required CollectionPaths path,
     required String id,
   }) async {
-    final response = await path.collection
-        .doc(id)
-        .withConverter<T?>(
-          fromFirestore: (snapshot, options) {
-            final data = snapshot.data();
-            if (data == null) return null;
-            try {
-              return model.fromFirebase(snapshot);
-            } catch (e) {
-              CustomLogger.log(e);
-              return null;
-            }
-          },
-          toFirestore: (value, options) {
-            throw UnimplementedError();
-          },
-        )
-        .get()
-        .timeout(timeoutDuration);
+    final request = path.collection.doc(id).withConverter<T?>(
+      fromFirestore: (snapshot, options) {
+        return _dataConvert(snapshot, model);
+      },
+      toFirestore: (value, options) {
+        throw UnimplementedError();
+      },
+    ).get();
 
-    return response.data();
+    final response = await _withTimeout(request);
+    return response?.data();
+  }
+}
+
+mixin _FirebaseServiceError on CustomService {
+  Future<T?> _withTimeout<T>(
+    Future<T> request,
+  ) async {
+    try {
+      return request.timeout(timeoutDuration);
+    } catch (e) {
+      CustomLogger.log('$T $e');
+      return null;
+    }
+  }
+
+  T? _dataConvert<T>(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    BaseFirebaseConvert<T> model,
+  ) {
+    final data = snapshot.data();
+    if (data == null) return null;
+    try {
+      return model.fromFirebase(snapshot);
+    } catch (e) {
+      CustomLogger.log(e);
+      return null;
+    }
   }
 }
