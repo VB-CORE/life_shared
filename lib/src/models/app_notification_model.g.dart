@@ -13,7 +13,7 @@ AppNotificationModel _$AppNotificationModelFromJson(
       id: json['id'] as String? ?? '',
       title: json['title'] as String?,
       documentId: json['documentId'] as String? ?? '',
-      type: json['type'] as String?,
+      type: $enumDecodeNullable(_$AppNotificationTypeEnumMap, json['type']),
     );
 
 Map<String, dynamic> _$AppNotificationModelToJson(
@@ -22,6 +22,11 @@ Map<String, dynamic> _$AppNotificationModelToJson(
       'body': instance.body,
       'id': instance.id,
       'title': instance.title,
-      'type': instance.type,
+      'type': _$AppNotificationTypeEnumMap[instance.type],
       'documentId': instance.documentId,
     };
+
+const _$AppNotificationTypeEnumMap = {
+  AppNotificationType.store: 'store',
+  AppNotificationType.campaign: 'campaign',
+};

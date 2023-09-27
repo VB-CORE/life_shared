@@ -21,7 +21,7 @@ final class AppNotificationModel
   final String? body;
   final String id;
   final String? title;
-  final String? type;
+  final AppNotificationType? type;
 
   @override
   final String documentId;
@@ -55,4 +55,11 @@ final class AppNotificationModel
       documentId: json.id,
     );
   }
+}
+
+enum AppNotificationType {
+  @JsonValue('store')
+  store,
+  @JsonValue('campaign')
+  campaign,
 }
