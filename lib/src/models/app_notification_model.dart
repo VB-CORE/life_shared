@@ -13,6 +13,7 @@ final class AppNotificationModel
     this.id = '',
     this.title,
     this.documentId = '',
+    this.type,
   });
 
   factory AppNotificationModel.fromJson(Map<String, dynamic> json) =>
@@ -20,6 +21,7 @@ final class AppNotificationModel
   final String? body;
   final String id;
   final String? title;
+  final String? type;
 
   @override
   final String documentId;
