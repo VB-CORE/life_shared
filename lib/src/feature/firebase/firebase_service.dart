@@ -6,13 +6,15 @@ import 'package:life_shared/src/utility/custom_logger.dart';
 
 @immutable
 class FirebaseService extends CustomService {
+  FirebaseService({super.timeoutDuration});
   @override
   Future<String?> add<T extends BaseFirebaseModel<T>>({
     required T model,
     required CollectionPaths path,
   }) async {
     try {
-      final response = await path.collection.add(model.toJson());
+      final response =
+          await path.collection.add(model.toJson()).timeout(timeoutDuration);
       return response.id;
     } catch (error) {
       CustomLogger.log(error);
@@ -25,21 +27,24 @@ class FirebaseService extends CustomService {
     required T model,
     required CollectionPaths path,
   }) async {
-    final response = await path.collection.withConverter<T?>(
-      fromFirestore: (snapshot, options) {
-        final data = snapshot.data();
-        if (data == null) return null;
-        try {
-          return model.fromFirebase(snapshot);
-        } catch (e) {
-          CustomLogger.log(e);
-          return null;
-        }
-      },
-      toFirestore: (value, options) {
-        throw UnimplementedError();
-      },
-    ).get();
+    final response = await path.collection
+        .withConverter<T?>(
+          fromFirestore: (snapshot, options) {
+            final data = snapshot.data();
+            if (data == null) return null;
+            try {
+              return model.fromFirebase(snapshot);
+            } catch (e) {
+              CustomLogger.log(e);
+              return null;
+            }
+          },
+          toFirestore: (value, options) {
+            throw UnimplementedError();
+          },
+        )
+        .get()
+        .timeout(timeoutDuration);
 
     if (response.docs.isNotEmpty) {
       final values = response.docs
@@ -59,21 +64,25 @@ class FirebaseService extends CustomService {
     required CollectionPaths path,
     required String id,
   }) async {
-    final response = await path.collection.doc(id).withConverter<T?>(
-      fromFirestore: (snapshot, options) {
-        final data = snapshot.data();
-        if (data == null) return null;
-        try {
-          return model.fromFirebase(snapshot);
-        } catch (e) {
-          CustomLogger.log(e);
-          return null;
-        }
-      },
-      toFirestore: (value, options) {
-        throw UnimplementedError();
-      },
-    ).get();
+    final response = await path.collection
+        .doc(id)
+        .withConverter<T?>(
+          fromFirestore: (snapshot, options) {
+            final data = snapshot.data();
+            if (data == null) return null;
+            try {
+              return model.fromFirebase(snapshot);
+            } catch (e) {
+              CustomLogger.log(e);
+              return null;
+            }
+          },
+          toFirestore: (value, options) {
+            throw UnimplementedError();
+          },
+        )
+        .get()
+        .timeout(timeoutDuration);
 
     return response.data();
   }

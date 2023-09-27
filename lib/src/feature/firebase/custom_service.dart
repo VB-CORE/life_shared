@@ -1,14 +1,18 @@
 import 'dart:typed_data';
 
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:life_shared/src/core/base_firebase_model.dart';
 import 'package:life_shared/src/feature/firebase/enum/collection_paths.dart';
 import 'package:life_shared/src/feature/firebase/enum/record_fields.dart';
 import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
 import 'package:life_shared/src/feature/firebase/enum/stroage_types.dart';
-import 'package:kartal/kartal.dart';
 
 abstract class CustomService {
+  CustomService({this.timeoutDuration = const Duration(seconds: 10)});
+
+  /// Timeout duration for all requests
+  /// Default value is 10 seconds
+  final Duration timeoutDuration;
+
   Future<String?> add<T extends BaseFirebaseModel<T>>({
     required T model,
     required CollectionPaths path,
