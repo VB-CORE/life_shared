@@ -69,7 +69,8 @@ mixin _FirebaseServiceError on CustomService {
     Future<T> request,
   ) async {
     try {
-      return request.timeout(timeoutDuration);
+      final response = await request.timeout(timeoutDuration);
+      return response;
     } catch (e) {
       CustomLogger.log('$T $e');
       return null;
