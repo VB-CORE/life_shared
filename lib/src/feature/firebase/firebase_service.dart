@@ -27,12 +27,7 @@ class FirebaseService extends CustomService with _FirebaseServiceError {
     required T model,
     required CollectionPaths path,
   }) async {
-    final request = path.collection
-        .withConverter<T?>(
-          fromFirestore: (snapshot, options) => _dataConvert(snapshot, model),
-          toFirestore: (value, options) => throw UnimplementedError(),
-        )
-        .get();
+    final request = collectionReference(path, model).get();
 
     final response = await _withTimeout(request);
     if (response == null) return [];
@@ -42,6 +37,17 @@ class FirebaseService extends CustomService with _FirebaseServiceError {
         .where((element) => element != null)
         .cast<T>()
         .toList();
+  }
+
+  @override
+  CollectionReference<T?> collectionReference<T extends BaseFirebaseConvert<T>>(
+    CollectionPaths path,
+    T model,
+  ) {
+    return path.collection.withConverter<T?>(
+      fromFirestore: (snapshot, options) => _dataConvert(snapshot, model),
+      toFirestore: (value, options) => throw UnimplementedError(),
+    );
   }
 
   @override

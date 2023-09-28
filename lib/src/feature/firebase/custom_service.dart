@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:life_shared/src/core/base_firebase_model.dart';
 import 'package:life_shared/src/feature/firebase/enum/collection_paths.dart';
 import 'package:life_shared/src/feature/firebase/enum/record_fields.dart';
@@ -12,6 +13,13 @@ abstract class CustomService {
   /// Timeout duration for all requests
   /// Default value is 10 seconds
   final Duration timeoutDuration;
+
+  CollectionReference<T?> collectionReference<T extends BaseFirebaseConvert<T>>(
+    CollectionPaths path,
+    T model,
+  ) {
+    throw UnimplementedError();
+  }
 
   Future<String?> add<T extends BaseFirebaseModel<T>>({
     required T model,
