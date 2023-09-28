@@ -4,7 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:kartal/kartal.dart';
 import 'package:life_shared/src/feature/firebase/custom_service.dart';
 import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
-import 'package:life_shared/src/feature/firebase/enum/stroage_types.dart';
+import 'package:life_shared/src/feature/firebase/enum/storage_types.dart';
 import 'package:life_shared/src/utility/custom_logger.dart';
 import 'package:uuid/uuid.dart';
 

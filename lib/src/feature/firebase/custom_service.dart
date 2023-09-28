@@ -4,7 +4,7 @@ import 'package:life_shared/src/core/base_firebase_model.dart';
 import 'package:life_shared/src/feature/firebase/enum/collection_paths.dart';
 import 'package:life_shared/src/feature/firebase/enum/record_fields.dart';
 import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
-import 'package:life_shared/src/feature/firebase/enum/stroage_types.dart';
+import 'package:life_shared/src/feature/firebase/enum/storage_types.dart';
 
 abstract class CustomService {
   CustomService({this.timeoutDuration = const Duration(seconds: 10)});
