@@ -9,9 +9,11 @@ part of 'notification_model.dart';
 NotificationModel _$NotificationModelFromJson(Map<String, dynamic> json) =>
     NotificationModel(
       id: json['id'] as String?,
+      campaignId: json['campaignId'] as String?,
     );
 
 Map<String, dynamic> _$NotificationModelToJson(NotificationModel instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'campaignId': instance.campaignId,
     };
