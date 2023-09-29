@@ -23,6 +23,7 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       photo: json['photo'] as String?,
       coverPhoto: json['coverPhoto'] as String?,
       isApproved: json['isApproved'] as bool?,
+      phone: json['phone'] as String?,
     );
 
 Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) =>
@@ -34,6 +35,7 @@ Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) =>
       'photo': instance.photo,
       'coverPhoto': instance.coverPhoto,
       'isApproved': instance.isApproved,
+      'phone': instance.phone,
       'startDate': FirebaseTimeParse.dateTimeToTimestamp(instance.startDate),
       'endDate': FirebaseTimeParse.dateTimeToTimestamp(instance.endDate),
     };

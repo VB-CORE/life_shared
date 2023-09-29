@@ -7,9 +7,7 @@ import 'package:life_shared/src/utility/firebase_time_parse.dart';
 part 'campaign_model.g.dart';
 
 @JsonSerializable()
-final class CampaignModel extends BaseFirebaseModel<CampaignModel>
-    with EquatableMixin
-    implements BaseFirebaseConvert<CampaignModel> {
+final class CampaignModel extends BaseFirebaseModel<CampaignModel> with EquatableMixin implements BaseFirebaseConvert<CampaignModel> {
   CampaignModel({
     this.name,
     this.topic,
@@ -20,6 +18,7 @@ final class CampaignModel extends BaseFirebaseModel<CampaignModel>
     this.photo,
     this.coverPhoto,
     this.isApproved,
+    this.phone,
     this.documentId = '',
   });
 
@@ -30,6 +29,7 @@ final class CampaignModel extends BaseFirebaseModel<CampaignModel>
   final String? photo;
   final String? coverPhoto;
   final bool? isApproved;
+  final String? phone;
 
   @JsonKey(
     toJson: FirebaseTimeParse.dateTimeToTimestamp,
@@ -62,6 +62,7 @@ final class CampaignModel extends BaseFirebaseModel<CampaignModel>
         photo,
         coverPhoto,
         isApproved,
+        phone,
       ];
 
   CampaignModel copyWith({
@@ -74,6 +75,7 @@ final class CampaignModel extends BaseFirebaseModel<CampaignModel>
     String? photo,
     String? coverPhoto,
     bool? isApproved,
+    String? phone,
     String? documentId,
   }) {
     return CampaignModel(
@@ -86,6 +88,7 @@ final class CampaignModel extends BaseFirebaseModel<CampaignModel>
       photo: photo ?? this.photo,
       coverPhoto: coverPhoto ?? this.coverPhoto,
       isApproved: isApproved ?? this.isApproved,
+      phone: phone ?? this.phone,
       documentId: documentId ?? this.documentId,
     );
   }
