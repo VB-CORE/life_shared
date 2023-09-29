@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:life_shared/life_shared.dart';
-import 'package:life_shared/src/core/base_firebase_model.dart';
 import 'package:life_shared/src/core/constant/package_constants.dart';
 
 part 'special_agency_model.g.dart';
@@ -30,7 +29,7 @@ final class SpecialAgencyModel extends BaseFirebaseModel<SpecialAgencyModel>
     toJson: GeoParser.toJsonGeoPoint,
     name: 'latlong',
   )
-  GeoPoint latLong;
+  final GeoPoint latLong;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   final String documentId;

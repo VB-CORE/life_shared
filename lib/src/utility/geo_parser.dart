@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 final class GeoParser {
   const GeoParser._();
 
-  static GeoPoint fromJsonGeoPoint(Map<String, dynamic> geoPoint) {
+  static GeoPoint fromJsonGeoPoint(GeoPoint geoPoint) {
     return GeoPoint(
-      geoPoint['latitude'] as double,
-      geoPoint['longitude'] as double,
+      geoPoint.latitude,
+      geoPoint.longitude,
     );
   }
 
