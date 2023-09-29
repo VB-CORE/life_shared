@@ -6,8 +6,8 @@ import 'package:life_shared/src/core/base_firebase_model.dart';
 part 'app_notification_model.g.dart';
 
 @JsonSerializable()
-final class AppNotificationModel
-    extends BaseFirebaseConvert<AppNotificationModel> with EquatableMixin {
+final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
+    with EquatableMixin {
   AppNotificationModel({
     this.body,
     this.id = '',
@@ -26,6 +26,7 @@ final class AppNotificationModel
   @override
   final String documentId;
 
+  @override
   Map<String, dynamic> toJson() => _$AppNotificationModelToJson(this);
 
   @override
@@ -54,6 +55,11 @@ final class AppNotificationModel
     return AppNotificationModel.fromJson(json.data()!).copyWith(
       documentId: json.id,
     );
+  }
+
+  @override
+  AppNotificationModel fromJson(Map<String, dynamic> json) {
+    return AppNotificationModel.fromJson(json);
   }
 }
 
