@@ -12,14 +12,10 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       topic: json['topic'] as String?,
       description: json['description'] as String?,
       publisher: json['publisher'] as String?,
-      startDate: json['startDate'] == null
+      expireDate: json['expireDate'] == null
           ? DateTime.now()
           : FirebaseTimeParse.datetimeFromTimestamp(
-              json['startDate'] as Timestamp?),
-      endDate: json['endDate'] == null
-          ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['endDate'] as Timestamp?),
+              json['expireDate'] as Timestamp?),
       photo: json['photo'] as String?,
       coverPhoto: json['coverPhoto'] as String?,
       isApproved: json['isApproved'] as bool?,
@@ -36,6 +32,5 @@ Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) =>
       'coverPhoto': instance.coverPhoto,
       'isApproved': instance.isApproved,
       'phone': instance.phone,
-      'startDate': FirebaseTimeParse.dateTimeToTimestamp(instance.startDate),
-      'endDate': FirebaseTimeParse.dateTimeToTimestamp(instance.endDate),
+      'expireDate': FirebaseTimeParse.dateTimeToTimestamp(instance.expireDate),
     };

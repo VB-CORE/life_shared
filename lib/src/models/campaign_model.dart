@@ -7,14 +7,15 @@ import 'package:life_shared/src/utility/firebase_time_parse.dart';
 part 'campaign_model.g.dart';
 
 @JsonSerializable()
-final class CampaignModel extends BaseFirebaseModel<CampaignModel> with EquatableMixin implements BaseFirebaseConvert<CampaignModel> {
+final class CampaignModel extends BaseFirebaseModel<CampaignModel>
+    with EquatableMixin
+    implements BaseFirebaseConvert<CampaignModel> {
   CampaignModel({
     this.name,
     this.topic,
     this.description,
     this.publisher,
-    this.startDate,
-    this.endDate,
+    this.expireDate,
     this.photo,
     this.coverPhoto,
     this.isApproved,
@@ -36,13 +37,7 @@ final class CampaignModel extends BaseFirebaseModel<CampaignModel> with Equatabl
     fromJson: FirebaseTimeParse.datetimeFromTimestamp,
     defaultValue: DateTime.now,
   )
-  final DateTime? startDate;
-  @JsonKey(
-    toJson: FirebaseTimeParse.dateTimeToTimestamp,
-    fromJson: FirebaseTimeParse.datetimeFromTimestamp,
-    defaultValue: DateTime.now,
-  )
-  final DateTime? endDate;
+  final DateTime? expireDate;
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -57,8 +52,7 @@ final class CampaignModel extends BaseFirebaseModel<CampaignModel> with Equatabl
         topic,
         description,
         publisher,
-        startDate,
-        endDate,
+        expireDate,
         photo,
         coverPhoto,
         isApproved,
@@ -70,8 +64,7 @@ final class CampaignModel extends BaseFirebaseModel<CampaignModel> with Equatabl
     String? topic,
     String? description,
     String? publisher,
-    DateTime? startDate,
-    DateTime? endDate,
+    DateTime? expireDate,
     String? photo,
     String? coverPhoto,
     bool? isApproved,
@@ -83,8 +76,7 @@ final class CampaignModel extends BaseFirebaseModel<CampaignModel> with Equatabl
       topic: topic ?? this.topic,
       description: description ?? this.description,
       publisher: publisher ?? this.publisher,
-      startDate: startDate ?? this.startDate,
-      endDate: endDate ?? this.endDate,
+      expireDate: expireDate ?? this.expireDate,
       photo: photo ?? this.photo,
       coverPhoto: coverPhoto ?? this.coverPhoto,
       isApproved: isApproved ?? this.isApproved,
