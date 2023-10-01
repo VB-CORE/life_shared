@@ -9,6 +9,10 @@ part of 'app_notification_model.dart';
 AppNotificationModel _$AppNotificationModelFromJson(
         Map<String, dynamic> json) =>
     AppNotificationModel(
+      createdAt: json['createdAt'] == null
+          ? DateTime.now()
+          : FirebaseTimeParse.datetimeFromTimestamp(
+              json['createdAt'] as Timestamp?),
       body: json['body'] as String?,
       id: json['id'] as String? ?? '',
       title: json['title'] as String?,
@@ -23,6 +27,7 @@ Map<String, dynamic> _$AppNotificationModelToJson(
       'id': instance.id,
       'title': instance.title,
       'type': _$AppNotificationTypeEnumMap[instance.type],
+      'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
       'documentId': instance.documentId,
     };
 
