@@ -46,6 +46,7 @@ final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
     String? title,
     String? documentId,
     DateTime? createdAt,
+    AppNotificationType? type,
   }) {
     return AppNotificationModel(
       body: body ?? this.body,
@@ -53,6 +54,7 @@ final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
       title: title ?? this.title,
       documentId: documentId ?? this.documentId,
       createdAt: createdAt ?? this.createdAt,
+      type: type ?? this.type,
     );
   }
 
