@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:life_shared/life_shared.dart';
 import 'package:life_shared/src/core/base_firebase_model.dart';
 
 part 'app_notification_model.g.dart';
@@ -9,6 +10,7 @@ part 'app_notification_model.g.dart';
 final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
     with EquatableMixin {
   AppNotificationModel({
+    required this.createdAt,
     this.body,
     this.id = '',
     this.title,
@@ -22,6 +24,12 @@ final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
   final String id;
   final String? title;
   final AppNotificationType? type;
+  @JsonKey(
+    toJson: FirebaseTimeParse.dateTimeToTimestamp,
+    fromJson: FirebaseTimeParse.datetimeFromTimestamp,
+    defaultValue: DateTime.now,
+  )
+  final DateTime? createdAt;
 
   @override
   final String documentId;
@@ -37,12 +45,14 @@ final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
     String? id,
     String? title,
     String? documentId,
+    DateTime? createdAt,
   }) {
     return AppNotificationModel(
       body: body ?? this.body,
       id: id ?? this.id,
       title: title ?? this.title,
       documentId: documentId ?? this.documentId,
+      createdAt: createdAt ?? this.createdAt,
     );
   }
 
