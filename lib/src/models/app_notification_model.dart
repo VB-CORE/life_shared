@@ -10,7 +10,7 @@ part 'app_notification_model.g.dart';
 final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
     with EquatableMixin {
   AppNotificationModel({
-    required this.createdAt,
+    this.createdAt,
     this.body,
     this.id = '',
     this.title,
