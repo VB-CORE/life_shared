@@ -5,7 +5,9 @@ enum NotificationTopics {
   toAll,
   single,
   @JsonValue('/topics/campaigns')
-  forCampaign;
+  forCampaign,
+  @JsonValue('/topics/news')
+  news;
 
   String get rawValue {
     switch (this) {
@@ -15,6 +17,8 @@ enum NotificationTopics {
         return 'single';
       case NotificationTopics.forCampaign:
         return 'campaigns';
+      case NotificationTopics.news:
+        return 'news';
     }
   }
 }

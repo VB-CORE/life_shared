@@ -10,10 +10,12 @@ NotificationModel _$NotificationModelFromJson(Map<String, dynamic> json) =>
     NotificationModel(
       id: json['id'] as String?,
       campaignId: json['campaignId'] as String?,
+      newsId: json['newsId'] as String?,
     );
 
 Map<String, dynamic> _$NotificationModelToJson(NotificationModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'campaignId': instance.campaignId,
+      'newsId': instance.newsId,
     };

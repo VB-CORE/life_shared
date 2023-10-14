@@ -34,4 +34,5 @@ Map<String, dynamic> _$AppNotificationModelToJson(
 const _$AppNotificationTypeEnumMap = {
   AppNotificationType.store: 'store',
   AppNotificationType.campaign: 'campaign',
+  AppNotificationType.news: 'news',
 };
