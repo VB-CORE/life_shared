@@ -10,25 +10,29 @@ final class NotificationModel with EquatableMixin {
   NotificationModel({
     this.id,
     this.campaignId,
+    this.newsId,
   });
 
   factory NotificationModel.fromJson(Map<String, dynamic> json) =>
       _$NotificationModelFromJson(json);
   final String? id;
   final String? campaignId;
+  final String? newsId;
 
   Map<String, dynamic> toJson() => _$NotificationModelToJson(this);
 
   @override
-  List<Object?> get props => [id, campaignId];
+  List<Object?> get props => [id, campaignId, newsId];
 
   NotificationModel copyWith({
     String? id,
     String? campaignId,
+    String? newsId,
   }) {
     return NotificationModel(
       id: id ?? this.id,
       campaignId: campaignId ?? this.campaignId,
+      newsId: newsId ?? this.newsId,
     );
   }
 }

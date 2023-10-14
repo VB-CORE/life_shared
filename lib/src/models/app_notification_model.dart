@@ -80,4 +80,6 @@ enum AppNotificationType {
   store,
   @JsonValue('campaign')
   campaign,
+  @JsonValue('news')
+  news,
 }
