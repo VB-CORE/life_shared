@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -103,6 +104,13 @@ mixin StorageCustomService {
     required String key,
     required Uint8List fileBytes,
     StorageTypes type = StorageTypes.image,
+  });
+
+  Future<String?> uploadFile({
+    required RootStorageName root,
+    required String key,
+    required File file,
+    StorageTypes type = StorageTypes.pdf,
   });
 
   Future<void> deleteAssets({required List<String>? paths});

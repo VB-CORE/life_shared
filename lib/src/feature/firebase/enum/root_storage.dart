@@ -5,4 +5,5 @@ enum RootStorageName {
   product,
   user,
   approvedCampaigns,
+  scholarship,
 }
