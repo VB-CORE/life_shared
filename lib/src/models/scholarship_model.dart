@@ -2,8 +2,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 @immutable
-final class RequestScholarshipModel extends Equatable {
-  const RequestScholarshipModel({
+final class ScholarshipModel with EquatableMixin {
+  const ScholarshipModel({
     required this.email,
     required this.phoneNumber,
     required this.story,
@@ -23,13 +23,13 @@ final class RequestScholarshipModel extends Equatable {
         studentDocument,
       ];
 
-  RequestScholarshipModel copyWith({
+  ScholarshipModel copyWith({
     String? email,
     String? phoneNumber,
     String? story,
     String? studentDocument,
   }) {
-    return RequestScholarshipModel(
+    return ScholarshipModel(
       email: email ?? this.email,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       story: story ?? this.story,
