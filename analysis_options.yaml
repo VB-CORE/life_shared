@@ -6,3 +6,4 @@ linter:
   rules:
     dangling_library_doc_comments: false
     public_member_api_docs: false
+    lines_longer_than_80_chars: false
