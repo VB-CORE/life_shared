@@ -7,7 +7,7 @@ import 'package:life_shared/src/utility/firebase_time_parse.dart';
 part 'news_model.g.dart';
 
 @JsonSerializable()
-final class NewsModel extends BaseFirebaseModel<NewsModel> with EquatableMixin implements BaseFirebaseConvert<NewsModel> {
+final class NewsModel extends BaseFirebaseModel<NewsModel> with EquatableMixin {
   NewsModel({
     this.title,
     this.content,
