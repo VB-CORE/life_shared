@@ -1,10 +1,13 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:kartal/kartal.dart';
 import 'package:life_shared/src/feature/firebase/custom_service.dart';
+import 'package:life_shared/src/feature/firebase/enum/file_sizes.dart';
 import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
 import 'package:life_shared/src/feature/firebase/enum/storage_types.dart';
+import 'package:life_shared/src/feature/firebase/enum/upload_errors.dart';
 import 'package:life_shared/src/utility/custom_logger.dart';
 import 'package:uuid/uuid.dart';
 
@@ -20,15 +23,41 @@ class FirebaseStorageService with StorageCustomService {
     final storage = FirebaseStorage.instance;
     final name = '${root.name}/$key';
     try {
-      await storage
-          .ref(name)
-          .putData(fileBytes, SettableMetadata(contentType: type.value));
+      await storage.ref(name).putData(fileBytes, SettableMetadata(contentType: type.value));
 
       return storage.ref(name).getDownloadURL();
     } catch (error) {
       CustomLogger.log(error);
     }
     return null;
+  }
+
+  @override
+  Future<(String?, UploadErrors?)> uploadFile({
+    required RootStorageName root,
+    required String key,
+    required File? file,
+    StorageTypes type = StorageTypes.pdf,
+    FileSizes size = FileSizes.medium,
+  }) async {
+    if (file == null) return (null, UploadErrors.noFile);
+
+    final fileSize = await file.length();
+    if (fileSize > size.toByte) {
+      CustomLogger.log('File size is bigger than ${size.toByte} bytes');
+      return (null, UploadErrors.sizeLimit);
+    }
+
+    final storage = FirebaseStorage.instance;
+    final name = '${root.name}/$key';
+    try {
+      await storage.ref(name).putFile(file, SettableMetadata(contentType: type.value));
+      final url = await storage.ref(name).getDownloadURL();
+      return (url, null);
+    } catch (error) {
+      CustomLogger.log(error);
+    }
+    return (null, UploadErrors.service);
   }
 
   @override

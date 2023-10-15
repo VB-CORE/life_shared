@@ -2,5 +2,7 @@
     "docwriter.hotkey.mac": "⌥ + .",
     "cSpell.words": [
         "Firestore"
-    ]
+    ],
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
 }

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,6 +7,7 @@ import 'package:life_shared/src/feature/firebase/enum/collection_paths.dart';
 import 'package:life_shared/src/feature/firebase/enum/record_fields.dart';
 import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
 import 'package:life_shared/src/feature/firebase/enum/storage_types.dart';
+import 'package:life_shared/src/feature/firebase/enum/upload_errors.dart';
 
 abstract class CustomService {
   CustomService({this.timeoutDuration = const Duration(seconds: 10)});
@@ -103,6 +105,13 @@ mixin StorageCustomService {
     required String key,
     required Uint8List fileBytes,
     StorageTypes type = StorageTypes.image,
+  });
+
+  Future<(String?, UploadErrors?)> uploadFile({
+    required RootStorageName root,
+    required String key,
+    required File file,
+    StorageTypes type = StorageTypes.pdf,
   });
 
   Future<void> deleteAssets({required List<String>? paths});

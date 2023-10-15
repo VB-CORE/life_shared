@@ -13,6 +13,7 @@ enum CollectionPaths {
   approvedCampaigns,
   unApprovedCampaigns,
   news,
+  scholarship,
   ;
 
   CollectionReference<Map<String, dynamic>> get collection {
