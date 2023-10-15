@@ -7,6 +7,7 @@ import 'package:life_shared/src/feature/firebase/enum/collection_paths.dart';
 import 'package:life_shared/src/feature/firebase/enum/record_fields.dart';
 import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
 import 'package:life_shared/src/feature/firebase/enum/storage_types.dart';
+import 'package:life_shared/src/feature/firebase/enum/upload_errors.dart';
 
 abstract class CustomService {
   CustomService({this.timeoutDuration = const Duration(seconds: 10)});
@@ -106,7 +107,7 @@ mixin StorageCustomService {
     StorageTypes type = StorageTypes.image,
   });
 
-  Future<String?> uploadFile({
+  Future<(String?, UploadErrors?)> uploadFile({
     required RootStorageName root,
     required String key,
     required File file,

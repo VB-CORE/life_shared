@@ -1,0 +1,1 @@
+enum UploadErrors { sizeLimit, service }

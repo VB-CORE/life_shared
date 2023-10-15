@@ -7,6 +7,7 @@ import 'package:life_shared/src/feature/firebase/custom_service.dart';
 import 'package:life_shared/src/feature/firebase/enum/file_sizes.dart';
 import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
 import 'package:life_shared/src/feature/firebase/enum/storage_types.dart';
+import 'package:life_shared/src/feature/firebase/enum/upload_errors.dart';
 import 'package:life_shared/src/utility/custom_logger.dart';
 import 'package:uuid/uuid.dart';
 
@@ -32,7 +33,7 @@ class FirebaseStorageService with StorageCustomService {
   }
 
   @override
-  Future<String?> uploadFile({
+  Future<(String?, UploadErrors?)> uploadFile({
     required RootStorageName root,
     required String key,
     required File file,
@@ -42,19 +43,19 @@ class FirebaseStorageService with StorageCustomService {
     final fileSize = await file.length();
     if (fileSize > size.toByte) {
       CustomLogger.log('File size is bigger than ${size.toByte} bytes');
-      return null;
+      return (null, UploadErrors.sizeLimit);
     }
 
     final storage = FirebaseStorage.instance;
     final name = '${root.name}/$key';
     try {
       await storage.ref(name).putFile(file, SettableMetadata(contentType: type.value));
-
-      return storage.ref(name).getDownloadURL();
+      final url = await storage.ref(name).getDownloadURL();
+      return (url, null);
     } catch (error) {
       CustomLogger.log(error);
     }
-    return null;
+    return (null, UploadErrors.service);
   }
 
   @override
