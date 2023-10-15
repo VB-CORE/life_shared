@@ -12,6 +12,7 @@ ScholarshipModel _$ScholarshipModelFromJson(Map<String, dynamic> json) =>
       phoneNumber: json['phoneNumber'] as String,
       story: json['story'] as String,
       studentDocument: json['studentDocument'] as String,
+      documentId: json['documentId'] as String? ?? '',
     );
 
 Map<String, dynamic> _$ScholarshipModelToJson(ScholarshipModel instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$ScholarshipModelToJson(ScholarshipModel instance) =>
       'phoneNumber': instance.phoneNumber,
       'story': instance.story,
       'studentDocument': instance.studentDocument,
+      'documentId': instance.documentId,
     };
