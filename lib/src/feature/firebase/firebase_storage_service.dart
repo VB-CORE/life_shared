@@ -36,10 +36,12 @@ class FirebaseStorageService with StorageCustomService {
   Future<(String?, UploadErrors?)> uploadFile({
     required RootStorageName root,
     required String key,
-    required File file,
+    required File? file,
     StorageTypes type = StorageTypes.pdf,
     FileSizes size = FileSizes.medium,
   }) async {
+    if (file == null) return (null, UploadErrors.noFile);
+
     final fileSize = await file.length();
     if (fileSize > size.toByte) {
       CustomLogger.log('File size is bigger than ${size.toByte} bytes');
