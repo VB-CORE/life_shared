@@ -1,3 +1,4 @@
+export 'advertise_model.dart';
 export 'app_notification_model.dart';
 export 'base_dropdown_model.dart';
 export 'campaign_model.dart';
