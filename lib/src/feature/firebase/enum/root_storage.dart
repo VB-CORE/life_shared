@@ -7,4 +7,5 @@ enum RootStorageName {
   approvedCampaigns,
   scholarship,
   news,
+  advertise,
 }

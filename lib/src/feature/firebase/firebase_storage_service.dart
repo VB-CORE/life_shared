@@ -23,7 +23,9 @@ class FirebaseStorageService with StorageCustomService {
     final storage = FirebaseStorage.instance;
     final name = '${root.name}/$key';
     try {
-      await storage.ref(name).putData(fileBytes, SettableMetadata(contentType: type.value));
+      await storage
+          .ref(name)
+          .putData(fileBytes, SettableMetadata(contentType: type.value));
 
       return storage.ref(name).getDownloadURL();
     } catch (error) {
@@ -51,7 +53,9 @@ class FirebaseStorageService with StorageCustomService {
     final storage = FirebaseStorage.instance;
     final name = '${root.name}/$key';
     try {
-      await storage.ref(name).putFile(file, SettableMetadata(contentType: type.value));
+      await storage
+          .ref(name)
+          .putFile(file, SettableMetadata(contentType: type.value));
       final url = await storage.ref(name).getDownloadURL();
       return (url, null);
     } catch (error) {
@@ -72,6 +76,7 @@ class FirebaseStorageService with StorageCustomService {
 
   @override
   Future<String?> fileTransaction(String? url, RootStorageName to) async {
+    throw Exception('DO NOT USE IT, ITS BROKEN');
     if (url.ext.isNullOrEmpty) return null;
     final storage = FirebaseStorage.instance;
     final oldRef = storage.refFromURL(url!);
