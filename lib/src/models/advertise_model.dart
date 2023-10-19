@@ -14,7 +14,6 @@ class AdvertiseModel extends BaseFirebaseModel<AdvertiseModel> {
     this.role,
     this.gender = Genders.other,
     this.title,
-    this.subtitle,
     this.description,
   });
 
@@ -25,7 +24,6 @@ class AdvertiseModel extends BaseFirebaseModel<AdvertiseModel> {
   final String? role;
   final Genders gender;
   final String? title;
-  final String? subtitle;
   final String? description;
 
   @override

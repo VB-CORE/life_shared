@@ -15,7 +15,6 @@ AdvertiseModel _$AdvertiseModelFromJson(Map<String, dynamic> json) =>
       gender: $enumDecodeNullable(_$GendersEnumMap, json['gender']) ??
           Genders.other,
       title: json['title'] as String?,
-      subtitle: json['subtitle'] as String?,
       description: json['description'] as String?,
     );
 
@@ -27,7 +26,6 @@ Map<String, dynamic> _$AdvertiseModelToJson(AdvertiseModel instance) =>
       'role': instance.role,
       'gender': _$GendersEnumMap[instance.gender]!,
       'title': instance.title,
-      'subtitle': instance.subtitle,
       'description': instance.description,
     };
 
