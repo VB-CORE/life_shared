@@ -60,4 +60,5 @@ class AdvertiseModel extends BaseFirebaseModel<AdvertiseModel> {
       title: title ?? this.title,
       description: description ?? this.description,
     );
+  }
 }
