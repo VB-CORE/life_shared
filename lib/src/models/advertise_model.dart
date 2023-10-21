@@ -28,7 +28,8 @@ class AdvertiseModel extends BaseFirebaseModel<AdvertiseModel> {
 
   @override
   AdvertiseModel fromFirebase(DocumentSnapshot<Map<String, dynamic>> json) {
-    if (json.data() == null) {
+    final data = json.data();
+    if (data == null) {
       throw Exception('Data is null');
     }
     return fromJson(json.data()!);
@@ -40,4 +41,24 @@ class AdvertiseModel extends BaseFirebaseModel<AdvertiseModel> {
 
   @override
   Map<String, dynamic> toJson() => _$AdvertiseModelToJson(this);
+
+  AdvertiseModel copyWith({
+    String? documentId,
+    String? owner,
+    String? phoneNumber,
+    String? role,
+    Genders? gender,
+    String? title,
+    String? description,
+  }) {
+    return AdvertiseModel(
+      gender: gender ?? this.gender,
+      documentId: documentId ?? this.documentId,
+      owner: owner ?? this.owner,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      role: role ?? this.role,
+      title: title ?? this.title,
+      description: description ?? this.description,
+    );
+  }
 }
