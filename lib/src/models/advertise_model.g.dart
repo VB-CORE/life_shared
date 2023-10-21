@@ -8,7 +8,6 @@ part of 'advertise_model.dart';
 
 AdvertiseModel _$AdvertiseModelFromJson(Map<String, dynamic> json) =>
     AdvertiseModel(
-      documentId: json['documentId'] as String? ?? '',
       owner: json['owner'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
       role: json['role'] as String?,
@@ -20,7 +19,6 @@ AdvertiseModel _$AdvertiseModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$AdvertiseModelToJson(AdvertiseModel instance) =>
     <String, dynamic>{
-      'documentId': instance.documentId,
       'owner': instance.owner,
       'phoneNumber': instance.phoneNumber,
       'role': instance.role,

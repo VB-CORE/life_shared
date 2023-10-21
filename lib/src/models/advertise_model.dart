@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:life_shared/life_shared.dart';
-import 'package:life_shared/src/feature/firebase/enum/gender.dart';
 
 part 'advertise_model.g.dart';
 
@@ -17,6 +16,7 @@ class AdvertiseModel extends BaseFirebaseModel<AdvertiseModel> {
     this.description,
   });
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   final String documentId;
   final String? owner;
