@@ -35,4 +35,5 @@ const _$AppNotificationTypeEnumMap = {
   AppNotificationType.store: 'store',
   AppNotificationType.campaign: 'campaign',
   AppNotificationType.news: 'news',
+  AppNotificationType.advertise: 'advertise',
 };

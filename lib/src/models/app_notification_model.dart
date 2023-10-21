@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:life_shared/life_shared.dart';
-import 'package:life_shared/src/core/base_firebase_model.dart';
 
 part 'app_notification_model.g.dart';
 
@@ -82,4 +81,6 @@ enum AppNotificationType {
   campaign,
   @JsonValue('news')
   news,
+  @JsonValue('advertise')
+  advertise,
 }
