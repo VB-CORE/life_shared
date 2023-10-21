@@ -32,7 +32,7 @@ class AdvertiseModel extends BaseFirebaseModel<AdvertiseModel> {
     if (data == null) {
       throw Exception('Data is null');
     }
-    return fromJson(json.data()!);
+    return fromJson(json.data()!).copyWith(documentId: json.id);
   }
 
   @override
@@ -60,5 +60,4 @@ class AdvertiseModel extends BaseFirebaseModel<AdvertiseModel> {
       title: title ?? this.title,
       description: description ?? this.description,
     );
-  }
 }
