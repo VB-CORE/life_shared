@@ -8,7 +8,7 @@ import 'package:life_shared/src/feature/firebase/enum/file_sizes.dart';
 import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
 import 'package:life_shared/src/feature/firebase/enum/storage_types.dart';
 import 'package:life_shared/src/feature/firebase/enum/upload_errors.dart';
-import 'package:life_shared/src/utility/custom_logger.dart';
+import 'package:life_shared/src/utility/product_logger.dart';
 import 'package:uuid/uuid.dart';
 
 class FirebaseStorageService with StorageCustomService {
@@ -23,13 +23,11 @@ class FirebaseStorageService with StorageCustomService {
     final storage = FirebaseStorage.instance;
     final name = '${root.name}/$key';
     try {
-      await storage
-          .ref(name)
-          .putData(fileBytes, SettableMetadata(contentType: type.value));
+      await storage.ref(name).putData(fileBytes, SettableMetadata(contentType: type.value));
 
       return storage.ref(name).getDownloadURL();
     } catch (error) {
-      CustomLogger.log(error);
+      ProductLogger.log(error);
     }
     return null;
   }
@@ -46,20 +44,18 @@ class FirebaseStorageService with StorageCustomService {
 
     final fileSize = await file.length();
     if (fileSize > size.toByte) {
-      CustomLogger.log('File size is bigger than ${size.toByte} bytes');
+      ProductLogger.log('File size is bigger than ${size.toByte} bytes');
       return (null, UploadErrors.sizeLimit);
     }
 
     final storage = FirebaseStorage.instance;
     final name = '${root.name}/$key';
     try {
-      await storage
-          .ref(name)
-          .putFile(file, SettableMetadata(contentType: type.value));
+      await storage.ref(name).putFile(file, SettableMetadata(contentType: type.value));
       final url = await storage.ref(name).getDownloadURL();
       return (url, null);
     } catch (error) {
-      CustomLogger.log(error);
+      ProductLogger.log(error);
     }
     return (null, UploadErrors.service);
   }
@@ -89,7 +85,7 @@ class FirebaseStorageService with StorageCustomService {
       await oldRef.delete();
       return newUrl;
     } catch (e) {
-      CustomLogger.log(e);
+      ProductLogger.log(e);
       return null;
     }
   }
