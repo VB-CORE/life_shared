@@ -2,11 +2,10 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:life_shared/life_shared.dart';
 import 'package:life_shared/src/core/base_firebase_model.dart';
 import 'package:life_shared/src/feature/firebase/custom_service.dart';
 import 'package:life_shared/src/feature/firebase/enum/collection_paths.dart';
-import 'package:life_shared/src/utility/custom_logger.dart';
+import 'package:life_shared/src/utility/product_logger.dart';
 
 @immutable
 class FirebaseService extends CustomService with _FirebaseServiceError {
@@ -33,11 +32,7 @@ class FirebaseService extends CustomService with _FirebaseServiceError {
     final response = await _withTimeout(request);
     if (response == null) return [];
     if (response.docs.isEmpty) return [];
-    return response.docs
-        .map((e) => e.data())
-        .where((element) => element != null)
-        .cast<T>()
-        .toList();
+    return response.docs.map((e) => e.data()).where((element) => element != null).cast<T>().toList();
   }
 
   @override
@@ -79,7 +74,7 @@ mixin _FirebaseServiceError on CustomService {
       final response = await request.timeout(timeoutDuration);
       return response;
     } catch (e) {
-      CustomLogger.log('$T $e');
+      ProductLogger.log('$T $e');
       return null;
     }
   }
@@ -93,7 +88,7 @@ mixin _FirebaseServiceError on CustomService {
     try {
       return model.fromFirebase(snapshot);
     } catch (e) {
-      CustomLogger.log(e);
+      ProductLogger.log(e);
       return null;
     }
   }
