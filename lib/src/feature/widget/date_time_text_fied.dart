@@ -7,6 +7,7 @@ final class DateTimeTextFormField extends StatelessWidget {
     required this.controller,
     required this.validator,
     required this.onDateSelected,
+    this.style,
     super.key,
   });
 
@@ -14,6 +15,7 @@ final class DateTimeTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final ValueChanged<DateTime> onDateSelected;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ final class DateTimeTextFormField extends StatelessWidget {
       validator: validator,
       readOnly: true,
       textInputAction: TextInputAction.next,
+      style: style,
       decoration: InputDecoration(
         prefixIcon: const Icon(Icons.calendar_today),
         labelText: labelText,

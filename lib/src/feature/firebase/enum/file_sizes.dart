@@ -1,5 +1,3 @@
-// ignore_for_file: sort_constructors_first
-
 enum FileSizes {
   /// 0.1 mb or 100 kb
   small(100),
@@ -10,8 +8,8 @@ enum FileSizes {
   /// 1 mb or 1000 kb
   large(1000);
 
-  final int _kbValue;
-  const FileSizes(this._kbValue);
+  const FileSizes(this.kbValue);
 
-  int get toByte => _kbValue * 1024;
+  final int kbValue;
+  int get toByte => kbValue * 1024;
 }
