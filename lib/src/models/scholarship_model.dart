@@ -8,7 +8,8 @@ part 'scholarship_model.g.dart';
 
 @immutable
 @JsonSerializable()
-final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel> with EquatableMixin {
+final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel>
+    with EquatableMixin {
   const ScholarshipModel({
     required this.email,
     required this.phoneNumber,
@@ -16,6 +17,15 @@ final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel> with Eq
     required this.studentDocument,
     this.documentId = '',
   });
+
+  factory ScholarshipModel.empty() {
+    return const ScholarshipModel(
+      email: '',
+      phoneNumber: '',
+      story: '',
+      studentDocument: '',
+    );
+  }
 
   final String email;
   final String phoneNumber;
@@ -46,7 +56,8 @@ final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel> with Eq
     );
   }
 
-  factory ScholarshipModel.fromJson(Map<String, dynamic> json) => _$ScholarshipModelFromJson(json);
+  factory ScholarshipModel.fromJson(Map<String, dynamic> json) =>
+      _$ScholarshipModelFromJson(json);
 
   @override
   final String documentId;
@@ -61,7 +72,8 @@ final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel> with Eq
   }
 
   @override
-  ScholarshipModel fromJson(Map<String, dynamic> json) => _$ScholarshipModelFromJson(json);
+  ScholarshipModel fromJson(Map<String, dynamic> json) =>
+      _$ScholarshipModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$ScholarshipModelToJson(this);
