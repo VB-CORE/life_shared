@@ -79,6 +79,10 @@ class FirebaseStorageService with StorageCustomService {
     }
   }
 
+  Future<String> getDownloadUrl(String ref) {
+    return FirebaseStorage.instance.ref(ref).getDownloadURL();
+  }
+
   @override
   Future<String?> fileTransaction(String? url, RootStorageName to) async {
     throw Exception('DO NOT USE IT, ITS BROKEN');
