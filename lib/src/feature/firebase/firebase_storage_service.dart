@@ -23,7 +23,9 @@ class FirebaseStorageService with StorageCustomService {
     final storage = FirebaseStorage.instance;
     final name = '${root.name}/$key';
     try {
-      await storage.ref(name).putData(fileBytes, SettableMetadata(contentType: type.value));
+      await storage
+          .ref(name)
+          .putData(fileBytes, SettableMetadata(contentType: type.value));
 
       return storage.ref(name).getDownloadURL();
     } catch (error) {
@@ -51,9 +53,16 @@ class FirebaseStorageService with StorageCustomService {
     final storage = FirebaseStorage.instance;
     final name = '${root.name}/$key';
     try {
-      await storage.ref(name).putFile(file, SettableMetadata(contentType: type.value));
-      final url = await storage.ref(name).getDownloadURL();
-      return (url, null);
+      await storage
+          .ref(name)
+          .putFile(file, SettableMetadata(contentType: type.value));
+
+      /// does not use download url because of security rules
+      /// if you want the file admin side it will help u
+      ///
+      /// Example:
+      /// FirebaseStorage.instance.ref('scholarship').child('0419ce93-1ee5-4872-aeac-46eaaf72dae8').getDownloadURL();
+      return (name, null);
     } catch (error) {
       ProductLogger.log(error);
     }

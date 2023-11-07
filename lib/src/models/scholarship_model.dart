@@ -15,8 +15,12 @@ final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel>
     required this.phoneNumber,
     required this.story,
     required this.studentDocument,
+    required this.documentFileRef,
     this.documentId = '',
   });
+
+  factory ScholarshipModel.fromJson(Map<String, dynamic> json) =>
+      _$ScholarshipModelFromJson(json);
 
   factory ScholarshipModel.empty() {
     return const ScholarshipModel(
@@ -24,6 +28,7 @@ final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel>
       phoneNumber: '',
       story: '',
       studentDocument: '',
+      documentFileRef: '',
     );
   }
 
@@ -31,6 +36,7 @@ final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel>
   final String phoneNumber;
   final String story;
   final String studentDocument;
+  final String documentFileRef;
 
   @override
   List<Object?> get props => [
@@ -38,6 +44,7 @@ final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel>
         phoneNumber,
         story,
         studentDocument,
+        documentFileRef,
       ];
 
   ScholarshipModel copyWith({
@@ -46,6 +53,7 @@ final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel>
     String? story,
     String? studentDocument,
     String? documentId,
+    String? documentFileRef,
   }) {
     return ScholarshipModel(
       email: email ?? this.email,
@@ -53,11 +61,9 @@ final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel>
       story: story ?? this.story,
       studentDocument: studentDocument ?? this.studentDocument,
       documentId: documentId ?? this.documentId,
+      documentFileRef: documentFileRef ?? this.documentFileRef,
     );
   }
-
-  factory ScholarshipModel.fromJson(Map<String, dynamic> json) =>
-      _$ScholarshipModelFromJson(json);
 
   @override
   final String documentId;
