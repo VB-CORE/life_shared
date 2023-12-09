@@ -5,14 +5,14 @@ final class DateTimeConstants {
 
   static DateTime dateTimeNow = DateTime.now();
   static DateTime dateTimeTomorrow = DateTime.now().subtract(
-    DurationConstant.durationDayMinusOne,
+    DurationConstant.durationDayPlusOne,
   );
 
   static DateTime dateTimeYesterday = DateTime.now().subtract(
-    DurationConstant.durationDayPlusOne,
+    DurationConstant.durationDayMinusOne,
   );
 
   static DateTime selectableLastYear = DateTime(dateTimeNow.year + 3);
 
-  static String ddMMMyyyHHmm = 'dd MMM yyyy HH:mm';
+  static String ddMMMyyyyHHmm = 'dd MMM yyyy HH:mm';
 }
