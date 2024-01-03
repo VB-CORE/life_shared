@@ -24,6 +24,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
     required this.createdAt,
     required this.updatedAt,
     required this.isApproved,
+    this.visitCount = 0,
     this.deviceID,
     this.description,
     this.documentId = '',
@@ -53,6 +54,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
   final String phone;
   final List<String> images;
   final int townCode;
+  final int visitCount;
 
   final bool isApproved;
   final String? deviceID;
@@ -89,6 +91,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
     String? deviceID,
     String? documentId,
     CategoryModel? category,
+    int? visitCount,
   }) {
     return StoreModel(
       name: name ?? this.name,
@@ -104,6 +107,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
       deviceID: deviceID ?? this.deviceID,
       documentId: documentId ?? this.documentId,
       category: category ?? this.category,
+      visitCount: visitCount ?? this.visitCount,
     );
   }
 
@@ -133,6 +137,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
       townCode,
       documentId,
       createdAt,
+      visitCount
     ];
   }
 }
