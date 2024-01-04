@@ -23,11 +23,6 @@ abstract class CustomService {
     throw UnimplementedError();
   }
 
-  Future<int> collectionReadCount(CollectionPaths path) async {
-    final collectionAggregate = await path.collection.count().get();
-    return collectionAggregate.count;
-  }
-
   Future<String?> add<T extends BaseFirebaseModel<T>>({
     required T model,
     required CollectionPaths path,
