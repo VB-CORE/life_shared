@@ -8,8 +8,9 @@ class DateTimePicker {
 
   static Future<DateTimeModel?> selectedDateTime(BuildContext context) async {
     final selectDate = await _selectDate(context);
-    if (!context.mounted) return null;
+    if (selectDate == null || !context.mounted) return null;
     final selectTime = await _selectTime(context);
+    if (selectTime == null || !context.mounted) return null;
 
     final selectedDateAndTime = DateTime(
       selectDate.year,
@@ -28,25 +29,23 @@ class DateTimePicker {
     );
   }
 
-  static Future<DateTime> _selectDate(BuildContext context) async {
+  static Future<DateTime?> _selectDate(BuildContext context) async {
     final pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTimeConstants.dateTimeTomorrow,
       firstDate: DateTimeConstants.dateTimeTomorrow,
       lastDate: DateTimeConstants.selectableLastYear,
     );
-    if (pickedDate == null) return DateTimeConstants.dateTimeTomorrow;
     return pickedDate;
   }
 
-  static Future<TimeOfDay> _selectTime(BuildContext context) async {
+  static Future<TimeOfDay?> _selectTime(BuildContext context) async {
     final initialTimeOfDay = TimeOfDay.now();
     final pickedTime = await showTimePicker(
       context: context,
       initialTime: initialTimeOfDay,
       initialEntryMode: TimePickerEntryMode.dialOnly,
     );
-    if (pickedTime == null) return TimeOfDay.now();
     return pickedTime;
   }
 }
