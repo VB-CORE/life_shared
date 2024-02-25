@@ -16,8 +16,9 @@ final class FileCompress {
   ///
   /// Returns:
   ///   a `Future` object that resolves to a `Uint8List?` (nullable `Uint8List`) value.
-  Future<Uint8List?> compressByteFile(
-      {FileQualities quality = FileQualities.medium}) async {
+  Future<Uint8List?> compressByteFile({
+    FileQualities quality = FileQualities.medium,
+  }) async {
     final result = await FlutterImageCompress.compressWithList(
       fileBytes,
       quality: quality.value,

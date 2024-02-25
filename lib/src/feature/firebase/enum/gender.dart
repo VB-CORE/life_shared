@@ -12,9 +12,9 @@ enum Genders implements BaseDropDownModel {
   @override
   String get displayName {
     return switch (this) {
-      Genders.other => "Erkek/Kadın",
-      Genders.male => "Erkek",
-      Genders.female => "Kadın",
+      Genders.other => 'Erkek/Kadın',
+      Genders.male => 'Erkek',
+      Genders.female => 'Kadın',
     };
   }
 }

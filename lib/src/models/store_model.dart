@@ -1,9 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
-
 import 'package:life_shared/src/core/base_firebase_model.dart';
 import 'package:life_shared/src/models/category_model.dart';
 import 'package:life_shared/src/utility/firebase_time_parse.dart';
@@ -137,7 +135,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
       townCode,
       documentId,
       createdAt,
-      visitCount
+      visitCount,
     ];
   }
 }

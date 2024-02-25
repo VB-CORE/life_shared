@@ -9,7 +9,6 @@ import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
 import 'package:life_shared/src/feature/firebase/enum/storage_types.dart';
 import 'package:life_shared/src/feature/firebase/enum/upload_errors.dart';
 import 'package:life_shared/src/utility/product_logger.dart';
-import 'package:uuid/uuid.dart';
 
 class FirebaseStorageService with StorageCustomService {
   /// We need to test images png,jpg,webp,svg, and other file types.
@@ -81,25 +80,5 @@ class FirebaseStorageService with StorageCustomService {
 
   Future<String> getDownloadUrl(String ref) {
     return FirebaseStorage.instance.ref(ref).getDownloadURL();
-  }
-
-  @override
-  Future<String?> fileTransaction(String? url, RootStorageName to) async {
-    throw Exception('DO NOT USE IT, ITS BROKEN');
-    if (url.ext.isNullOrEmpty) return null;
-    final storage = FirebaseStorage.instance;
-    final oldRef = storage.refFromURL(url!);
-    try {
-      final data = await oldRef.getData();
-      if (data.ext.isNullOrEmpty) return null;
-      final newKey = const Uuid().v4();
-      final newUrl = await uploadImage(root: to, key: newKey, fileBytes: data!);
-      if (newUrl.ext.isNullOrEmpty) return null;
-      await oldRef.delete();
-      return newUrl;
-    } catch (e) {
-      ProductLogger.log(e);
-      return null;
-    }
   }
 }

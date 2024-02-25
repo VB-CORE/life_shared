@@ -17,11 +17,13 @@ StoreModel _$StoreModelFromJson(Map<String, dynamic> json) => StoreModel(
       createdAt: json['createdAt'] == null
           ? DateTime.now()
           : FirebaseTimeParse.datetimeFromTimestamp(
-              json['createdAt'] as Timestamp?),
+              json['createdAt'] as Timestamp?,
+            ),
       updatedAt: json['updatedAt'] == null
           ? DateTime.now()
           : FirebaseTimeParse.datetimeFromTimestamp(
-              json['updatedAt'] as Timestamp?),
+              json['updatedAt'] as Timestamp?,
+            ),
       isApproved: json['isApproved'] as bool,
       visitCount: json['visitCount'] as int? ?? 0,
       deviceID: json['deviceID'] as String?,
