@@ -15,15 +15,12 @@ final class GeneralFirestoreListView<T> extends StatelessWidget {
     required this.query,
     required this.itemBuilder,
     required this.onRetry,
-    required this.title,
     required this.emptyBuilder,
     this.shrinkWrap = false,
     super.key,
   });
 
   final bool shrinkWrap;
-
-  final String title;
 
   /// That's firebase query for any child
   /// Example: newsCollection _customService.collectionReference(CollectionPaths.news,NewsModel());
@@ -34,6 +31,8 @@ final class GeneralFirestoreListView<T> extends StatelessWidget {
 
   /// When data is fetching is fail and you want to retry it you can use this callback
   final VoidCallback onRetry;
+
+  /// Title for error message
   final Widget Function(BuildContext context) emptyBuilder;
 
   @override
