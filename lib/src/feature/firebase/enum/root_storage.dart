@@ -8,4 +8,5 @@ enum RootStorageName {
   scholarship,
   news,
   advertise,
+  adBoard,
 }
