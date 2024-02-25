@@ -115,6 +115,4 @@ mixin StorageCustomService {
   });
 
   Future<void> deleteAssets({required List<String>? paths});
-
-  Future<String?> fileTransaction(String? url, RootStorageName to);
 }
