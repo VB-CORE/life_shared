@@ -51,6 +51,20 @@ class FirebaseService extends CustomService with _FirebaseServiceError {
   }
 
   @override
+  Query<T?> queryWithOrderBy<T extends BaseFirebaseConvert<T>>({
+    required CollectionPaths path,
+    required T model,
+    required MapEntry<String, bool> orderBy,
+  }) {
+    return path.collection
+        .orderBy(orderBy.key, descending: orderBy.value)
+        .withConverter<T?>(
+          fromFirestore: (snapshot, options) => _dataConvert(snapshot, model),
+          toFirestore: (value, options) => throw UnimplementedError(),
+        );
+  }
+
+  @override
   Future<T?> getSingleData<T extends BaseFirebaseConvert<T>>({
     required T model,
     required CollectionPaths path,

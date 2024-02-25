@@ -23,6 +23,14 @@ abstract class CustomService {
     throw UnimplementedError();
   }
 
+  Query<T?> queryWithOrderBy<T extends BaseFirebaseConvert<T>>({
+    required CollectionPaths path,
+    required T model,
+    required MapEntry<String, bool> orderBy,
+  }) {
+    throw UnimplementedError();
+  }
+
   Future<String?> add<T extends BaseFirebaseModel<T>>({
     required T model,
     required CollectionPaths path,
