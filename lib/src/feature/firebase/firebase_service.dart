@@ -32,7 +32,11 @@ class FirebaseService extends CustomService with _FirebaseServiceError {
     final response = await _withTimeout(request);
     if (response == null) return [];
     if (response.docs.isEmpty) return [];
-    return response.docs.map((e) => e.data()).where((element) => element != null).cast<T>().toList();
+    return response.docs
+        .map((e) => e.data())
+        .where((element) => element != null)
+        .cast<T>()
+        .toList();
   }
 
   @override

@@ -1,7 +1,8 @@
 {
     "docwriter.hotkey.mac": "⌥ + .",
     "cSpell.words": [
-        "Firestore"
+        "Firestore",
+        "kartal"
     ],
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
