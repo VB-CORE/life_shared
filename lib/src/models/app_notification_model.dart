@@ -83,4 +83,6 @@ enum AppNotificationType {
   news,
   @JsonValue('advertise')
   advertise,
+  @JsonValue('link')
+  link,
 }
