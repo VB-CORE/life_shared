@@ -12,6 +12,7 @@ final class NotificationModel with EquatableMixin {
     this.campaignId,
     this.newsId,
     this.advertiseId,
+    this.link,
   });
 
   factory NotificationModel.fromJson(Map<String, dynamic> json) =>
@@ -20,6 +21,7 @@ final class NotificationModel with EquatableMixin {
   final String? campaignId;
   final String? newsId;
   final String? advertiseId;
+  final String? link;
 
   Map<String, dynamic> toJson() => _$NotificationModelToJson(this);
 

@@ -10,7 +10,8 @@ enum NotificationTopics {
   news,
   @JsonValue('/topics/advertise')
   advertise,
-  ;
+  @JsonValue('/topics/link')
+  toAllLinked;
 
   String get rawValue {
     switch (this) {
@@ -24,6 +25,8 @@ enum NotificationTopics {
         return 'news';
       case NotificationTopics.advertise:
         return 'advertise';
+      case NotificationTopics.toAllLinked:
+        return 'link';
     }
   }
 }
