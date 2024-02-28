@@ -16,6 +16,7 @@ enum CollectionPaths {
   scholarship,
   approvedAdvertise,
   unApprovedAdvertise,
+  adBoard,
   ;
 
   CollectionReference<Map<String, dynamic>> get collection {
