@@ -17,6 +17,7 @@ final class GeneralFirestoreListView<T> extends StatelessWidget {
     required this.onRetry,
     required this.emptyBuilder,
     this.shrinkWrap = false,
+    this.reverse = false,
     super.key,
   });
 
@@ -35,12 +36,13 @@ final class GeneralFirestoreListView<T> extends StatelessWidget {
   /// Title for error message
   final Widget Function(BuildContext context) emptyBuilder;
 
+  final bool reverse;
   @override
   Widget build(BuildContext context) {
     return FirestoreListView<T?>(
       query: query,
       shrinkWrap: shrinkWrap,
-      reverse: true,
+      reverse: reverse,
       physics: const ClampingScrollPhysics(),
       loadingBuilder: (_) =>
           const GeneralShimmer(height: CustomShimmerHeight.small),
