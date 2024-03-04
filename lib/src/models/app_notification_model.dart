@@ -6,8 +6,7 @@ import 'package:life_shared/life_shared.dart';
 part 'app_notification_model.g.dart';
 
 @JsonSerializable()
-final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
-    with EquatableMixin {
+final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel> with EquatableMixin {
   AppNotificationModel({
     this.createdAt,
     this.body,
@@ -17,8 +16,7 @@ final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
     this.type,
   });
 
-  factory AppNotificationModel.fromJson(Map<String, dynamic> json) =>
-      _$AppNotificationModelFromJson(json);
+  factory AppNotificationModel.fromJson(Map<String, dynamic> json) => _$AppNotificationModelFromJson(json);
   final String? body;
   final String id;
   final String? title;
@@ -85,4 +83,6 @@ enum AppNotificationType {
   advertise,
   @JsonValue('link')
   link,
+  @JsonValue('adBoard')
+  adBoard,
 }

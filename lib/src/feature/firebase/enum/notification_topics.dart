@@ -10,6 +10,8 @@ enum NotificationTopics {
   news,
   @JsonValue('/topics/advertise')
   advertise,
+  @JsonValue('/topics/adBoard')
+  adBoard,
   @JsonValue('/topics/link')
   toAllLinked;
 
@@ -25,6 +27,8 @@ enum NotificationTopics {
         return 'news';
       case NotificationTopics.advertise:
         return 'advertise';
+      case NotificationTopics.adBoard:
+        return 'adBoard';
       case NotificationTopics.toAllLinked:
         return 'link';
     }
