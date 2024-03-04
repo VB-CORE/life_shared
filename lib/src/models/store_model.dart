@@ -22,6 +22,8 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
     required this.createdAt,
     required this.updatedAt,
     required this.isApproved,
+    this.openTime,
+    this.closeTime,
     this.visitCount = 0,
     this.deviceID,
     this.description,
@@ -53,7 +55,8 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
   final List<String> images;
   final int townCode;
   final int visitCount;
-
+  final String? openTime;
+  final String? closeTime;
   final bool isApproved;
   final String? deviceID;
   final CategoryModel? category;
@@ -90,6 +93,8 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
     String? documentId,
     CategoryModel? category,
     int? visitCount,
+    String? openTime,
+    String? closeTime,
   }) {
     return StoreModel(
       name: name ?? this.name,
@@ -106,6 +111,8 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
       documentId: documentId ?? this.documentId,
       category: category ?? this.category,
       visitCount: visitCount ?? this.visitCount,
+      openTime: openTime ?? this.openTime,
+      closeTime: closeTime ?? this.closeTime,
     );
   }
 

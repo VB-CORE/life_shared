@@ -23,6 +23,8 @@ StoreModel _$StoreModelFromJson(Map<String, dynamic> json) => StoreModel(
           : FirebaseTimeParse.datetimeFromTimestamp(
               json['updatedAt'] as Timestamp?),
       isApproved: json['isApproved'] as bool,
+      openTime: json['openTime'] as String?,
+      closeTime: json['closeTime'] as String?,
       visitCount: json['visitCount'] as int? ?? 0,
       deviceID: json['deviceID'] as String?,
       description: json['description'] as String?,
@@ -41,6 +43,8 @@ Map<String, dynamic> _$StoreModelToJson(StoreModel instance) =>
       'images': instance.images,
       'townCode': instance.townCode,
       'visitCount': instance.visitCount,
+      'openTime': instance.openTime,
+      'closeTime': instance.closeTime,
       'isApproved': instance.isApproved,
       'deviceID': instance.deviceID,
       'category': instance.category?.toJson(),
