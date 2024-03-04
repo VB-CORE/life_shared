@@ -7,17 +7,17 @@ class DateTimePicker {
   DateTimePicker._();
 
   static Future<DateTimeModel?> selectedDateTime(BuildContext context) async {
-    final selectDate = await _selectDate(context);
-    if (selectDate == null || !context.mounted) return null;
-    final selectTime = await _selectTime(context);
-    if (selectTime == null || !context.mounted) return null;
+    final selectedDate = await _selectDate(context);
+    if (selectedDate == null || !context.mounted) return null;
+    final selectedTime = await selectTime(context);
+    if (selectedTime == null || !context.mounted) return null;
 
     final selectedDateAndTime = DateTime(
-      selectDate.year,
-      selectDate.month,
-      selectDate.day,
-      selectTime.hour,
-      selectTime.minute,
+      selectedDate.year,
+      selectedDate.month,
+      selectedDate.day,
+      selectedTime.hour,
+      selectedTime.minute,
     );
     final formattedText = DateTimeFormatter.formatValueDetail(
       selectedDateAndTime,
@@ -39,7 +39,7 @@ class DateTimePicker {
     return pickedDate;
   }
 
-  static Future<TimeOfDay?> _selectTime(BuildContext context) async {
+  static Future<TimeOfDay?> selectTime(BuildContext context) async {
     final initialTimeOfDay = TimeOfDay.now();
     final pickedTime = await showTimePicker(
       context: context,
