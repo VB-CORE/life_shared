@@ -30,11 +30,11 @@ class DateTimePicker {
   }
 
   static Future<DateTimeModel?> selectedOnlyTime(BuildContext context) async {
-    final selectTime = await _selectTime(context);
-    if (selectTime == null || !context.mounted) return null;
+    final selected = await selectTime(context);
+    if (selected == null || !context.mounted) return null;
     final time = DateTime.now().copyWith(
-      hour: selectTime.hour,
-      minute: selectTime.minute,
+      hour: selected.hour,
+      minute: selected.minute,
     );
     final formattedText = DateTimeFormatter.formatValueDetailOnlyHour(time);
     return DateTimeModel(
