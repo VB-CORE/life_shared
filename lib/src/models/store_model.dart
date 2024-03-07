@@ -2,9 +2,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:kartal/kartal.dart';
 import 'package:life_shared/src/core/base_firebase_model.dart';
 import 'package:life_shared/src/models/category_model.dart';
-import 'package:life_shared/src/utility/firebase_time_parse.dart';
+import 'package:life_shared/src/utility/index.dart';
 
 part 'store_model.g.dart';
 
@@ -77,6 +78,39 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
     defaultValue: DateTime.now,
   )
   final DateTime? updatedAt;
+
+  /// Returns store open status
+  bool get isStoreOpen {
+    if (openTime.ext.isNullOrEmpty || closeTime.ext.isNullOrEmpty) {
+      return false;
+    }
+
+    final splittedOpenTime = openTime?.split(':');
+    final splittedCloseTime = closeTime?.split(':');
+
+    if (splittedOpenTime?.length != 2 || splittedCloseTime?.length != 2) {
+      return false;
+    }
+
+    try {
+      final openTime = TimeOfDay(
+        hour: int.parse(splittedOpenTime![0]),
+        minute: int.parse(splittedOpenTime[1]),
+      );
+
+      final closeTime = TimeOfDay(
+        hour: int.parse(splittedCloseTime![0]),
+        minute: int.parse(splittedCloseTime[1]),
+      );
+
+      final currentTimeOfDay = TimeOfDay.now();
+
+      return currentTimeOfDay.isAfter(openTime) &&
+          currentTimeOfDay.isBefore(closeTime);
+    } catch (e) {
+      return false;
+    }
+  }
 
   StoreModel copyWith({
     String? name,
