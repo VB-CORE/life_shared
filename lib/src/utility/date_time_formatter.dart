@@ -14,6 +14,12 @@ final class DateTimeFormatter {
     final formattedValue = DateFormat('dd MMM yyyy HH:mm').format(value);
     return formattedValue;
   }
+
+  static String formatValueDetailOnlyHour(DateTime value) {
+    // 31 May 2013 06:00 to date format dd MMM yyyy
+    final formattedValue = DateFormat('HH:mm').format(value);
+    return formattedValue;
+  }
 }
 
 extension TimeOfDayExtension on TimeOfDay {
