@@ -12,29 +12,19 @@ ChainStoreModel _$ChainStoreModelFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String,
       website: json['website'] as String,
       logoImageUrl: json['logoImageUrl'] as String,
-      openHour: json['openHour'] == null
-          ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['openHour'] as Timestamp?,
-            ),
-      closeHour: json['closeHour'] == null
-          ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['closeHour'] as Timestamp?,
-            ),
+      openHour: json['openHour'] as String?,
+      closeHour: json['closeHour'] as String?,
       branches: (json['branches'] as List<dynamic>?)
-          ?.map((e) => StoreModelSnapshot.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => StoreModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       createdAt: json['createdAt'] == null
           ? DateTime.now()
           : FirebaseTimeParse.datetimeFromTimestamp(
-              json['createdAt'] as Timestamp?,
-            ),
+              json['createdAt'] as Timestamp?),
       updatedAt: json['updatedAt'] == null
           ? DateTime.now()
           : FirebaseTimeParse.datetimeFromTimestamp(
-              json['updatedAt'] as Timestamp?,
-            ),
+              json['updatedAt'] as Timestamp?),
       category: json['category'] == null
           ? null
           : CategoryModel.fromJson(json['category'] as Map<String, dynamic>),
@@ -48,8 +38,8 @@ Map<String, dynamic> _$ChainStoreModelToJson(ChainStoreModel instance) =>
       'logoImageUrl': instance.logoImageUrl,
       'category': instance.category?.toJson(),
       'branches': instance.branches?.map((e) => e.toJson()).toList(),
-      'openHour': FirebaseTimeParse.dateTimeToTimestamp(instance.openHour),
-      'closeHour': FirebaseTimeParse.dateTimeToTimestamp(instance.closeHour),
+      'openHour': instance.openHour,
+      'closeHour': instance.closeHour,
       'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
       'updatedAt': FirebaseTimeParse.dateTimeToTimestamp(instance.updatedAt),
     };

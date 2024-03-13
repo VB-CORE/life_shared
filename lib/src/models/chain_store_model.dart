@@ -39,20 +39,9 @@ final class ChainStoreModel extends BaseFirebaseModel<ChainStoreModel>
   final String website;
   final String logoImageUrl;
   final CategoryModel? category;
-  final List<StoreModelSnapshot>? branches;
-
-  @JsonKey(
-    toJson: FirebaseTimeParse.dateTimeToTimestamp,
-    fromJson: FirebaseTimeParse.datetimeFromTimestamp,
-    defaultValue: DateTime.now,
-  )
-  final DateTime? openHour;
-  @JsonKey(
-    toJson: FirebaseTimeParse.dateTimeToTimestamp,
-    fromJson: FirebaseTimeParse.datetimeFromTimestamp,
-    defaultValue: DateTime.now,
-  )
-  final DateTime? closeHour;
+  final List<StoreModel>? branches;
+  final String? openHour;
+  final String? closeHour;
   @JsonKey(
     toJson: FirebaseTimeParse.dateTimeToTimestamp,
     fromJson: FirebaseTimeParse.datetimeFromTimestamp,
@@ -89,10 +78,10 @@ final class ChainStoreModel extends BaseFirebaseModel<ChainStoreModel>
     String? description,
     String? website,
     String? logoImageUrl,
-    List<StoreModelSnapshot>? branches,
+    List<StoreModel>? branches,
     CategoryModel? category,
-    DateTime? openHour,
-    DateTime? closeHour,
+    String? openHour,
+    String? closeHour,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) {
@@ -133,10 +122,8 @@ final class ChainStoreModel extends BaseFirebaseModel<ChainStoreModel>
     final description = 'Açıklama: ${this.description}';
     final website = 'Website: ${this.website}';
     final category = 'Kategori: ${this.category?.displayName}';
-    final openHour =
-        'Açılış saati: ${this.openHour?.hour} : ${this.openHour?.minute}';
-    final closeHour =
-        'Kapanış saati: ${this.closeHour?.hour} : ${this.closeHour?.minute}';
+    final openHour = 'Açılış saati: ${this.openHour} ';
+    final closeHour = 'Kapanış saati: ${this.closeHour}';
     final branches = 'Şubeler:\n ${this.branches}';
 
     return '$name\n$description\n$website\n$category\n$openHour\n$closeHour\n$branches';

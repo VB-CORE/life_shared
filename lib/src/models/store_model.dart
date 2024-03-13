@@ -29,6 +29,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
     this.description,
     this.documentId = '',
     this.category,
+    this.latLong,
   });
 
   factory StoreModel.empty() {
@@ -60,6 +61,8 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
   final bool isApproved;
   final String? deviceID;
   final CategoryModel? category;
+  @FirebaseGeoParser()
+  final GeoPoint? latLong;
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -95,6 +98,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
     int? visitCount,
     String? openTime,
     String? closeTime,
+    GeoPoint? latLong,
   }) {
     return StoreModel(
       name: name ?? this.name,
@@ -113,6 +117,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
       visitCount: visitCount ?? this.visitCount,
       openTime: openTime ?? this.openTime,
       closeTime: closeTime ?? this.closeTime,
+      latLong: latLong ?? this.latLong,
     );
   }
 
@@ -132,6 +137,9 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
   StoreModel fromJson(Map<String, dynamic> json) {
     return _$StoreModelFromJson(json);
   }
+
+  factory StoreModel.fromJson(Map<String, dynamic> json) =>
+      _$StoreModelFromJson(json);
 
   List<Object?> get props {
     return [

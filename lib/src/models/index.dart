@@ -12,5 +12,4 @@ export 'notification_model.dart';
 export 'scholarship_model.dart';
 export 'special_agency_model.dart';
 export 'store_model.dart';
-export 'store_model_snapshot.dart';
 export 'town_model.dart';
