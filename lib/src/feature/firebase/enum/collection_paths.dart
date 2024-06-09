@@ -18,6 +18,7 @@ enum CollectionPaths {
   unApprovedAdvertise,
   adBoard,
   chainStores,
+  touristicPlaces,
   ;
 
   CollectionReference<Map<String, dynamic>> get collection {

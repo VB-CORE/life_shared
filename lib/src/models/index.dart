@@ -12,4 +12,5 @@ export 'notification_model.dart';
 export 'scholarship_model.dart';
 export 'special_agency_model.dart';
 export 'store_model.dart';
+export 'touristic_places_model.dart';
 export 'town_model.dart';
