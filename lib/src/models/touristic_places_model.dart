@@ -12,6 +12,7 @@ class TouristicPlaceModel extends BaseFirebaseModel<TouristicPlaceModel>
   TouristicPlaceModel({
     this.title,
     this.description,
+    this.photo,
     this.latLong = PackageConstants.hatayLatLong,
     this.documentId = '',
   });
@@ -19,13 +20,11 @@ class TouristicPlaceModel extends BaseFirebaseModel<TouristicPlaceModel>
   factory TouristicPlaceModel.fromJson(Map<String, dynamic> json) =>
       _$TouristicPlaceModelFromJson(json);
 
-  factory TouristicPlaceModel.empty() => TouristicPlaceModel(
-        title: '',
-        description: '',
-      );
+  factory TouristicPlaceModel.empty() => TouristicPlaceModel();
 
   final String? title;
   final String? description;
+  final String? photo;
   @JsonKey(
     fromJson: GeoParser.fromJsonGeoPoint,
     toJson: GeoParser.toJsonGeoPoint,
@@ -58,12 +57,14 @@ class TouristicPlaceModel extends BaseFirebaseModel<TouristicPlaceModel>
   TouristicPlaceModel copyWith({
     String? title,
     String? description,
+    String? photo,
     GeoPoint? latLong,
     String? documentId,
   }) {
     return TouristicPlaceModel(
       title: title ?? this.title,
       description: description ?? this.description,
+      photo: photo ?? this.photo,
       latLong: latLong ?? this.latLong,
       documentId: documentId ?? this.documentId,
     );
@@ -73,6 +74,7 @@ class TouristicPlaceModel extends BaseFirebaseModel<TouristicPlaceModel>
   List<Object?> get props => [
         title,
         description,
+        photo,
         latLong,
         documentId,
       ];

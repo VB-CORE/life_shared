@@ -9,4 +9,6 @@ enum RootStorageName {
   news,
   advertise,
   adBoard,
+  touristicPlaces,
+  ;
 }
