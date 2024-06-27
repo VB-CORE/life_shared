@@ -1,0 +1,4 @@
+enum CustomImagePickType {
+  gallery,
+  camera;
+}
