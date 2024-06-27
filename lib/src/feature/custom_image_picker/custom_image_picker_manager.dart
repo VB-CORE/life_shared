@@ -24,12 +24,11 @@ final class PhotoPickerManager implements CustomImagePicker {
   }) async {
     XFile? mediaFile;
     try {
-      switch (type) {
-        case CustomImagePickType.gallery:
-          mediaFile = await _picker.pickImage(source: ImageSource.gallery);
-        case CustomImagePickType.camera:
-          mediaFile = await _picker.pickImage(source: ImageSource.camera);
-      }
+      mediaFile = await _picker.pickImage(
+        source: type == CustomImagePickType.gallery
+            ? ImageSource.gallery
+            : ImageSource.camera,
+      );
     } on PlatformException catch (e) {
       onError?.call(
         CustomImageException.fromValue(e.message) ??
@@ -41,20 +40,8 @@ final class PhotoPickerManager implements CustomImagePicker {
     final croppedFile = await ImageCropper().cropImage(
       sourcePath: mediaFile.path,
       uiSettings: [
-        AndroidUiSettings(
-          toolbarTitle: title,
-          initAspectRatio: CropAspectRatioPreset.original,
-          lockAspectRatio: true,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.ratio4x3,
-          ],
-        ),
-        IOSUiSettings(
-          title: title,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.ratio4x3,
-          ],
-        ),
+        _AndroidSettings(title),
+        _IOSUiSettings(title: title),
       ],
     );
     if (croppedFile == null) return null;
@@ -70,4 +57,26 @@ final class PhotoPickerManager implements CustomImagePicker {
     await latestFile.writeAsBytes(latestFileCompress);
     return latestFile;
   }
+}
+
+final class _AndroidSettings extends AndroidUiSettings {
+  _AndroidSettings(String title)
+      : super(
+          toolbarTitle: title,
+          initAspectRatio: CropAspectRatioPreset.original,
+          lockAspectRatio: true,
+          aspectRatioPresets: [
+            CropAspectRatioPreset.ratio4x3,
+          ],
+        );
+}
+
+final class _IOSUiSettings extends IOSUiSettings {
+  _IOSUiSettings({required String title})
+      : super(
+          title: title,
+          aspectRatioPresets: [
+            CropAspectRatioPreset.ratio4x3,
+          ],
+        );
 }
