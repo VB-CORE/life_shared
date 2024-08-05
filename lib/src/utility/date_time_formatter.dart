@@ -24,22 +24,14 @@ final class DateTimeFormatter {
 
 extension TimeOfDayExtension on TimeOfDay {
   bool isBefore(TimeOfDay other) {
-    if (hour < other.hour) {
-      return true;
-    } else if (hour == other.hour) {
-      return minute < other.minute;
-    } else {
-      return false;
-    }
+    final minutes = hour * TimeOfDay.minutesPerHour + minute;
+    final otherMinutes = other.hour * TimeOfDay.minutesPerHour + other.minute;
+    return minutes < otherMinutes;
   }
 
   bool isAfter(TimeOfDay other) {
-    if (hour > other.hour) {
-      return true;
-    } else if (hour == other.hour) {
-      return minute > other.minute;
-    } else {
-      return false;
-    }
+    final minutes = hour * TimeOfDay.minutesPerHour + minute;
+    final otherMinutes = other.hour * TimeOfDay.minutesPerHour + other.minute;
+    return minutes > otherMinutes;
   }
 }
