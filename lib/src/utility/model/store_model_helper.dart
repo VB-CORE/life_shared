@@ -38,7 +38,15 @@ final class StoreModelHelper {
 
     final currentTimeOfDay = TimeOfDay.now();
 
-    return currentTimeOfDay.isAfter(openTimeOfDay) &&
-        currentTimeOfDay.isBefore(closeTimeOfDay);
+    final isAfter = currentTimeOfDay.isAfter(openTimeOfDay);
+    final isBefore = currentTimeOfDay.isBefore(closeTimeOfDay);
+
+    final isCloseTimeAfterOpenTime = closeTimeOfDay.isAfter(openTimeOfDay);
+
+    /// PM
+    if (isCloseTimeAfterOpenTime) return isAfter && isBefore;
+
+    /// AM
+    return isAfter || isBefore;
   }
 }
