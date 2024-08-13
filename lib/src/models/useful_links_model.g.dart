@@ -1,17 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'ad_board_model.dart';
+part of 'useful_links_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AdBoardModel _$AdBoardModelFromJson(Map<String, dynamic> json) => AdBoardModel(
-      owner: json['owner'] as String?,
-      description: json['description'] as String?,
-      image: json['image'] as String?,
+UsefulLinksModel _$UsefulLinksModelFromJson(Map<String, dynamic> json) =>
+    UsefulLinksModel(
+      title: json['title'] as String?,
+      content: json['content'] as String?,
       link: json['link'] as String?,
-      adIndex: (json['adIndex'] as num?)?.toInt(),
+      image: json['image'] as String?,
       createdAt: json['createdAt'] == null
           ? DateTime.now()
           : FirebaseTimeParse.datetimeFromTimestamp(
@@ -22,13 +22,12 @@ AdBoardModel _$AdBoardModelFromJson(Map<String, dynamic> json) => AdBoardModel(
               json['updatedAt'] as Timestamp?),
     );
 
-Map<String, dynamic> _$AdBoardModelToJson(AdBoardModel instance) =>
+Map<String, dynamic> _$UsefulLinksModelToJson(UsefulLinksModel instance) =>
     <String, dynamic>{
-      'owner': instance.owner,
-      'description': instance.description,
-      'image': instance.image,
+      'title': instance.title,
+      'content': instance.content,
       'link': instance.link,
-      'adIndex': instance.adIndex,
+      'image': instance.image,
       'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
       'updatedAt': FirebaseTimeParse.dateTimeToTimestamp(instance.updatedAt),
     };

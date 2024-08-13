@@ -7,7 +7,7 @@ part of 'town_model.dart';
 // **************************************************************************
 
 TownModel _$TownModelFromJson(Map<String, dynamic> json) => TownModel(
-      code: json['code'] as int?,
+      code: (json['code'] as num?)?.toInt(),
       name: json['name'] as String?,
     );
 

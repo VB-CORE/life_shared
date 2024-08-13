@@ -14,3 +14,4 @@ export 'special_agency_model.dart';
 export 'store_model.dart';
 export 'touristic_places_model.dart';
 export 'town_model.dart';
+export 'useful_links_model.dart';
