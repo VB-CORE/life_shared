@@ -10,5 +10,6 @@ enum RootStorageName {
   advertise,
   adBoard,
   touristicPlaces,
+  usefulLinks,
   ;
 }
