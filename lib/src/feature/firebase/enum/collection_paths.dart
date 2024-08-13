@@ -19,6 +19,7 @@ enum CollectionPaths {
   adBoard,
   chainStores,
   touristicPlaces,
+  usefulLinks,
   ;
 
   CollectionReference<Map<String, dynamic>> get collection {
