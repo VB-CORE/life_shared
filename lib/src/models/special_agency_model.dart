@@ -7,21 +7,25 @@ import 'package:life_shared/src/core/constant/package_constants.dart';
 part 'special_agency_model.g.dart';
 
 @JsonSerializable()
-final class SpecialAgencyModel extends BaseFirebaseModel<SpecialAgencyModel> with EquatableMixin {
+final class SpecialAgencyModel extends BaseFirebaseModel<SpecialAgencyModel>
+    with EquatableMixin {
   SpecialAgencyModel({
     this.name,
     this.phone,
     this.address,
+    this.townCode,
     this.latLong = PackageConstants.hatayLatLong,
     this.documentId = '',
   });
 
-  factory SpecialAgencyModel.fromJson(Map<String, dynamic> json) => _$SpecialAgencyModelFromJson(json);
+  factory SpecialAgencyModel.fromJson(Map<String, dynamic> json) =>
+      _$SpecialAgencyModelFromJson(json);
 
   final String? name;
   final String? phone;
   @JsonKey(name: 'adress')
   final String? address;
+  final int? townCode;
   @JsonKey(
     fromJson: GeoParser.fromJsonGeoPoint,
     toJson: GeoParser.toJsonGeoPoint,
@@ -39,6 +43,7 @@ final class SpecialAgencyModel extends BaseFirebaseModel<SpecialAgencyModel> wit
   List<Object?> get props => [
         name,
         address,
+        townCode,
         phone,
         latLong,
         documentId,
@@ -60,6 +65,7 @@ final class SpecialAgencyModel extends BaseFirebaseModel<SpecialAgencyModel> wit
     String? name,
     String? phone,
     String? address,
+    int? townCode,
     GeoPoint? latLong,
     String? documentId,
   }) {
@@ -67,6 +73,7 @@ final class SpecialAgencyModel extends BaseFirebaseModel<SpecialAgencyModel> wit
       name: name ?? this.name,
       phone: phone ?? this.phone,
       address: address ?? this.address,
+      townCode: townCode ?? this.townCode,
       latLong: latLong ?? this.latLong,
       documentId: documentId ?? this.documentId,
     );
