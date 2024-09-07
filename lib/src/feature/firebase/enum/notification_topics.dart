@@ -1,16 +1,16 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum NotificationTopics {
-  @JsonValue('/topics/everyone')
+  @JsonValue('everyone')
   toAll,
   single,
-  @JsonValue('/topics/campaigns')
+  @JsonValue('campaigns')
   forCampaign,
-  @JsonValue('/topics/news')
+  @JsonValue('news')
   news,
-  @JsonValue('/topics/advertise')
+  @JsonValue('advertise')
   advertise,
-  @JsonValue('/topics/link')
+  @JsonValue('link')
   toAllLinked;
 
   String get rawValue {
