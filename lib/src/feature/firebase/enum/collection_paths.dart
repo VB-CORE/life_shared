@@ -20,7 +20,7 @@ enum CollectionPaths {
   chainStores,
   touristicPlaces,
   usefulLinks,
-  ;
+  error;
 
   CollectionReference<Map<String, dynamic>> get collection {
     return FirebaseFirestore.instance.collection(name);
