@@ -15,11 +15,11 @@ dependencies:
   json_annotation: ^4.8.1
   equatable: ^2.0.5
   image_picker: ^1.0.4
-  image_cropper: ^7.0.5
+  image_cropper: ^8.0.2
 
   #firebase
-  cloud_firestore: ^4.9.2
-  firebase_storage: ^11.2.6
+  cloud_firestore: ^5.5.0
+  firebase_storage: ^12.3.6
   firebase_ui_firestore: ^1.6.2
 
   # Util
@@ -36,7 +36,7 @@ dev_dependencies:
     sdk: flutter
   json_serializable: ^6.7.1
   build_runner: ^2.4.6
-  very_good_analysis: ^5.1.0
+  very_good_analysis: ^6.0.0
   mockito: ^5.4.4
 
 flutter:
