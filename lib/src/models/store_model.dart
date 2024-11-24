@@ -30,6 +30,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
     this.documentId = '',
     this.category,
     this.latLong,
+    this.cityId = '',
   });
 
   factory StoreModel.empty() {
@@ -59,6 +60,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
   final String? openTime;
   final String? closeTime;
   final bool isApproved;
+  final String cityId;
   final String? deviceID;
   final CategoryModel? category;
   @FirebaseGeoParser()
@@ -99,6 +101,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
     String? openTime,
     String? closeTime,
     GeoPoint? latLong,
+    String? cityId,
   }) {
     return StoreModel(
       name: name ?? this.name,
@@ -118,6 +121,7 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
       openTime: openTime ?? this.openTime,
       closeTime: closeTime ?? this.closeTime,
       latLong: latLong ?? this.latLong,
+      cityId: cityId ?? this.cityId,
     );
   }
 
@@ -151,6 +155,9 @@ final class StoreModel extends BaseFirebaseModel<StoreModel>
       documentId,
       createdAt,
       visitCount,
+      cityId,
+      category,
+      latLong,
     ];
   }
 }
