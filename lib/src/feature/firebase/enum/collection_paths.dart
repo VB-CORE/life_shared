@@ -20,6 +20,7 @@ enum CollectionPaths {
   chainStores,
   touristicPlaces,
   usefulLinks,
+  approvedStoreCities,
   error;
 
   CollectionReference<Map<String, dynamic>> get collection {

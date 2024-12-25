@@ -14,16 +14,19 @@ dependencies:
   flutter_image_compress: ^2.0.4
   json_annotation: ^4.8.1
   equatable: ^2.0.5
+  image_picker: ^1.0.4
+  image_cropper: ^8.0.2
 
   #firebase
-  cloud_firestore: ^5.6.0
-  firebase_storage: ^12.3.7
+  cloud_firestore: ^5.5.0
+  firebase_storage: ^12.3.6
   firebase_ui_firestore: ^1.6.2
 
   # Util
   logger: ^2.0.2
-  kartal: ^4.1.0
+  kartal: ^4.0.4
   uuid: ^4.3.3
+  collection: ^1.18.0
 
   # UI
   shimmer: ^3.0.0
@@ -33,6 +36,6 @@ dev_dependencies:
     sdk: flutter
   json_serializable: ^6.7.1
   build_runner: ^2.4.6
-  very_good_analysis: ^7.0.0
+  very_good_analysis: ^6.0.0
   mockito: ^5.4.4
 
