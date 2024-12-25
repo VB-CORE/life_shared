@@ -16,13 +16,13 @@ dependencies:
   equatable: ^2.0.5
 
   #firebase
-  cloud_firestore: ^4.9.2
-  firebase_storage: ^11.2.6
+  cloud_firestore: ^5.6.0
+  firebase_storage: ^12.3.7
   firebase_ui_firestore: ^1.6.2
 
   # Util
   logger: ^2.0.2
-  kartal: ^3.4.1
+  kartal: ^4.1.0
   uuid: ^4.3.3
 
   # UI
@@ -33,7 +33,6 @@ dev_dependencies:
     sdk: flutter
   json_serializable: ^6.7.1
   build_runner: ^2.4.6
-  very_good_analysis: ^5.1.0
+  very_good_analysis: ^7.0.0
   mockito: ^5.4.4
 
-flutter:
