@@ -21,7 +21,11 @@ enum CollectionPaths {
   touristicPlaces,
   usefulLinks,
   approvedStoreCities,
-  error;
+  error,
+
+  /// v8
+  regionalCities,
+  regionalTowns;
 
   CollectionReference<Map<String, dynamic>> get collection {
     return FirebaseFirestore.instance.collection(name);
