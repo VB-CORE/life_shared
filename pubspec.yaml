@@ -36,7 +36,6 @@ dev_dependencies:
     sdk: flutter
   json_serializable: ^6.7.1
   build_runner: ^2.4.6
-  very_good_analysis: ^6.0.0
+  very_good_analysis: ^7.0.0
   mockito: ^5.4.4
 
-flutter:
