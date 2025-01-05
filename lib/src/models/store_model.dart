@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -10,7 +9,7 @@ part 'store_model.g.dart';
 
 @immutable
 @JsonSerializable(explicitToJson: true)
-final class StoreModel extends BaseFirebaseModel<StoreModel>
+class StoreModel extends BaseFirebaseModel<StoreModel>
     implements BaseFirebaseConvert<StoreModel> {
   const StoreModel({
     required this.name,
