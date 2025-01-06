@@ -6,7 +6,7 @@ enum CollectionPaths {
   approvedApplications,
   notifications,
   logs,
-  allowedAdminClaims,
+  adminList,
   developers,
   categories,
   specialAgency,
