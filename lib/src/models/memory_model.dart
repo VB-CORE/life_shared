@@ -15,7 +15,7 @@ final class MemoryModel
     required this.documentId,
     this.title,
     this.description,
-    this.imageUrl,
+    this.imageUrls,
     this.createdAt,
     this.updatedAt,
   });
@@ -29,7 +29,7 @@ final class MemoryModel
   final String documentId;
   final String? title;
   final String? description;
-  final List<String>? imageUrl;
+  final List<String>? imageUrls;
 
   @JsonKey(
     toJson: FirebaseTimeParse.dateTimeToTimestamp,
@@ -50,7 +50,7 @@ final class MemoryModel
         documentId,
         title,
         description,
-        imageUrl,
+        imageUrls,
         createdAt,
         updatedAt,
       ];
@@ -59,7 +59,7 @@ final class MemoryModel
     String? documentId,
     String? title,
     String? description,
-    List<String>? imageUrl,
+    List<String>? imageUrls,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) {
@@ -67,7 +67,7 @@ final class MemoryModel
       documentId: documentId ?? this.documentId,
       title: title ?? this.title,
       description: description ?? this.description,
-      imageUrl: imageUrl ?? this.imageUrl,
+      imageUrls: imageUrls ?? this.imageUrls,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );

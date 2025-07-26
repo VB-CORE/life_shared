@@ -10,7 +10,7 @@ MemoryModel _$MemoryModelFromJson(Map<String, dynamic> json) => MemoryModel(
       documentId: json['documentId'] as String,
       title: json['title'] as String?,
       description: json['description'] as String?,
-      imageUrl: (json['imageUrl'] as List<dynamic>?)
+      imageUrls: (json['imageUrls'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       createdAt: FirebaseTimeParse.datetimeFromTimestamp(
@@ -24,7 +24,7 @@ Map<String, dynamic> _$MemoryModelToJson(MemoryModel instance) =>
       'documentId': instance.documentId,
       'title': instance.title,
       'description': instance.description,
-      'imageUrl': instance.imageUrl,
+      'imageUrls': instance.imageUrls,
       'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
       'updatedAt': FirebaseTimeParse.dateTimeToTimestamp(instance.updatedAt),
     };
