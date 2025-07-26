@@ -75,7 +75,9 @@ final class MemoryModel
 
   @override
   MemoryModel fromFirebase(DocumentSnapshot<Map<String, dynamic>> json) {
-    return MemoryModel.fromJson(json.data() ?? {})
-      ..copyWith(documentId: json.id);
+    if (json.data() == null) return this;
+    return _$MemoryModelFromJson(json.data()!).copyWith(
+      documentId: json.id,
+    );
   }
 }
