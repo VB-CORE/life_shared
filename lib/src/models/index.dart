@@ -7,6 +7,7 @@ export 'category_model.dart';
 export 'chain_store_model.dart';
 export 'date_time_model.dart';
 export 'developer_model.dart';
+export 'memory_model.dart';
 export 'news_model.dart';
 export 'notification_model.dart';
 export 'regional_city_model.dart';
