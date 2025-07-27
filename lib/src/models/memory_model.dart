@@ -12,7 +12,7 @@ final class MemoryModel
     with EquatableMixin
     implements BaseFirebaseConvert<MemoryModel> {
   const MemoryModel({
-    required this.documentId,
+    this.documentId = '',
     this.title,
     this.description,
     this.imageUrls,
@@ -23,9 +23,10 @@ final class MemoryModel
   factory MemoryModel.fromJson(Map<String, dynamic> json) =>
       _$MemoryModelFromJson(json);
 
-  factory MemoryModel.empty() => const MemoryModel(documentId: '');
+  factory MemoryModel.empty() => const MemoryModel();
 
   @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   final String documentId;
   final String? title;
   final String? description;
@@ -75,8 +76,9 @@ final class MemoryModel
 
   @override
   MemoryModel fromFirebase(DocumentSnapshot<Map<String, dynamic>> json) {
-    if (json.data() == null) return this;
-    return _$MemoryModelFromJson(json.data()!).copyWith(
+    final data = json.data();
+    if (data == null) return this;
+    return _$MemoryModelFromJson(data).copyWith(
       documentId: json.id,
     );
   }

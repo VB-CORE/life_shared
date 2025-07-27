@@ -7,7 +7,6 @@ part of 'memory_model.dart';
 // **************************************************************************
 
 MemoryModel _$MemoryModelFromJson(Map<String, dynamic> json) => MemoryModel(
-      documentId: json['documentId'] as String,
       title: json['title'] as String?,
       description: json['description'] as String?,
       imageUrls: (json['imageUrls'] as List<dynamic>?)
@@ -21,7 +20,6 @@ MemoryModel _$MemoryModelFromJson(Map<String, dynamic> json) => MemoryModel(
 
 Map<String, dynamic> _$MemoryModelToJson(MemoryModel instance) =>
     <String, dynamic>{
-      'documentId': instance.documentId,
       'title': instance.title,
       'description': instance.description,
       'imageUrls': instance.imageUrls,
