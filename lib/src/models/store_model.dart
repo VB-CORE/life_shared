@@ -32,6 +32,9 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
     this.cityId = '',
   });
 
+  factory StoreModel.fromJson(Map<String, dynamic> json) =>
+      _$StoreModelFromJson(json);
+
   factory StoreModel.empty() {
     return StoreModel(
       name: '',
@@ -70,13 +73,11 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
   final String documentId;
 
   @JsonKey(
-    toJson: FirebaseTimeParse.dateTimeToTimestamp,
     fromJson: FirebaseTimeParse.datetimeFromTimestamp,
     defaultValue: DateTime.now,
   )
   final DateTime? createdAt;
   @JsonKey(
-    toJson: FirebaseTimeParse.dateTimeToTimestamp,
     fromJson: FirebaseTimeParse.datetimeFromTimestamp,
     defaultValue: DateTime.now,
   )
@@ -140,9 +141,6 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
   StoreModel fromJson(Map<String, dynamic> json) {
     return _$StoreModelFromJson(json);
   }
-
-  factory StoreModel.fromJson(Map<String, dynamic> json) =>
-      _$StoreModelFromJson(json);
 
   List<Object?> get props {
     return [
