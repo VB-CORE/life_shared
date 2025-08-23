@@ -1,9 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:life_shared/life_shared.dart';
-import 'package:life_shared/src/core/base_firebase_model.dart';
 
 part 'town_model.g.dart';
 
@@ -24,6 +22,8 @@ final class TownModel extends BaseFirebaseConvert<TownModel>
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   final String documentId;
+
+  Map<String, dynamic> toJson() => _$TownModelToJson(this);
 
   TownModel fromJson(Map<String, dynamic> json) => _$TownModelFromJson(json);
 
