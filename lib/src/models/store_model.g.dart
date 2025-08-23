@@ -53,6 +53,6 @@ Map<String, dynamic> _$StoreModelToJson(StoreModel instance) =>
       'deviceID': instance.deviceID,
       'category': instance.category?.toJson(),
       'latLong': const FirebaseGeoParser().toJson(instance.latLong),
-      'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
-      'updatedAt': FirebaseTimeParse.dateTimeToTimestamp(instance.updatedAt),
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
     };
