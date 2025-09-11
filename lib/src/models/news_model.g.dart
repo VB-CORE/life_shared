@@ -12,12 +12,10 @@ NewsModel _$NewsModelFromJson(Map<String, dynamic> json) => NewsModel(
       image: json['image'] as String?,
       createdAt: json['createdAt'] == null
           ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['createdAt'] as Timestamp?),
+          : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
       updatedAt: json['updatedAt'] == null
           ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['updatedAt'] as Timestamp?),
+          : FirebaseTimeParse.datetimeFromTimestamp(json['updatedAt']),
     );
 
 Map<String, dynamic> _$NewsModelToJson(NewsModel instance) => <String, dynamic>{

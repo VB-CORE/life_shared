@@ -14,12 +14,10 @@ AdBoardModel _$AdBoardModelFromJson(Map<String, dynamic> json) => AdBoardModel(
       adIndex: (json['adIndex'] as num?)?.toInt(),
       createdAt: json['createdAt'] == null
           ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['createdAt'] as Timestamp?),
+          : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
       updatedAt: json['updatedAt'] == null
           ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['updatedAt'] as Timestamp?),
+          : FirebaseTimeParse.datetimeFromTimestamp(json['updatedAt']),
     );
 
 Map<String, dynamic> _$AdBoardModelToJson(AdBoardModel instance) =>

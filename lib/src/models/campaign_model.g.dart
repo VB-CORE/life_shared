@@ -14,8 +14,7 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       publisher: json['publisher'] as String?,
       expireDate: json['expireDate'] == null
           ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['expireDate'] as Timestamp?),
+          : FirebaseTimeParse.datetimeFromTimestamp(json['expireDate']),
       photo: json['photo'] as String?,
       coverPhoto: json['coverPhoto'] as String?,
       isApproved: json['isApproved'] as bool?,

@@ -14,12 +14,10 @@ UsefulLinksModel _$UsefulLinksModelFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String?,
       createdAt: json['createdAt'] == null
           ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['createdAt'] as Timestamp?),
+          : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
       updatedAt: json['updatedAt'] == null
           ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['updatedAt'] as Timestamp?),
+          : FirebaseTimeParse.datetimeFromTimestamp(json['updatedAt']),
     );
 
 Map<String, dynamic> _$UsefulLinksModelToJson(UsefulLinksModel instance) =>
