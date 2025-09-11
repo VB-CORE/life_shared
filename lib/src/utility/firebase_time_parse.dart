@@ -20,13 +20,13 @@ class FirebaseTimeParse {
         return DateTime.parse(timestamp);
       } catch (e) {
         if (kDebugMode) {
-          print('Error parsing timestamp string: $e');
+          debugPrint('Error parsing timestamp string: $e');
         }
         return null;
       }
     }
     if (kDebugMode) {
-      print('Unsupported timestamp type: ${timestamp.runtimeType}');
+      debugPrint('Unsupported timestamp type: ${timestamp.runtimeType}');
     }
     return null;
   }
