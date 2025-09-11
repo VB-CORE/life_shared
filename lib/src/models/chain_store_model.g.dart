@@ -19,12 +19,10 @@ ChainStoreModel _$ChainStoreModelFromJson(Map<String, dynamic> json) =>
           .toList(),
       createdAt: json['createdAt'] == null
           ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['createdAt'] as Timestamp?),
+          : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
       updatedAt: json['updatedAt'] == null
           ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['updatedAt'] as Timestamp?),
+          : FirebaseTimeParse.datetimeFromTimestamp(json['updatedAt']),
       category: json['category'] == null
           ? null
           : CategoryModel.fromJson(json['category'] as Map<String, dynamic>),

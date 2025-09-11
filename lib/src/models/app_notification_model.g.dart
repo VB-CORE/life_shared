@@ -11,8 +11,7 @@ AppNotificationModel _$AppNotificationModelFromJson(
     AppNotificationModel(
       createdAt: json['createdAt'] == null
           ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['createdAt'] as Timestamp?),
+          : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
       body: json['body'] as String?,
       id: json['id'] as String? ?? '',
       title: json['title'] as String?,

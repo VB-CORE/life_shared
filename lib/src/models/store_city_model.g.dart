@@ -10,12 +10,10 @@ StoreCityModel _$StoreCityModelFromJson(Map<String, dynamic> json) =>
     StoreCityModel(
       createdAt: json['createdAt'] == null
           ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['createdAt'] as Timestamp?),
+          : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
       updatedAt: json['updatedAt'] == null
           ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(
-              json['updatedAt'] as Timestamp?),
+          : FirebaseTimeParse.datetimeFromTimestamp(json['updatedAt']),
       name: json['name'] as String? ?? '',
     );
 
