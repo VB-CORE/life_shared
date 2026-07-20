@@ -28,7 +28,16 @@ enum CollectionPaths {
   regionalTowns,
 
   /// v9
-  memories;
+  memories,
+
+  /// v10
+  users,
+  merchantApplications,
+  topics,
+  groups,
+  coupons,
+  allowedAdminClaims,
+  ;
 
   CollectionReference<Map<String, dynamic>> get collection {
     return FirebaseFirestore.instance.collection(name);
