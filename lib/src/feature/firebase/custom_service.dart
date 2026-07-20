@@ -51,60 +51,23 @@ abstract class CustomService {
     required CollectionPaths ref,
     required T model,
     String? key,
-  }) async {
-    try {
-      final collectionRef = ref.collection;
-      await collectionRef.doc(key ?? model.documentId).set(model.toJson());
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
+  });
 
   Future<bool> update<T extends BaseFirebaseModel<T>>(
     CollectionPaths ref,
     T model,
-  ) async {
-    try {
-      final collectionRef = ref.collection;
-      await collectionRef.doc(model.documentId).update(model.toJson());
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
+  );
 
   Future<bool> delete<T extends BaseFirebaseModel<T>>(
     CollectionPaths ref,
     T model,
-  ) async {
-    try {
-      final collectionRef = ref.collection;
-      await collectionRef.doc(model.documentId).delete();
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
+  );
 
   Future<bool> deleteBy<T>(
     CollectionPaths ref,
     FirebaseRecordFields field,
     T value,
-  ) async {
-    final collectionRef = ref.collection;
-    final snapshot = await collectionRef
-        .where(
-          field.name,
-          isEqualTo: value,
-        )
-        .get();
-    if (snapshot.docs.isEmpty) return false;
-    for (final doc in snapshot.docs) {
-      await doc.reference.delete();
-    }
-    return true;
-  }
+  );
 }
 
 mixin StorageCustomService {

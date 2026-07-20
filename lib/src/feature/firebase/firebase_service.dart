@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:life_shared/src/core/base_firebase_model.dart';
 import 'package:life_shared/src/feature/firebase/custom_service.dart';
 import 'package:life_shared/src/feature/firebase/enum/collection_paths.dart';
+import 'package:life_shared/src/feature/firebase/enum/record_fields.dart';
 import 'package:life_shared/src/utility/product_logger.dart';
 
 @immutable
@@ -20,6 +21,64 @@ class FirebaseService extends CustomService with _FirebaseServiceError {
     final response = await _withTimeout(request);
     if (response == null) return null;
     return response.id;
+  }
+
+  @override
+  Future<bool> insertWithID<T extends BaseFirebaseModel<T>>({
+    required CollectionPaths ref,
+    required T model,
+    String? key,
+  }) async {
+    final request = ref.collection
+        .doc(key ?? model.documentId)
+        .set(model.toJson())
+        .then((_) => true);
+    final response = await _withTimeout(request);
+    return response ?? false;
+  }
+
+  @override
+  Future<bool> update<T extends BaseFirebaseModel<T>>(
+    CollectionPaths ref,
+    T model,
+  ) async {
+    final request = ref.collection
+        .doc(model.documentId)
+        .update(model.toJson())
+        .then((_) => true);
+    final response = await _withTimeout(request);
+    return response ?? false;
+  }
+
+  @override
+  Future<bool> delete<T extends BaseFirebaseModel<T>>(
+    CollectionPaths ref,
+    T model,
+  ) async {
+    final request =
+        ref.collection.doc(model.documentId).delete().then((_) => true);
+    final response = await _withTimeout(request);
+    return response ?? false;
+  }
+
+  @override
+  Future<bool> deleteBy<T>(
+    CollectionPaths ref,
+    FirebaseRecordFields field,
+    T value,
+  ) async {
+    Future<bool> query() async {
+      final snapshot =
+          await ref.collection.where(field.name, isEqualTo: value).get();
+      if (snapshot.docs.isEmpty) return false;
+      for (final doc in snapshot.docs) {
+        await doc.reference.delete();
+      }
+      return true;
+    }
+
+    final response = await _withTimeout(query());
+    return response ?? false;
   }
 
   @override
