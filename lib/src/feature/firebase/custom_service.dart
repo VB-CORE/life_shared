@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:life_shared/src/core/base_firebase_model.dart';
-import 'package:life_shared/src/feature/firebase/enum/collection_paths.dart';
+import 'package:life_shared/src/feature/firebase/enum/firestore_collection_path.dart';
 import 'package:life_shared/src/feature/firebase/enum/record_fields.dart';
 import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
 import 'package:life_shared/src/feature/firebase/enum/storage_types.dart';
@@ -17,14 +17,14 @@ abstract class CustomService {
   final Duration timeoutDuration;
 
   CollectionReference<T?> collectionReference<T extends BaseFirebaseConvert<T>>(
-    CollectionPaths path,
+    FirestoreCollectionPath path,
     T model,
   ) {
     throw UnimplementedError();
   }
 
   Query<T?> queryWithOrderBy<T extends BaseFirebaseConvert<T>>({
-    required CollectionPaths path,
+    required FirestoreCollectionPath path,
     required T model,
     required MapEntry<String, bool> orderBy,
   }) {
@@ -33,38 +33,44 @@ abstract class CustomService {
 
   Future<String?> add<T extends BaseFirebaseModel<T>>({
     required T model,
-    required CollectionPaths path,
+    required FirestoreCollectionPath path,
   });
 
   Future<List<T>> getList<T extends BaseFirebaseConvert<T>>({
     required T model,
-    required CollectionPaths path,
+    required FirestoreCollectionPath path,
   });
 
   Future<T?> getSingleData<T extends BaseFirebaseConvert<T>>({
     required T model,
-    required CollectionPaths path,
+    required FirestoreCollectionPath path,
     required String id,
   });
 
   Future<bool> insertWithID<T extends BaseFirebaseModel<T>>({
-    required CollectionPaths ref,
+    required FirestoreCollectionPath ref,
     required T model,
     String? key,
   });
 
   Future<bool> update<T extends BaseFirebaseModel<T>>(
-    CollectionPaths ref,
+    FirestoreCollectionPath ref,
     T model,
   );
 
+  Future<bool> updateFields({
+    required FirestoreCollectionPath ref,
+    required String documentId,
+    required Map<String, Object?> fields,
+  });
+
   Future<bool> delete<T extends BaseFirebaseModel<T>>(
-    CollectionPaths ref,
+    FirestoreCollectionPath ref,
     T model,
   );
 
   Future<bool> deleteBy<T>(
-    CollectionPaths ref,
+    FirestoreCollectionPath ref,
     FirebaseRecordFields field,
     T value,
   );
