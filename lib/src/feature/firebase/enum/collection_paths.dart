@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:life_shared/src/feature/firebase/enum/firestore_collection_path.dart';
 
-enum CollectionPaths {
+enum CollectionPaths implements FirestoreCollectionPath {
   towns,
   unApprovedApplications,
   approvedApplications,
@@ -39,7 +40,11 @@ enum CollectionPaths {
   allowedAdminClaims,
   ;
 
+  @override
   CollectionReference<Map<String, dynamic>> get collection {
     return FirebaseFirestore.instance.collection(name);
   }
+
+  @override
+  String get path => name;
 }

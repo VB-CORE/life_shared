@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:life_shared/src/core/base_firebase_model.dart';
 import 'package:life_shared/src/feature/firebase/custom_service.dart';
-import 'package:life_shared/src/feature/firebase/enum/collection_paths.dart';
+import 'package:life_shared/src/feature/firebase/enum/firestore_collection_path.dart';
 import 'package:life_shared/src/feature/firebase/enum/record_fields.dart';
 import 'package:life_shared/src/utility/product_logger.dart';
 
@@ -15,7 +15,7 @@ class FirebaseService extends CustomService with _FirebaseServiceError {
   @override
   Future<String?> add<T extends BaseFirebaseModel<T>>({
     required T model,
-    required CollectionPaths path,
+    required FirestoreCollectionPath path,
   }) async {
     final request = path.collection.add(model.toJson());
     final response = await _withTimeout(request);
@@ -25,7 +25,7 @@ class FirebaseService extends CustomService with _FirebaseServiceError {
 
   @override
   Future<bool> insertWithID<T extends BaseFirebaseModel<T>>({
-    required CollectionPaths ref,
+    required FirestoreCollectionPath ref,
     required T model,
     String? key,
   }) async {
@@ -39,7 +39,7 @@ class FirebaseService extends CustomService with _FirebaseServiceError {
 
   @override
   Future<bool> update<T extends BaseFirebaseModel<T>>(
-    CollectionPaths ref,
+    FirestoreCollectionPath ref,
     T model,
   ) async {
     final request = ref.collection
@@ -51,8 +51,21 @@ class FirebaseService extends CustomService with _FirebaseServiceError {
   }
 
   @override
+  Future<bool> updateFields({
+    required FirestoreCollectionPath ref,
+    required String documentId,
+    required Map<String, Object?> fields,
+  }) async {
+    if (fields.isEmpty) return false;
+    final request =
+        ref.collection.doc(documentId).update(fields).then((_) => true);
+    final response = await _withTimeout(request);
+    return response ?? false;
+  }
+
+  @override
   Future<bool> delete<T extends BaseFirebaseModel<T>>(
-    CollectionPaths ref,
+    FirestoreCollectionPath ref,
     T model,
   ) async {
     final request =
@@ -63,7 +76,7 @@ class FirebaseService extends CustomService with _FirebaseServiceError {
 
   @override
   Future<bool> deleteBy<T>(
-    CollectionPaths ref,
+    FirestoreCollectionPath ref,
     FirebaseRecordFields field,
     T value,
   ) async {
@@ -84,7 +97,7 @@ class FirebaseService extends CustomService with _FirebaseServiceError {
   @override
   Future<List<T>> getList<T extends BaseFirebaseConvert<T>>({
     required T model,
-    required CollectionPaths path,
+    required FirestoreCollectionPath path,
   }) async {
     final request = collectionReference(path, model).get();
 
@@ -100,46 +113,52 @@ class FirebaseService extends CustomService with _FirebaseServiceError {
 
   @override
   CollectionReference<T?> collectionReference<T extends BaseFirebaseConvert<T>>(
-    CollectionPaths path,
+    FirestoreCollectionPath path,
     T model,
   ) {
     return path.collection.withConverter<T?>(
-      fromFirestore: (snapshot, options) => _dataConvert(snapshot, model),
-      toFirestore: (value, options) => throw UnimplementedError(),
+      fromFirestore: _fromFirestoreOf<T>(model),
+      toFirestore: _unsupportedToFirestore<T?>,
     );
   }
 
   @override
   Query<T?> queryWithOrderBy<T extends BaseFirebaseConvert<T>>({
-    required CollectionPaths path,
+    required FirestoreCollectionPath path,
     required T model,
     required MapEntry<String, bool> orderBy,
   }) {
     return path.collection
         .orderBy(orderBy.key, descending: orderBy.value)
         .withConverter<T?>(
-          fromFirestore: (snapshot, options) => _dataConvert(snapshot, model),
-          toFirestore: (value, options) => throw UnimplementedError(),
+          fromFirestore: _fromFirestoreOf<T>(model),
+          toFirestore: _unsupportedToFirestore<T?>,
         );
   }
 
   @override
   Future<T?> getSingleData<T extends BaseFirebaseConvert<T>>({
     required T model,
-    required CollectionPaths path,
+    required FirestoreCollectionPath path,
     required String id,
   }) async {
-    final request = path.collection.doc(id).withConverter<T?>(
-      fromFirestore: (snapshot, options) {
-        return _dataConvert(snapshot, model);
-      },
-      toFirestore: (value, options) {
-        throw UnimplementedError();
-      },
-    ).get();
+    final request = path.collection
+        .doc(id)
+        .withConverter<T?>(
+          fromFirestore: _fromFirestoreOf<T>(model),
+          toFirestore: _unsupportedToFirestore<T?>,
+        )
+        .get();
 
     final response = await _withTimeout(request);
     return response?.data();
+  }
+
+  static Map<String, Object?> _unsupportedToFirestore<T>(
+    T value,
+    SetOptions? options,
+  ) {
+    throw UnimplementedError();
   }
 }
 
@@ -156,7 +175,25 @@ mixin _FirebaseServiceError on CustomService {
     }
   }
 
-  T? _dataConvert<T>(
+  /// Query equality covers the converters, a new closure per call would make
+  /// listeners resubscribe on every rebuild
+  static final Map<Type, Function> _fromFirestoreCache = {};
+
+  FromFirestore<T?> _fromFirestoreOf<T extends BaseFirebaseConvert<T>>(
+    T model,
+  ) {
+    final converter = _fromFirestoreCache.putIfAbsent(
+      model.runtimeType,
+      () => (
+        DocumentSnapshot<Map<String, dynamic>> snapshot,
+        SnapshotOptions? options,
+      ) =>
+          _dataConvert<T>(snapshot, model),
+    );
+    return converter as FromFirestore<T?>;
+  }
+
+  static T? _dataConvert<T>(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
     BaseFirebaseConvert<T> model,
   ) {
