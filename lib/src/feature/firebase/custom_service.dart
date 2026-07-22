@@ -9,7 +9,9 @@ import 'package:life_shared/src/feature/firebase/enum/root_storage.dart';
 import 'package:life_shared/src/feature/firebase/enum/storage_types.dart';
 import 'package:life_shared/src/feature/firebase/enum/upload_errors.dart';
 
+@Deprecated('Use CustomFirestoreService, its methods return FirestoreResult')
 abstract class CustomService {
+  @Deprecated('Use CustomFirestoreService')
   CustomService({this.timeoutDuration = const Duration(seconds: 10)});
 
   /// Timeout duration for all requests
@@ -76,6 +78,7 @@ abstract class CustomService {
   );
 }
 
+@Deprecated('Use CustomStorageService, its methods return StorageResult')
 mixin StorageCustomService {
   Future<String?> uploadImage({
     required RootStorageName root,
