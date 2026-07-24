@@ -5,7 +5,13 @@ import 'package:life_shared/src/feature/firebase/enum/firestore_collection_path.
 
 enum SubCollectionPaths {
   /// v11
+  likes,
+  comments,
   votes,
+  posts,
+  members,
+  discussions,
+  entries,
 }
 
 /// Nested collection, example: approvedApplications/{placeId}/votes
