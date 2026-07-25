@@ -5,5 +5,6 @@ export 'firebase_service.dart';
 export 'firebase_storage_service.dart';
 export 'firestore_service.dart';
 export 'result/index.dart';
+export 'soft_delete.dart';
 export 'storage_service.dart';
 export 'ui/index.dart';
