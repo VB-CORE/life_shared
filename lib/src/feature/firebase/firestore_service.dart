@@ -210,6 +210,16 @@ final class FirestoreService extends CustomFirestoreService {
   ) {
     throw UnimplementedError();
   }
+  @override
+  Future<FirestoreResult<void>> batchWrite(
+    void Function(WriteBatch batch) operations,
+  ) {
+    return _guard(() async {
+      final batch = FirebaseFirestore.instance.batch();
+      operations(batch);
+      await batch.commit();
+    });
+  }
 }
 
 class _ConvertException implements Exception {
