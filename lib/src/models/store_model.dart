@@ -23,6 +23,7 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
     required this.isApproved,
     this.openTime,
     this.closeTime,
+    this.ownerId,
     this.visitCount = 0,
     this.deviceID,
     this.description,
@@ -30,7 +31,6 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
     this.category,
     this.latLong,
     this.cityId = '',
-    this.ownerId = '',
     this.isCommentEnabled = true,
   });
 
