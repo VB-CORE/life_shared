@@ -30,6 +30,8 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
     this.category,
     this.latLong,
     this.cityId = '',
+    this.ownerId = '',
+    this.isCommentEnabled = true,
   });
 
   factory StoreModel.fromJson(Map<String, dynamic> json) =>
@@ -62,8 +64,10 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
   final String? openTime;
   final String? closeTime;
   final bool isApproved;
+  final bool isCommentEnabled;
   final String cityId;
   final String? deviceID;
+  final String? ownerId;
   final CategoryModel? category;
   @FirebaseGeoParser()
   final GeoPoint? latLong;
@@ -102,6 +106,8 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
     String? closeTime,
     GeoPoint? latLong,
     String? cityId,
+    String? ownerId,
+    bool? isCommentEnabled,
   }) {
     return StoreModel(
       name: name ?? this.name,
@@ -122,6 +128,8 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
       closeTime: closeTime ?? this.closeTime,
       latLong: latLong ?? this.latLong,
       cityId: cityId ?? this.cityId,
+      ownerId: ownerId ?? this.ownerId,
+      isCommentEnabled: isCommentEnabled ?? this.isCommentEnabled,
     );
   }
 
@@ -153,8 +161,10 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
       createdAt,
       visitCount,
       cityId,
+      ownerId,
       category,
       latLong,
+      isCommentEnabled,
     ];
   }
 }

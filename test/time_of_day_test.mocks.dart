@@ -107,6 +107,13 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
       ) as bool);
 
   @override
+  bool get isCommentEnabled => (super.noSuchMethod(
+        Invocation.getter(#isCommentEnabled),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
   String get cityId => (super.noSuchMethod(
         Invocation.getter(#cityId),
         returnValue: _i3.dummyValue<String>(
@@ -159,6 +166,8 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
     String? closeTime,
     _i5.GeoPoint? latLong,
     String? cityId,
+    String? ownerId,
+    bool? isCommentEnabled,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -183,6 +192,8 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
             #closeTime: closeTime,
             #latLong: latLong,
             #cityId: cityId,
+            #ownerId: ownerId,
+            #isCommentEnabled: isCommentEnabled,
           },
         ),
         returnValue: _FakeStoreModel_0(
@@ -209,6 +220,8 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
               #closeTime: closeTime,
               #latLong: latLong,
               #cityId: cityId,
+              #ownerId: ownerId,
+              #isCommentEnabled: isCommentEnabled,
             },
           ),
         ),
@@ -236,6 +249,8 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
               #closeTime: closeTime,
               #latLong: latLong,
               #cityId: cityId,
+              #ownerId: ownerId,
+              #isCommentEnabled: isCommentEnabled,
             },
           ),
         ),

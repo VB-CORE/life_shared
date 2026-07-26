@@ -32,6 +32,8 @@ StoreModel _$StoreModelFromJson(Map<String, dynamic> json) => StoreModel(
       latLong: const FirebaseGeoParser()
           .fromJson(json['latLong'] as Map<String, dynamic>?),
       cityId: json['cityId'] as String? ?? '',
+      ownerId: json['ownerId'] as String? ?? '',
+      isCommentEnabled: json['isCommentEnabled'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$StoreModelToJson(StoreModel instance) =>
@@ -47,8 +49,10 @@ Map<String, dynamic> _$StoreModelToJson(StoreModel instance) =>
       'openTime': instance.openTime,
       'closeTime': instance.closeTime,
       'isApproved': instance.isApproved,
+      'isCommentEnabled': instance.isCommentEnabled,
       'cityId': instance.cityId,
       'deviceID': instance.deviceID,
+      'ownerId': instance.ownerId,
       'category': instance.category?.toJson(),
       'latLong': const FirebaseGeoParser().toJson(instance.latLong),
       'createdAt': instance.createdAt?.toIso8601String(),
