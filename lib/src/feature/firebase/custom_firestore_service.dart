@@ -74,4 +74,9 @@ abstract class CustomFirestoreService {
     required T model,
     required MapEntry<String, bool> orderBy,
   });
+
+  /// Commits multiple writes atomically. If any write fails, none are applied.
+  Future<FirestoreResult<void>> batchWrite(
+    void Function(WriteBatch batch) operations,
+  );
 }

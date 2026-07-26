@@ -34,4 +34,13 @@ class FirebaseTimeParse {
   static Timestamp? dateTimeToTimestamp(DateTime? datetime) {
     return datetime != null ? Timestamp.fromDate(datetime) : null;
   }
+
+  /// `toJson` converter for audit timestamps: an unwritten (`null`) value is
+  /// stamped by the server, an existing one is written back unchanged, so
+  /// serializing a whole model on update cannot reset it.
+  static Object serverTimestampToJson(DateTime? datetime) {
+    return datetime == null
+        ? FieldValue.serverTimestamp()
+        : Timestamp.fromDate(datetime);
+  }
 }

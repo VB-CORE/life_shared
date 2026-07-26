@@ -1,6 +1,7 @@
 export 'collection_paths.dart';
 export 'file_sizes.dart';
 export 'firestore_collection_path.dart';
+export 'firestore_fields.dart';
 export 'gender.dart';
 export 'notification_topics.dart';
 export 'query_orders.dart';

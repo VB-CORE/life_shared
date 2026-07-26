@@ -38,6 +38,7 @@ enum CollectionPaths implements FirestoreCollectionPath {
   groups,
   coupons,
   allowedAdminClaims,
+  groupCategories,
   ;
 
   @override
