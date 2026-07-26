@@ -1,6 +1,5 @@
-/// Audit and soft-delete field names shared by every Firestore document in the
-/// project. Query builders and field-level writes read the name from here so a
-/// rename stays a single edit.
+/// Audit and soft-delete field names shared by every Firestore document, so a
+/// query builder and a field-level write cannot spell them differently.
 enum FirestoreFields {
   createdAt,
   updatedAt,
