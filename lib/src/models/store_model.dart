@@ -32,6 +32,8 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
     this.latLong,
     this.cityId = '',
     this.isCommentEnabled = true,
+    this.ratingSum = 0,
+    this.ratingCount = 0,
   });
 
   factory StoreModel.fromJson(Map<String, dynamic> json) =>
@@ -68,6 +70,8 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
   final String cityId;
   final String? deviceID;
   final String? ownerId;
+  final int ratingSum;
+  final int ratingCount;
   final CategoryModel? category;
   @FirebaseGeoParser()
   final GeoPoint? latLong;
@@ -86,6 +90,9 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
     defaultValue: DateTime.now,
   )
   final DateTime? updatedAt;
+
+  double get averageRating => ratingCount == 0 ? 0 : ratingSum / ratingCount;
+  String get averageRatingLabel => averageRating.toStringAsFixed(1);
 
   StoreModel copyWith({
     String? name,
@@ -108,6 +115,8 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
     String? cityId,
     String? ownerId,
     bool? isCommentEnabled,
+    int? ratingSum,
+    int? ratingCount,
   }) {
     return StoreModel(
       name: name ?? this.name,
@@ -130,6 +139,8 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
       cityId: cityId ?? this.cityId,
       ownerId: ownerId ?? this.ownerId,
       isCommentEnabled: isCommentEnabled ?? this.isCommentEnabled,
+      ratingSum: ratingSum ?? this.ratingSum,
+      ratingCount: ratingCount ?? this.ratingCount,
     );
   }
 
@@ -165,6 +176,8 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
       category,
       latLong,
       isCommentEnabled,
+      ratingSum,
+      ratingCount,
     ];
   }
 }
