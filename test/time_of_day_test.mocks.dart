@@ -127,6 +127,20 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
       ) as String);
 
   @override
+  int get ratingSum => (super.noSuchMethod(
+        Invocation.getter(#ratingSum),
+        returnValue: 0,
+        returnValueForMissingStub: 0,
+      ) as int);
+
+  @override
+  int get ratingCount => (super.noSuchMethod(
+        Invocation.getter(#ratingCount),
+        returnValue: 0,
+        returnValueForMissingStub: 0,
+      ) as int);
+
+  @override
   String get documentId => (super.noSuchMethod(
         Invocation.getter(#documentId),
         returnValue: _i3.dummyValue<String>(
@@ -136,6 +150,26 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
         returnValueForMissingStub: _i3.dummyValue<String>(
           this,
           Invocation.getter(#documentId),
+        ),
+      ) as String);
+
+  @override
+  double get averageRating => (super.noSuchMethod(
+        Invocation.getter(#averageRating),
+        returnValue: 0.0,
+        returnValueForMissingStub: 0.0,
+      ) as double);
+
+  @override
+  String get averageRatingLabel => (super.noSuchMethod(
+        Invocation.getter(#averageRatingLabel),
+        returnValue: _i3.dummyValue<String>(
+          this,
+          Invocation.getter(#averageRatingLabel),
+        ),
+        returnValueForMissingStub: _i3.dummyValue<String>(
+          this,
+          Invocation.getter(#averageRatingLabel),
         ),
       ) as String);
 
@@ -168,6 +202,8 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
     String? cityId,
     String? ownerId,
     bool? isCommentEnabled,
+    int? ratingSum,
+    int? ratingCount,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -194,6 +230,8 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
             #cityId: cityId,
             #ownerId: ownerId,
             #isCommentEnabled: isCommentEnabled,
+            #ratingSum: ratingSum,
+            #ratingCount: ratingCount,
           },
         ),
         returnValue: _FakeStoreModel_0(
@@ -222,6 +260,8 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
               #cityId: cityId,
               #ownerId: ownerId,
               #isCommentEnabled: isCommentEnabled,
+              #ratingSum: ratingSum,
+              #ratingCount: ratingCount,
             },
           ),
         ),
@@ -251,6 +291,8 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
               #cityId: cityId,
               #ownerId: ownerId,
               #isCommentEnabled: isCommentEnabled,
+              #ratingSum: ratingSum,
+              #ratingCount: ratingCount,
             },
           ),
         ),
