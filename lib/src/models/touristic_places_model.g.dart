@@ -17,10 +17,10 @@ TouristicPlaceModel _$TouristicPlaceModelFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$TouristicPlaceModelToJson(
-        TouristicPlaceModel instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'description': instance.description,
-      'photo': instance.photo,
-      'latlong': GeoParser.toJsonGeoPoint(instance.latLong),
-    };
+  TouristicPlaceModel instance,
+) => <String, dynamic>{
+  'title': instance.title,
+  'description': instance.description,
+  'photo': instance.photo,
+  'latlong': GeoParser.toJsonGeoPoint(instance.latLong),
+};

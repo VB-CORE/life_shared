@@ -13,7 +13,4 @@ CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$CategoryModelToJson(CategoryModel instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'value': instance.value,
-    };
+    <String, dynamic>{'name': instance.name, 'value': instance.value};
