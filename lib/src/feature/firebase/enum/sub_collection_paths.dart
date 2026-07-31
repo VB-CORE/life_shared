@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:life_shared/src/feature/firebase/enum/firestore_collection_path.dart';
 
 enum SubCollectionPaths {
-  /// v11
   likes,
   comments,
   votes,
@@ -12,7 +11,7 @@ enum SubCollectionPaths {
   members,
   discussions,
   entries,
-  likedPosts,
+  showcase,
 }
 
 /// Nested collection, example: approvedApplications/{placeId}/votes
@@ -46,10 +45,6 @@ final class SubCollectionPath extends Equatable
 extension FirestoreCollectionPathX on FirestoreCollectionPath {
   /// CollectionPaths.approvedApplications.sub(placeId, SubCollectionPaths.votes)
   SubCollectionPath sub(String documentId, SubCollectionPaths child) {
-    return SubCollectionPath(
-      parent: this,
-      parentId: documentId,
-      child: child,
-    );
+    return SubCollectionPath(parent: this, parentId: documentId, child: child);
   }
 }

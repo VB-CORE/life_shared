@@ -8,7 +8,7 @@ part 'regional_city_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 final class RegionalCityModel extends BaseFirebaseModel<RegionalCityModel>
-    with EquatableMixin, BaseDropDownModel {
+    with Equatable, BaseDropDownModel {
   const RegionalCityModel({
     this.initial = false,
     this.description = '',
@@ -18,13 +18,13 @@ final class RegionalCityModel extends BaseFirebaseModel<RegionalCityModel>
   });
 
   const RegionalCityModel.empty()
-      : this(
-          initial: false,
-          description: '',
-          documentId: '',
-          name: '',
-          location: const GeoPoint(0, 0),
-        );
+    : this(
+        initial: false,
+        description: '',
+        documentId: '',
+        name: '',
+        location: const GeoPoint(0, 0),
+      );
 
   final String name;
   final bool initial;
@@ -42,13 +42,7 @@ final class RegionalCityModel extends BaseFirebaseModel<RegionalCityModel>
   Map<String, dynamic> toJson() => _$RegionalCityModelToJson(this);
 
   @override
-  List<Object?> get props => [
-        name,
-        initial,
-        description,
-        location,
-        documentId,
-      ];
+  List<Object?> get props => [name, initial, description, location, documentId];
 
   RegionalCityModel copyWith({
     String? name,
@@ -71,9 +65,7 @@ final class RegionalCityModel extends BaseFirebaseModel<RegionalCityModel>
     final data = json.data();
     if (data == null) return const RegionalCityModel.empty();
 
-    return _$RegionalCityModelFromJson(data).copyWith(
-      documentId: json.id,
-    );
+    return _$RegionalCityModelFromJson(data).copyWith(documentId: json.id);
   }
 
   @override

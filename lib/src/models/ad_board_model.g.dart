@@ -7,18 +7,18 @@ part of 'ad_board_model.dart';
 // **************************************************************************
 
 AdBoardModel _$AdBoardModelFromJson(Map<String, dynamic> json) => AdBoardModel(
-      owner: json['owner'] as String?,
-      description: json['description'] as String?,
-      image: json['image'] as String?,
-      link: json['link'] as String?,
-      adIndex: (json['adIndex'] as num?)?.toInt(),
-      createdAt: json['createdAt'] == null
-          ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
-      updatedAt: json['updatedAt'] == null
-          ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(json['updatedAt']),
-    );
+  owner: json['owner'] as String?,
+  description: json['description'] as String?,
+  image: json['image'] as String?,
+  link: json['link'] as String?,
+  adIndex: (json['adIndex'] as num?)?.toInt(),
+  createdAt: json['createdAt'] == null
+      ? DateTime.now()
+      : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
+  updatedAt: json['updatedAt'] == null
+      ? DateTime.now()
+      : FirebaseTimeParse.datetimeFromTimestamp(json['updatedAt']),
+);
 
 Map<String, dynamic> _$AdBoardModelToJson(AdBoardModel instance) =>
     <String, dynamic>{

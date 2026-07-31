@@ -94,6 +94,9 @@ class StoreModel extends BaseFirebaseModel<StoreModel>
   double get averageRating => ratingCount == 0 ? 0 : ratingSum / ratingCount;
   String get averageRatingLabel => averageRating.toStringAsFixed(1);
 
+  /// Bir mağazanın sahibi varsa doğrulanmış esnaftır; ayrı bir bayrak tutulmaz.
+  bool get isVerified => ownerId?.isNotEmpty ?? false;
+
   StoreModel copyWith({
     String? name,
     String? owner,

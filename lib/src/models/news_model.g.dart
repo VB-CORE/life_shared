@@ -7,21 +7,21 @@ part of 'news_model.dart';
 // **************************************************************************
 
 NewsModel _$NewsModelFromJson(Map<String, dynamic> json) => NewsModel(
-      title: json['title'] as String?,
-      content: json['content'] as String?,
-      image: json['image'] as String?,
-      createdAt: json['createdAt'] == null
-          ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
-      updatedAt: json['updatedAt'] == null
-          ? DateTime.now()
-          : FirebaseTimeParse.datetimeFromTimestamp(json['updatedAt']),
-    );
+  title: json['title'] as String?,
+  content: json['content'] as String?,
+  image: json['image'] as String?,
+  createdAt: json['createdAt'] == null
+      ? DateTime.now()
+      : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
+  updatedAt: json['updatedAt'] == null
+      ? DateTime.now()
+      : FirebaseTimeParse.datetimeFromTimestamp(json['updatedAt']),
+);
 
 Map<String, dynamic> _$NewsModelToJson(NewsModel instance) => <String, dynamic>{
-      'title': instance.title,
-      'content': instance.content,
-      'image': instance.image,
-      'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
-      'updatedAt': FirebaseTimeParse.dateTimeToTimestamp(instance.updatedAt),
-    };
+  'title': instance.title,
+  'content': instance.content,
+  'image': instance.image,
+  'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
+  'updatedAt': FirebaseTimeParse.dateTimeToTimestamp(instance.updatedAt),
+};

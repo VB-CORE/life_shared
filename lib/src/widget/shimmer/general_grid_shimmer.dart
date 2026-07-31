@@ -25,8 +25,8 @@ final class GeneralGridShimmer extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return Shimmer.fromColors(
           baseColor: context.general.colorScheme.onPrimaryContainer,
-          highlightColor:
-              context.general.colorScheme.onPrimaryContainer.withOpacity(0.2),
+          highlightColor: context.general.colorScheme.onPrimaryContainer
+              .withValues(alpha: .2),
           child: Container(
             alignment: Alignment.center,
             height: context.sized.dynamicHeight(.24),

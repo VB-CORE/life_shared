@@ -13,7 +13,4 @@ GroupCategoryModel _$GroupCategoryModelFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$GroupCategoryModelToJson(GroupCategoryModel instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'value': instance.value,
-    };
+    <String, dynamic>{'name': instance.name, 'value': instance.value};

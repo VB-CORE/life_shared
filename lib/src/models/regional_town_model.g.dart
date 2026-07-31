@@ -10,9 +10,11 @@ RegionalTownModel _$RegionalTownModelFromJson(Map<String, dynamic> json) =>
     RegionalTownModel(
       documentId: json['documentId'] as String? ?? '',
       cityId: json['cityId'] as String? ?? '',
-      towns: (json['towns'] as List<dynamic>?)
-              ?.map((e) =>
-                  RegionalTownSubItem.fromJson(e as Map<String, dynamic>))
+      towns:
+          (json['towns'] as List<dynamic>?)
+              ?.map(
+                (e) => RegionalTownSubItem.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           const [],
     );
@@ -21,7 +23,7 @@ Map<String, dynamic> _$RegionalTownModelToJson(RegionalTownModel instance) =>
     <String, dynamic>{
       'documentId': instance.documentId,
       'cityId': instance.cityId,
-      'towns': instance.towns,
+      'towns': instance.towns.map((e) => e.toJson()).toList(),
     };
 
 RegionalTownSubItem _$RegionalTownSubItemFromJson(Map<String, dynamic> json) =>
@@ -31,8 +33,5 @@ RegionalTownSubItem _$RegionalTownSubItemFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$RegionalTownSubItemToJson(
-        RegionalTownSubItem instance) =>
-    <String, dynamic>{
-      'code': instance.code,
-      'name': instance.name,
-    };
+  RegionalTownSubItem instance,
+) => <String, dynamic>{'code': instance.code, 'name': instance.name};

@@ -82,8 +82,9 @@ final class FirestoreService extends CustomFirestoreService {
     required T value,
   }) {
     return _guard(() async {
-      final snapshot =
-          await path.collection.where(field.name, isEqualTo: value).get();
+      final snapshot = await path.collection
+          .where(field.name, isEqualTo: value)
+          .get();
       for (final document in snapshot.docs) {
         await document.reference.delete();
       }
@@ -161,7 +162,7 @@ final class FirestoreService extends CustomFirestoreService {
       return _failure(FirestoreError.parse, error.message);
     } on FirebaseException catch (error) {
       return _failure(FirestoreError.fromCode(error.code), error.message);
-    } catch (error) {
+    } on Object catch (error) {
       return _failure(FirestoreError.unknown, '$error');
     }
   }
@@ -177,7 +178,7 @@ final class FirestoreService extends CustomFirestoreService {
   ) {
     try {
       return model.fromFirebase(snapshot);
-    } catch (error) {
+    } on Object catch (error) {
       ProductLogger.log(
         'FirestoreService ${FirestoreError.parse.name}: '
         '${snapshot.reference.path} $error',
@@ -195,11 +196,11 @@ final class FirestoreService extends CustomFirestoreService {
   ) {
     final converter = _fromFirestoreCache.putIfAbsent(
       model.runtimeType,
-      () => (
-        DocumentSnapshot<Map<String, dynamic>> snapshot,
-        SnapshotOptions? options,
-      ) =>
-          snapshot.data() == null ? null : _tryConvert<T>(snapshot, model),
+      () =>
+          (
+            DocumentSnapshot<Map<String, dynamic>> snapshot,
+            SnapshotOptions? options,
+          ) => snapshot.data() == null ? null : _tryConvert<T>(snapshot, model),
     );
     return converter as FromFirestore<T?>;
   }
@@ -210,6 +211,7 @@ final class FirestoreService extends CustomFirestoreService {
   ) {
     throw UnimplementedError();
   }
+
   @override
   Future<FirestoreResult<void>> batchWrite(
     void Function(WriteBatch batch) operations,

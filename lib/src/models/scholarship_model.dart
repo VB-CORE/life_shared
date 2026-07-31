@@ -9,7 +9,7 @@ part 'scholarship_model.g.dart';
 @immutable
 @JsonSerializable()
 final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel>
-    with EquatableMixin {
+    with Equatable {
   const ScholarshipModel({
     required this.email,
     required this.phoneNumber,
@@ -40,12 +40,12 @@ final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel>
 
   @override
   List<Object?> get props => [
-        email,
-        phoneNumber,
-        story,
-        studentDocument,
-        documentFileRef,
-      ];
+    email,
+    phoneNumber,
+    story,
+    studentDocument,
+    documentFileRef,
+  ];
 
   ScholarshipModel copyWith({
     String? email,
@@ -72,9 +72,9 @@ final class ScholarshipModel extends BaseFirebaseModel<ScholarshipModel>
   ScholarshipModel fromFirebase(DocumentSnapshot<Map<String, dynamic>> json) {
     if (json.data() == null) return this;
 
-    return ScholarshipModel.fromJson(json.data()!).copyWith(
-      documentId: json.id,
-    );
+    return ScholarshipModel.fromJson(
+      json.data()!,
+    ).copyWith(documentId: json.id);
   }
 
   @override

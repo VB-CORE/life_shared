@@ -8,7 +8,7 @@ part 'store_city_model.g.dart';
 
 @JsonSerializable()
 final class StoreCityModel extends BaseFirebaseModel<StoreCityModel>
-    with EquatableMixin {
+    with Equatable {
   StoreCityModel({
     this.createdAt,
     this.updatedAt,
@@ -39,11 +39,7 @@ final class StoreCityModel extends BaseFirebaseModel<StoreCityModel>
   Map<String, dynamic> toJson() => _$StoreCityModelToJson(this);
 
   @override
-  List<Object?> get props => [
-        name,
-        createdAt,
-        updatedAt,
-      ];
+  List<Object?> get props => [name, createdAt, updatedAt];
 
   StoreCityModel copyWith({
     String? name,
@@ -63,9 +59,7 @@ final class StoreCityModel extends BaseFirebaseModel<StoreCityModel>
   StoreCityModel fromFirebase(DocumentSnapshot<Map<String, dynamic>> json) {
     if (json.data() == null) return this;
 
-    return _$StoreCityModelFromJson(json.data()!).copyWith(
-      documentId: json.id,
-    );
+    return _$StoreCityModelFromJson(json.data()!).copyWith(documentId: json.id);
   }
 
   @override

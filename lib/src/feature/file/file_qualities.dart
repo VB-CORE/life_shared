@@ -11,6 +11,6 @@ enum FileQualities {
   /// 90 is default
   high(90);
 
-  final int value;
   const FileQualities(this.value);
+  final int value;
 }

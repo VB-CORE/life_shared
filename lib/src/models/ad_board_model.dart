@@ -8,7 +8,7 @@ part 'ad_board_model.g.dart';
 
 @immutable
 @JsonSerializable()
-final class AdBoardModel extends BaseFirebaseModel<AdBoardModel> with EquatableMixin {
+final class AdBoardModel extends BaseFirebaseModel<AdBoardModel> with Equatable {
   AdBoardModel({
     this.owner,
     this.description,

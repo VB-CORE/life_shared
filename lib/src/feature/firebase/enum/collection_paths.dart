@@ -33,7 +33,6 @@ enum CollectionPaths implements FirestoreCollectionPath {
 
   /// v10
   users,
-  merchantApplications,
   topics,
   groups,
   coupons,

@@ -11,14 +11,15 @@ class FirebaseTimeParse {
     // If it's already a Timestamp, convert it directly
     if (timestamp is Timestamp) {
       return DateTime.fromMillisecondsSinceEpoch(
-          timestamp.millisecondsSinceEpoch);
+        timestamp.millisecondsSinceEpoch,
+      );
     }
 
     // If it's a String, try to parse it as DateTime
     if (timestamp is String) {
       try {
         return DateTime.parse(timestamp);
-      } catch (e) {
+      } on FormatException catch (e) {
         if (kDebugMode) {
           debugPrint('Error parsing timestamp string: $e');
         }

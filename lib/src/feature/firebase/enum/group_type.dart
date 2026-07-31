@@ -1,0 +1,1 @@
+enum GroupType { open, closed }

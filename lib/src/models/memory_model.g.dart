@@ -7,14 +7,14 @@ part of 'memory_model.dart';
 // **************************************************************************
 
 MemoryModel _$MemoryModelFromJson(Map<String, dynamic> json) => MemoryModel(
-      title: json['title'] as String?,
-      description: json['description'] as String?,
-      imageUrls: (json['imageUrls'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      createdAt: FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
-      updatedAt: FirebaseTimeParse.datetimeFromTimestamp(json['updatedAt']),
-    );
+  title: json['title'] as String?,
+  description: json['description'] as String?,
+  imageUrls: (json['imageUrls'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  createdAt: FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
+  updatedAt: FirebaseTimeParse.datetimeFromTimestamp(json['updatedAt']),
+);
 
 Map<String, dynamic> _$MemoryModelToJson(MemoryModel instance) =>
     <String, dynamic>{

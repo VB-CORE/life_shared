@@ -11,6 +11,7 @@ DeveloperModel _$DeveloperModelFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       githubUrl: json['github_url'] as String?,
       image: json['image'] as String?,
+      active: json['active'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$DeveloperModelToJson(DeveloperModel instance) =>
@@ -18,4 +19,5 @@ Map<String, dynamic> _$DeveloperModelToJson(DeveloperModel instance) =>
       'name': instance.name,
       'github_url': instance.githubUrl,
       'image': instance.image,
+      'active': instance.active,
     };

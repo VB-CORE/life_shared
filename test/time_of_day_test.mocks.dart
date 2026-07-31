@@ -25,13 +25,8 @@ import 'package:mockito/src/dummies.dart' as _i3;
 // ignore_for_file: invalid_use_of_internal_member
 
 class _FakeStoreModel_0 extends _i1.SmartFake implements _i2.StoreModel {
-  _FakeStoreModel_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeStoreModel_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [StoreModel].
@@ -40,145 +35,181 @@ class _FakeStoreModel_0 extends _i1.SmartFake implements _i2.StoreModel {
 // ignore: must_be_immutable
 class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
   @override
-  String get name => (super.noSuchMethod(
-        Invocation.getter(#name),
-        returnValue: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#name),
-        ),
-        returnValueForMissingStub: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#name),
-        ),
-      ) as String);
+  String get name =>
+      (super.noSuchMethod(
+            Invocation.getter(#name),
+            returnValue: _i3.dummyValue<String>(this, Invocation.getter(#name)),
+            returnValueForMissingStub: _i3.dummyValue<String>(
+              this,
+              Invocation.getter(#name),
+            ),
+          )
+          as String);
 
   @override
-  String get owner => (super.noSuchMethod(
-        Invocation.getter(#owner),
-        returnValue: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#owner),
-        ),
-        returnValueForMissingStub: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#owner),
-        ),
-      ) as String);
+  String get owner =>
+      (super.noSuchMethod(
+            Invocation.getter(#owner),
+            returnValue: _i3.dummyValue<String>(
+              this,
+              Invocation.getter(#owner),
+            ),
+            returnValueForMissingStub: _i3.dummyValue<String>(
+              this,
+              Invocation.getter(#owner),
+            ),
+          )
+          as String);
 
   @override
-  String get phone => (super.noSuchMethod(
-        Invocation.getter(#phone),
-        returnValue: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#phone),
-        ),
-        returnValueForMissingStub: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#phone),
-        ),
-      ) as String);
+  String get phone =>
+      (super.noSuchMethod(
+            Invocation.getter(#phone),
+            returnValue: _i3.dummyValue<String>(
+              this,
+              Invocation.getter(#phone),
+            ),
+            returnValueForMissingStub: _i3.dummyValue<String>(
+              this,
+              Invocation.getter(#phone),
+            ),
+          )
+          as String);
 
   @override
-  List<String> get images => (super.noSuchMethod(
-        Invocation.getter(#images),
-        returnValue: <String>[],
-        returnValueForMissingStub: <String>[],
-      ) as List<String>);
+  List<String> get images =>
+      (super.noSuchMethod(
+            Invocation.getter(#images),
+            returnValue: <String>[],
+            returnValueForMissingStub: <String>[],
+          )
+          as List<String>);
 
   @override
-  int get townCode => (super.noSuchMethod(
-        Invocation.getter(#townCode),
-        returnValue: 0,
-        returnValueForMissingStub: 0,
-      ) as int);
+  int get townCode =>
+      (super.noSuchMethod(
+            Invocation.getter(#townCode),
+            returnValue: 0,
+            returnValueForMissingStub: 0,
+          )
+          as int);
 
   @override
-  int get visitCount => (super.noSuchMethod(
-        Invocation.getter(#visitCount),
-        returnValue: 0,
-        returnValueForMissingStub: 0,
-      ) as int);
+  int get visitCount =>
+      (super.noSuchMethod(
+            Invocation.getter(#visitCount),
+            returnValue: 0,
+            returnValueForMissingStub: 0,
+          )
+          as int);
 
   @override
-  bool get isApproved => (super.noSuchMethod(
-        Invocation.getter(#isApproved),
-        returnValue: false,
-        returnValueForMissingStub: false,
-      ) as bool);
+  bool get isApproved =>
+      (super.noSuchMethod(
+            Invocation.getter(#isApproved),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
 
   @override
-  bool get isCommentEnabled => (super.noSuchMethod(
-        Invocation.getter(#isCommentEnabled),
-        returnValue: false,
-        returnValueForMissingStub: false,
-      ) as bool);
+  bool get isCommentEnabled =>
+      (super.noSuchMethod(
+            Invocation.getter(#isCommentEnabled),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
 
   @override
-  String get cityId => (super.noSuchMethod(
-        Invocation.getter(#cityId),
-        returnValue: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#cityId),
-        ),
-        returnValueForMissingStub: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#cityId),
-        ),
-      ) as String);
+  String get cityId =>
+      (super.noSuchMethod(
+            Invocation.getter(#cityId),
+            returnValue: _i3.dummyValue<String>(
+              this,
+              Invocation.getter(#cityId),
+            ),
+            returnValueForMissingStub: _i3.dummyValue<String>(
+              this,
+              Invocation.getter(#cityId),
+            ),
+          )
+          as String);
 
   @override
-  int get ratingSum => (super.noSuchMethod(
-        Invocation.getter(#ratingSum),
-        returnValue: 0,
-        returnValueForMissingStub: 0,
-      ) as int);
+  int get ratingSum =>
+      (super.noSuchMethod(
+            Invocation.getter(#ratingSum),
+            returnValue: 0,
+            returnValueForMissingStub: 0,
+          )
+          as int);
 
   @override
-  int get ratingCount => (super.noSuchMethod(
-        Invocation.getter(#ratingCount),
-        returnValue: 0,
-        returnValueForMissingStub: 0,
-      ) as int);
+  int get ratingCount =>
+      (super.noSuchMethod(
+            Invocation.getter(#ratingCount),
+            returnValue: 0,
+            returnValueForMissingStub: 0,
+          )
+          as int);
 
   @override
-  String get documentId => (super.noSuchMethod(
-        Invocation.getter(#documentId),
-        returnValue: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#documentId),
-        ),
-        returnValueForMissingStub: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#documentId),
-        ),
-      ) as String);
+  String get documentId =>
+      (super.noSuchMethod(
+            Invocation.getter(#documentId),
+            returnValue: _i3.dummyValue<String>(
+              this,
+              Invocation.getter(#documentId),
+            ),
+            returnValueForMissingStub: _i3.dummyValue<String>(
+              this,
+              Invocation.getter(#documentId),
+            ),
+          )
+          as String);
 
   @override
-  double get averageRating => (super.noSuchMethod(
-        Invocation.getter(#averageRating),
-        returnValue: 0.0,
-        returnValueForMissingStub: 0.0,
-      ) as double);
+  double get averageRating =>
+      (super.noSuchMethod(
+            Invocation.getter(#averageRating),
+            returnValue: 0.0,
+            returnValueForMissingStub: 0.0,
+          )
+          as double);
 
   @override
-  String get averageRatingLabel => (super.noSuchMethod(
-        Invocation.getter(#averageRatingLabel),
-        returnValue: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#averageRatingLabel),
-        ),
-        returnValueForMissingStub: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#averageRatingLabel),
-        ),
-      ) as String);
+  String get averageRatingLabel =>
+      (super.noSuchMethod(
+            Invocation.getter(#averageRatingLabel),
+            returnValue: _i3.dummyValue<String>(
+              this,
+              Invocation.getter(#averageRatingLabel),
+            ),
+            returnValueForMissingStub: _i3.dummyValue<String>(
+              this,
+              Invocation.getter(#averageRatingLabel),
+            ),
+          )
+          as String);
 
   @override
-  List<Object?> get props => (super.noSuchMethod(
-        Invocation.getter(#props),
-        returnValue: <Object?>[],
-        returnValueForMissingStub: <Object?>[],
-      ) as List<Object?>);
+  bool get isVerified =>
+      (super.noSuchMethod(
+            Invocation.getter(#isVerified),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
+
+  @override
+  List<Object?> get props =>
+      (super.noSuchMethod(
+            Invocation.getter(#props),
+            returnValue: <Object?>[],
+            returnValueForMissingStub: <Object?>[],
+          )
+          as List<Object?>);
 
   @override
   _i2.StoreModel copyWith({
@@ -206,40 +237,7 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
     int? ratingCount,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #copyWith,
-          [],
-          {
-            #name: name,
-            #owner: owner,
-            #description: description,
-            #address: address,
-            #phone: phone,
-            #images: images,
-            #townCode: townCode,
-            #createdAt: createdAt,
-            #updatedAt: updatedAt,
-            #isApproved: isApproved,
-            #deviceID: deviceID,
-            #documentId: documentId,
-            #category: category,
-            #visitCount: visitCount,
-            #openTime: openTime,
-            #closeTime: closeTime,
-            #latLong: latLong,
-            #cityId: cityId,
-            #ownerId: ownerId,
-            #isCommentEnabled: isCommentEnabled,
-            #ratingSum: ratingSum,
-            #ratingCount: ratingCount,
-          },
-        ),
-        returnValue: _FakeStoreModel_0(
-          this,
-          Invocation.method(
-            #copyWith,
-            [],
-            {
+            Invocation.method(#copyWith, [], {
               #name: name,
               #owner: owner,
               #description: description,
@@ -262,95 +260,102 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
               #isCommentEnabled: isCommentEnabled,
               #ratingSum: ratingSum,
               #ratingCount: ratingCount,
-            },
-          ),
-        ),
-        returnValueForMissingStub: _FakeStoreModel_0(
-          this,
-          Invocation.method(
-            #copyWith,
-            [],
-            {
-              #name: name,
-              #owner: owner,
-              #description: description,
-              #address: address,
-              #phone: phone,
-              #images: images,
-              #townCode: townCode,
-              #createdAt: createdAt,
-              #updatedAt: updatedAt,
-              #isApproved: isApproved,
-              #deviceID: deviceID,
-              #documentId: documentId,
-              #category: category,
-              #visitCount: visitCount,
-              #openTime: openTime,
-              #closeTime: closeTime,
-              #latLong: latLong,
-              #cityId: cityId,
-              #ownerId: ownerId,
-              #isCommentEnabled: isCommentEnabled,
-              #ratingSum: ratingSum,
-              #ratingCount: ratingCount,
-            },
-          ),
-        ),
-      ) as _i2.StoreModel);
+            }),
+            returnValue: _FakeStoreModel_0(
+              this,
+              Invocation.method(#copyWith, [], {
+                #name: name,
+                #owner: owner,
+                #description: description,
+                #address: address,
+                #phone: phone,
+                #images: images,
+                #townCode: townCode,
+                #createdAt: createdAt,
+                #updatedAt: updatedAt,
+                #isApproved: isApproved,
+                #deviceID: deviceID,
+                #documentId: documentId,
+                #category: category,
+                #visitCount: visitCount,
+                #openTime: openTime,
+                #closeTime: closeTime,
+                #latLong: latLong,
+                #cityId: cityId,
+                #ownerId: ownerId,
+                #isCommentEnabled: isCommentEnabled,
+                #ratingSum: ratingSum,
+                #ratingCount: ratingCount,
+              }),
+            ),
+            returnValueForMissingStub: _FakeStoreModel_0(
+              this,
+              Invocation.method(#copyWith, [], {
+                #name: name,
+                #owner: owner,
+                #description: description,
+                #address: address,
+                #phone: phone,
+                #images: images,
+                #townCode: townCode,
+                #createdAt: createdAt,
+                #updatedAt: updatedAt,
+                #isApproved: isApproved,
+                #deviceID: deviceID,
+                #documentId: documentId,
+                #category: category,
+                #visitCount: visitCount,
+                #openTime: openTime,
+                #closeTime: closeTime,
+                #latLong: latLong,
+                #cityId: cityId,
+                #ownerId: ownerId,
+                #isCommentEnabled: isCommentEnabled,
+                #ratingSum: ratingSum,
+                #ratingCount: ratingCount,
+              }),
+            ),
+          )
+          as _i2.StoreModel);
 
   @override
-  Map<String, dynamic> toJson() => (super.noSuchMethod(
-        Invocation.method(
-          #toJson,
-          [],
-        ),
-        returnValue: <String, dynamic>{},
-        returnValueForMissingStub: <String, dynamic>{},
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (super.noSuchMethod(
+            Invocation.method(#toJson, []),
+            returnValue: <String, dynamic>{},
+            returnValueForMissingStub: <String, dynamic>{},
+          )
+          as Map<String, dynamic>);
 
   @override
   _i2.StoreModel fromFirebase(
-          _i5.DocumentSnapshot<Map<String, dynamic>>? snapshot) =>
+    _i5.DocumentSnapshot<Map<String, dynamic>>? snapshot,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #fromFirebase,
-          [snapshot],
-        ),
-        returnValue: _FakeStoreModel_0(
-          this,
-          Invocation.method(
-            #fromFirebase,
-            [snapshot],
-          ),
-        ),
-        returnValueForMissingStub: _FakeStoreModel_0(
-          this,
-          Invocation.method(
-            #fromFirebase,
-            [snapshot],
-          ),
-        ),
-      ) as _i2.StoreModel);
+            Invocation.method(#fromFirebase, [snapshot]),
+            returnValue: _FakeStoreModel_0(
+              this,
+              Invocation.method(#fromFirebase, [snapshot]),
+            ),
+            returnValueForMissingStub: _FakeStoreModel_0(
+              this,
+              Invocation.method(#fromFirebase, [snapshot]),
+            ),
+          )
+          as _i2.StoreModel);
 
   @override
-  _i2.StoreModel fromJson(Map<String, dynamic>? json) => (super.noSuchMethod(
-        Invocation.method(
-          #fromJson,
-          [json],
-        ),
-        returnValue: _FakeStoreModel_0(
-          this,
-          Invocation.method(
-            #fromJson,
-            [json],
-          ),
-        ),
-        returnValueForMissingStub: _FakeStoreModel_0(
-          this,
-          Invocation.method(
-            #fromJson,
-            [json],
-          ),
-        ),
-      ) as _i2.StoreModel);
+  _i2.StoreModel fromJson(Map<String, dynamic>? json) =>
+      (super.noSuchMethod(
+            Invocation.method(#fromJson, [json]),
+            returnValue: _FakeStoreModel_0(
+              this,
+              Invocation.method(#fromJson, [json]),
+            ),
+            returnValueForMissingStub: _FakeStoreModel_0(
+              this,
+              Invocation.method(#fromJson, [json]),
+            ),
+          )
+          as _i2.StoreModel);
 }

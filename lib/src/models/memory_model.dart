@@ -9,7 +9,7 @@ part 'memory_model.g.dart';
 @JsonSerializable()
 @immutable
 final class MemoryModel
-    with EquatableMixin
+    with Equatable
     implements BaseFirebaseConvert<MemoryModel> {
   const MemoryModel({
     this.documentId = '',
@@ -48,13 +48,13 @@ final class MemoryModel
 
   @override
   List<Object?> get props => [
-        documentId,
-        title,
-        description,
-        imageUrls,
-        createdAt,
-        updatedAt,
-      ];
+    documentId,
+    title,
+    description,
+    imageUrls,
+    createdAt,
+    updatedAt,
+  ];
 
   MemoryModel copyWith({
     String? documentId,
@@ -78,8 +78,6 @@ final class MemoryModel
   MemoryModel fromFirebase(DocumentSnapshot<Map<String, dynamic>> json) {
     final data = json.data();
     if (data == null) return this;
-    return _$MemoryModelFromJson(data).copyWith(
-      documentId: json.id,
-    );
+    return _$MemoryModelFromJson(data).copyWith(documentId: json.id);
   }
 }

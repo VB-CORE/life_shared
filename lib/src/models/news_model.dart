@@ -7,7 +7,7 @@ import 'package:life_shared/src/utility/firebase_time_parse.dart';
 part 'news_model.g.dart';
 
 @JsonSerializable()
-final class NewsModel extends BaseFirebaseModel<NewsModel> with EquatableMixin {
+final class NewsModel extends BaseFirebaseModel<NewsModel> with Equatable {
   NewsModel({
     this.title,
     this.content,
@@ -42,13 +42,7 @@ final class NewsModel extends BaseFirebaseModel<NewsModel> with EquatableMixin {
   Map<String, dynamic> toJson() => _$NewsModelToJson(this);
 
   @override
-  List<Object?> get props => [
-        title,
-        content,
-        image,
-        createdAt,
-        updatedAt,
-      ];
+  List<Object?> get props => [title, content, image, createdAt, updatedAt];
 
   NewsModel copyWith({
     String? title,
@@ -72,9 +66,7 @@ final class NewsModel extends BaseFirebaseModel<NewsModel> with EquatableMixin {
   NewsModel fromFirebase(DocumentSnapshot<Map<String, dynamic>> json) {
     if (json.data() == null) return this;
 
-    return _$NewsModelFromJson(json.data()!).copyWith(
-      documentId: json.id,
-    );
+    return _$NewsModelFromJson(json.data()!).copyWith(documentId: json.id);
   }
 
   @override

@@ -8,7 +8,7 @@ part 'touristic_places_model.g.dart';
 
 @JsonSerializable()
 class TouristicPlaceModel extends BaseFirebaseModel<TouristicPlaceModel>
-    with EquatableMixin {
+    with Equatable {
   TouristicPlaceModel({
     this.title,
     this.description,
@@ -42,9 +42,7 @@ class TouristicPlaceModel extends BaseFirebaseModel<TouristicPlaceModel>
     if (json.data() == null) return this;
     return TouristicPlaceModel.fromJson(
       json.data()!.map((key, value) => MapEntry(key.trim(), value)),
-    ).copyWith(
-      documentId: json.id,
-    );
+    ).copyWith(documentId: json.id);
   }
 
   @override
@@ -71,11 +69,5 @@ class TouristicPlaceModel extends BaseFirebaseModel<TouristicPlaceModel>
   }
 
   @override
-  List<Object?> get props => [
-        title,
-        description,
-        photo,
-        latLong,
-        documentId,
-      ];
+  List<Object?> get props => [title, description, photo, latLong, documentId];
 }

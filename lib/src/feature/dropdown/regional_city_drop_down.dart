@@ -6,10 +6,11 @@ part 'regional_city_drop_down_mixin.dart';
 /// City DropDown for regional Hatay,Mersin
 final class RegionalCityDropDown extends StatefulWidget {
   const RegionalCityDropDown({
-    super.key,
     required this.onSelected,
     required this.fetchCities,
+    super.key,
   });
+
   final ValueChanged<StoreCityModel> onSelected;
   final ValueChanged<List<StoreCityModel>> fetchCities;
 
@@ -28,17 +29,10 @@ class _RegionalCityDropDownState extends State<RegionalCityDropDown>
       initialSelection: _selectedCity.documentId,
       onSelected: (value) {
         if (value == null) return;
-        _updateSelectedCity(
-          _cities.firstWhere((e) => e.documentId == value),
-        );
+        _updateSelectedCity(_cities.firstWhere((e) => e.documentId == value));
       },
       dropdownMenuEntries: _cities
-          .map(
-            (e) => DropdownMenuEntry(
-              value: e.documentId,
-              label: e.name,
-            ),
-          )
+          .map((e) => DropdownMenuEntry(value: e.documentId, label: e.name))
           .toList(),
     );
   }
