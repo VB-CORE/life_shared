@@ -8,7 +8,7 @@ part 'campaign_model.g.dart';
 
 @JsonSerializable()
 final class CampaignModel extends BaseFirebaseModel<CampaignModel>
-    with EquatableMixin
+    with Equatable
     implements BaseFirebaseConvert<CampaignModel> {
   CampaignModel({
     this.name,
@@ -48,16 +48,16 @@ final class CampaignModel extends BaseFirebaseModel<CampaignModel>
 
   @override
   List<Object?> get props => [
-        name,
-        topic,
-        description,
-        publisher,
-        expireDate,
-        photo,
-        coverPhoto,
-        isApproved,
-        phone,
-      ];
+    name,
+    topic,
+    description,
+    publisher,
+    expireDate,
+    photo,
+    coverPhoto,
+    isApproved,
+    phone,
+  ];
 
   CampaignModel copyWith({
     String? name,
@@ -89,9 +89,7 @@ final class CampaignModel extends BaseFirebaseModel<CampaignModel>
   CampaignModel fromFirebase(DocumentSnapshot<Map<String, dynamic>> json) {
     if (json.data() == null) return this;
 
-    return _$CampaignModelFromJson(json.data()!).copyWith(
-      documentId: json.id,
-    );
+    return _$CampaignModelFromJson(json.data()!).copyWith(documentId: json.id);
   }
 
   @override

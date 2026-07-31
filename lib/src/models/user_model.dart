@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -8,7 +7,7 @@ part 'user_model.g.dart';
 
 @JsonSerializable(includeIfNull: false)
 final class UserModel extends BaseFirebaseModel<UserModel>
-    with EquatableMixin, CacheModel {
+    with Equatable, CacheModel {
   const UserModel({
     this.uid = '',
     this.email = '',
@@ -215,27 +214,27 @@ final class UserModel extends BaseFirebaseModel<UserModel>
 
   @override
   List<Object?> get props => [
-        uid,
-        email,
-        displayName,
-        roleType,
-        permissions,
-        avatarType,
-        photoUrl,
-        fcmToken,
-        merchantStoreId,
-        application,
-        postCount,
-        discussionCount,
-        commentCount,
-        likeCount,
-        groupCount,
-        voteCount,
-        isBanned,
-        bannedAt,
-        bannedReason,
-        bannedBy,
-        createdAt,
-        updatedAt,
-      ];
+    uid,
+    email,
+    displayName,
+    roleType,
+    permissions,
+    avatarType,
+    photoUrl,
+    fcmToken,
+    merchantStoreId,
+    application,
+    postCount,
+    discussionCount,
+    commentCount,
+    likeCount,
+    groupCount,
+    voteCount,
+    isBanned,
+    bannedAt,
+    bannedReason,
+    bannedBy,
+    createdAt,
+    updatedAt,
+  ];
 }

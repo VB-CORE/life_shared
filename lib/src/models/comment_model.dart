@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -9,7 +8,7 @@ part 'comment_model.g.dart';
 /// Reply under `topics/{topicId}/comments/{id}`.
 @JsonSerializable(includeIfNull: false)
 final class CommentModel extends BaseFirebaseModel<CommentModel>
-    with EquatableMixin {
+    with Equatable {
   const CommentModel({
     this.id = '',
     this.author = const AuthorModel.empty(),
@@ -78,11 +77,11 @@ final class CommentModel extends BaseFirebaseModel<CommentModel>
 
   @override
   List<Object?> get props => [
-        id,
-        author,
-        content,
-        createdAt,
-        updatedAt,
-        isDeleted,
-      ];
+    id,
+    author,
+    content,
+    createdAt,
+    updatedAt,
+    isDeleted,
+  ];
 }

@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs
-
 /// Grants stored on `users/{uid}.permissions` and mirrored into the
 /// `permissions` custom claim the security rules read.
 enum AppPermission {

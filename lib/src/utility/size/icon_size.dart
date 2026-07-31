@@ -12,10 +12,8 @@ enum IconSize {
   //size is [80]
   xLarge(80),
   //size is [100]
-  xxLarge(100),
-  ;
+  xxLarge(100);
 
-  final double value;
-  // ignore: sort_constructors_first
   const IconSize(this.value);
+  final double value;
 }

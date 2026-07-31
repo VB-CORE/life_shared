@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -9,8 +8,7 @@ part 'vote_model.g.dart';
 /// One vote under `approvedApplications/{storeId}/votes/{uid}`, keyed by the
 /// voter so a user can only rate a place once.
 @JsonSerializable(includeIfNull: false)
-final class VoteModel extends BaseFirebaseModel<VoteModel>
-    with EquatableMixin {
+final class VoteModel extends BaseFirebaseModel<VoteModel> with Equatable {
   const VoteModel({
     this.voterUid = '',
     this.storeId = '',
@@ -94,14 +92,14 @@ final class VoteModel extends BaseFirebaseModel<VoteModel>
 
   @override
   List<Object?> get props => [
-        voterUid,
-        storeId,
-        userName,
-        score,
-        comment,
-        avatarType,
-        createdAt,
-        updatedAt,
-        isDeleted,
-      ];
+    voterUid,
+    storeId,
+    userName,
+    score,
+    comment,
+    avatarType,
+    createdAt,
+    updatedAt,
+    isDeleted,
+  ];
 }

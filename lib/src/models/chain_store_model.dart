@@ -7,7 +7,7 @@ part 'chain_store_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 final class ChainStoreModel extends BaseFirebaseModel<ChainStoreModel>
-    with EquatableMixin {
+    with Equatable {
   const ChainStoreModel({
     required this.name,
     required this.description,
@@ -23,13 +23,13 @@ final class ChainStoreModel extends BaseFirebaseModel<ChainStoreModel>
   });
 
   factory ChainStoreModel.empty() => ChainStoreModel(
-        name: '',
-        description: '',
-        website: '',
-        logoImageUrl: '',
-        createdAt: DateTime.now(),
-        updatedAt: DateTime.now(),
-      );
+    name: '',
+    description: '',
+    website: '',
+    logoImageUrl: '',
+    createdAt: DateTime.now(),
+    updatedAt: DateTime.now(),
+  );
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -104,9 +104,9 @@ final class ChainStoreModel extends BaseFirebaseModel<ChainStoreModel>
   ChainStoreModel fromFirebase(DocumentSnapshot<Map<String, dynamic>> json) {
     if (json.data() == null) return this;
 
-    return _$ChainStoreModelFromJson(json.data()!).copyWith(
-      documentId: json.id,
-    );
+    return _$ChainStoreModelFromJson(
+      json.data()!,
+    ).copyWith(documentId: json.id);
   }
 
   @override

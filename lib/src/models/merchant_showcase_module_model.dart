@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -10,7 +9,7 @@ part 'merchant_showcase_module_model.g.dart';
 @JsonSerializable(includeIfNull: false)
 final class MerchantShowcaseModuleModel
     extends BaseFirebaseModel<MerchantShowcaseModuleModel>
-    with EquatableMixin {
+    with Equatable {
   const MerchantShowcaseModuleModel({
     this.id = '',
     this.type = MerchantShowcaseType.announcement,
@@ -114,15 +113,15 @@ final class MerchantShowcaseModuleModel
 
   @override
   List<Object?> get props => [
-        id,
-        type,
-        title,
-        description,
-        imageUrl,
-        startAt,
-        endAt,
-        isActive,
-        order,
-        isDeleted,
-      ];
+    id,
+    type,
+    title,
+    description,
+    imageUrl,
+    startAt,
+    endAt,
+    isActive,
+    order,
+    isDeleted,
+  ];
 }

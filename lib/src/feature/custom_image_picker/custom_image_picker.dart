@@ -13,7 +13,7 @@ abstract class CustomImagePicker {
   /// [type] [CustomImagePickType.gallery] or [CustomImagePickType.camera
   /// [onError] [CustomImageException] callback when error occurred
   ///
-  /// Return [File] if success, [null] if failed
+  /// Return [File] if success, null if failed
   Future<File?> pickPhoto({
     required CustomImagePickType type,
     ValueChanged<CustomImageException>? onError,

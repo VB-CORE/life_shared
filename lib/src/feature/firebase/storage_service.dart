@@ -90,7 +90,7 @@ final class StorageService extends CustomStorageService {
       );
     } on FirebaseException catch (error) {
       return _failure(StorageError.fromCode(error.code), error.message);
-    } catch (error) {
+    } on Object catch (error) {
       return _failure(StorageError.unknown, '$error');
     }
   }

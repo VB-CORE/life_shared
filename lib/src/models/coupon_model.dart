@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -10,8 +9,7 @@ part 'coupon_model.g.dart';
 /// still be used is derived from its own fields; there is no status column to
 /// drift away from them.
 @JsonSerializable(includeIfNull: false)
-final class CouponModel extends BaseFirebaseModel<CouponModel>
-    with EquatableMixin {
+final class CouponModel extends BaseFirebaseModel<CouponModel> with Equatable {
   const CouponModel({
     this.storeId,
     this.merchantUid,
@@ -77,7 +75,8 @@ final class CouponModel extends BaseFirebaseModel<CouponModel>
   Map<String, dynamic> toJson() => _$CouponModelToJson(this);
 
   @override
-  CouponModel fromJson(Map<String, dynamic> json) => _$CouponModelFromJson(json);
+  CouponModel fromJson(Map<String, dynamic> json) =>
+      _$CouponModelFromJson(json);
 
   @override
   CouponModel fromFirebase(DocumentSnapshot<Map<String, dynamic>> snapshot) {
@@ -116,16 +115,16 @@ final class CouponModel extends BaseFirebaseModel<CouponModel>
 
   @override
   List<Object?> get props => [
-        storeId,
-        merchantUid,
-        desc,
-        ratio,
-        expiresAt,
-        usageCount,
-        usageLimit,
-        createdAt,
-        updatedAt,
-        documentId,
-        isDeleted,
-      ];
+    storeId,
+    merchantUid,
+    desc,
+    ratio,
+    expiresAt,
+    usageCount,
+    usageLimit,
+    createdAt,
+    updatedAt,
+    documentId,
+    isDeleted,
+  ];
 }

@@ -7,12 +7,8 @@ part 'town_model.g.dart';
 
 @JsonSerializable()
 final class TownModel extends BaseFirebaseConvert<TownModel>
-    with EquatableMixin, BaseDropDownModel {
-  TownModel({
-    this.code,
-    this.name,
-    this.documentId = '',
-  });
+    with Equatable, BaseDropDownModel {
+  TownModel({this.code, this.name, this.documentId = ''});
 
   factory TownModel.fromJson(Map<String, dynamic> json) =>
       _$TownModelFromJson(json);
@@ -33,16 +29,10 @@ final class TownModel extends BaseFirebaseConvert<TownModel>
   @override
   TownModel fromFirebase(DocumentSnapshot<Map<String, dynamic>> json) {
     if (json.data() == null) return this;
-    return _$TownModelFromJson(json.data()!).copyWith(
-      documentId: json.id,
-    );
+    return _$TownModelFromJson(json.data()!).copyWith(documentId: json.id);
   }
 
-  TownModel copyWith({
-    int? code,
-    String? name,
-    String? documentId,
-  }) {
+  TownModel copyWith({int? code, String? name, String? documentId}) {
     return TownModel(
       code: code ?? this.code,
       name: name ?? this.name,

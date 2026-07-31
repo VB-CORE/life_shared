@@ -6,7 +6,7 @@ part 'notification_model.g.dart';
 
 @immutable
 @JsonSerializable()
-final class NotificationModel with EquatableMixin {
+final class NotificationModel with Equatable {
   NotificationModel({
     this.id,
     this.campaignId,

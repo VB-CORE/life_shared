@@ -7,7 +7,7 @@ part 'regional_town_model.g.dart';
 
 @JsonSerializable()
 final class RegionalTownModel extends BaseFirebaseModel<RegionalTownModel>
-    with EquatableMixin, BaseDropDownModel {
+    with Equatable, BaseDropDownModel {
   const RegionalTownModel({
     this.documentId = '',
     this.cityId = '',
@@ -15,11 +15,7 @@ final class RegionalTownModel extends BaseFirebaseModel<RegionalTownModel>
   });
 
   const RegionalTownModel.empty()
-      : this(
-          documentId: '',
-          cityId: '',
-          towns: const [],
-        );
+    : this(documentId: '', cityId: '', towns: const []);
 
   @override
   final String documentId;
@@ -29,11 +25,7 @@ final class RegionalTownModel extends BaseFirebaseModel<RegionalTownModel>
   Map<String, dynamic> toJson() => _$RegionalTownModelToJson(this);
 
   @override
-  List<Object?> get props => [
-        towns,
-        documentId,
-        cityId,
-      ];
+  List<Object?> get props => [towns, documentId, cityId];
 
   RegionalTownModel copyWith({
     List<RegionalTownSubItem>? towns,
@@ -52,9 +44,7 @@ final class RegionalTownModel extends BaseFirebaseModel<RegionalTownModel>
     final data = json.data();
     if (data == null) return const RegionalTownModel.empty();
 
-    return _$RegionalTownModelFromJson(data).copyWith(
-      documentId: json.id,
-    );
+    return _$RegionalTownModelFromJson(data).copyWith(documentId: json.id);
   }
 
   @override
@@ -76,10 +66,7 @@ final class RegionalTownSubItem extends Equatable with BaseDropDownModel {
   final int code;
   final String name;
 
-  TownModel get toTownModel => TownModel(
-        code: code,
-        name: name,
-      );
+  TownModel get toTownModel => TownModel(code: code, name: name);
 
   Map<String, dynamic> toJson() => _$RegionalTownSubItemToJson(this);
 

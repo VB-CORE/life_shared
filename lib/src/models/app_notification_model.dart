@@ -7,7 +7,7 @@ part 'app_notification_model.g.dart';
 
 @JsonSerializable()
 final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
-    with EquatableMixin {
+    with Equatable {
   AppNotificationModel({
     this.createdAt,
     this.body,
@@ -63,9 +63,9 @@ final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
   ) {
     if (json.data() == null) return this;
 
-    return AppNotificationModel.fromJson(json.data()!).copyWith(
-      documentId: json.id,
-    );
+    return AppNotificationModel.fromJson(
+      json.data()!,
+    ).copyWith(documentId: json.id);
   }
 
   @override

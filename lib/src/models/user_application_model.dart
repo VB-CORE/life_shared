@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -10,7 +9,7 @@ part 'user_application_model.g.dart';
 /// the `unApprovedApplications` draft the applicant submitted.
 @JsonSerializable(includeIfNull: false)
 final class UserApplicationModel extends BaseFirebaseModel<UserApplicationModel>
-    with EquatableMixin {
+    with Equatable {
   const UserApplicationModel({
     this.id = '',
     this.status = UserApplicationStatus.pending,
@@ -89,11 +88,11 @@ final class UserApplicationModel extends BaseFirebaseModel<UserApplicationModel>
 
   @override
   List<Object?> get props => [
-        id,
-        status,
-        deniedMessage,
-        ownershipDocumentUrl,
-        createdAt,
-        updatedAt,
-      ];
+    id,
+    status,
+    deniedMessage,
+    ownershipDocumentUrl,
+    createdAt,
+    updatedAt,
+  ];
 }

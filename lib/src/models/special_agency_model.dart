@@ -8,7 +8,7 @@ part 'special_agency_model.g.dart';
 
 @JsonSerializable()
 final class SpecialAgencyModel extends BaseFirebaseModel<SpecialAgencyModel>
-    with EquatableMixin {
+    with Equatable {
   SpecialAgencyModel({
     this.name,
     this.phone,

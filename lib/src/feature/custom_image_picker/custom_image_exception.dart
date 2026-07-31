@@ -5,8 +5,8 @@ enum CustomImageException {
   photoAccessDenied('photo_access_denied'),
   cameraAccessDenied('camera_access_denied');
 
-  final String value;
   const CustomImageException(this.value);
+  final String value;
 
   static CustomImageException? fromValue(String? value) {
     if (value == null) return null;

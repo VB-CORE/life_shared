@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -8,7 +7,7 @@ part 'group_member_model.g.dart';
 
 @JsonSerializable(includeIfNull: false)
 final class GroupMemberModel extends BaseFirebaseModel<GroupMemberModel>
-    with EquatableMixin {
+    with Equatable {
   const GroupMemberModel({
     this.uid = '',
     this.displayName = '',
@@ -99,12 +98,12 @@ final class GroupMemberModel extends BaseFirebaseModel<GroupMemberModel>
 
   @override
   List<Object?> get props => [
-        uid,
-        displayName,
-        avatarType,
-        role,
-        createdAt,
-        updatedAt,
-        isDeleted,
-      ];
+    uid,
+    displayName,
+    avatarType,
+    role,
+    createdAt,
+    updatedAt,
+    isDeleted,
+  ];
 }
