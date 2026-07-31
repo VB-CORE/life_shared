@@ -28,6 +28,6 @@ Map<String, dynamic> _$AuthorModelToJson(AuthorModel instance) =>
     };
 
 const _$GroupMemberRoleEnumMap = {
-  GroupMemberRole.member: 'member',
-  GroupMemberRole.admin: 'admin',
+  GroupMemberRole.member: 1,
+  GroupMemberRole.admin: 2,
 };

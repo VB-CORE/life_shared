@@ -12,7 +12,9 @@ enum SubCollectionPaths {
   members,
   discussions,
   entries,
-  likedPosts,
+
+  /// v12
+  showcase,
 }
 
 /// Nested collection, example: approvedApplications/{placeId}/votes
