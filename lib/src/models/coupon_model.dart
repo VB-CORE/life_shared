@@ -1,99 +1,131 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:life_shared/life_shared.dart';
 
 part 'coupon_model.g.dart';
 
-@immutable
+/// A merchant's discount coupon under `coupons/{couponId}`. Whether it can
+/// still be used is derived from its own fields; there is no status column to
+/// drift away from them.
 @JsonSerializable(includeIfNull: false)
-class CouponModel extends BaseFirebaseModel<CouponModel>
-    implements BaseFirebaseConvert<CouponModel> {
+final class CouponModel extends BaseFirebaseModel<CouponModel>
+    with EquatableMixin {
   const CouponModel({
-    required this.storeId,
-    required this.merchantUid,
-    required this.title,
-    required this.ratio,
+    this.storeId,
+    this.merchantUid,
+    this.desc,
+    this.ratio,
     this.expiresAt,
-    this.status = CouponStatus.active,
-    this.redemptionCount = 0,
-    this.maxRedemptions,
+    this.usageCount = 0,
+    this.usageLimit,
     this.createdAt,
+    this.updatedAt,
     this.documentId = '',
+    this.isDeleted = false,
   });
+
+  const CouponModel.empty() : this();
 
   factory CouponModel.fromJson(Map<String, dynamic> json) =>
       _$CouponModelFromJson(json);
 
-  factory CouponModel.empty() =>
-      const CouponModel(storeId: '', merchantUid: '', title: '', ratio: 0);
-
-  final String storeId;
-  final String merchantUid;
-  final String title;
-
-  final int ratio;
-  final CouponStatus status;
-  final int redemptionCount;
-  final int? maxRedemptions;
+  final String? storeId;
+  final String? merchantUid;
+  final String? desc;
+  final int? ratio;
+  final int usageCount;
+  final int? usageLimit;
 
   @JsonKey(
-    fromJson: FirebaseTimeParse.datetimeFromTimestamp,
     toJson: FirebaseTimeParse.dateTimeToTimestamp,
+    fromJson: FirebaseTimeParse.datetimeFromTimestamp,
   )
   final DateTime? expiresAt;
 
   @JsonKey(
-    fromJson: FirebaseTimeParse.datetimeFromTimestamp,
     toJson: FirebaseTimeParse.dateTimeToTimestamp,
+    fromJson: FirebaseTimeParse.datetimeFromTimestamp,
   )
   final DateTime? createdAt;
+
+  @JsonKey(
+    toJson: FirebaseTimeParse.dateTimeToTimestamp,
+    fromJson: FirebaseTimeParse.datetimeFromTimestamp,
+  )
+  final DateTime? updatedAt;
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   final String documentId;
 
+  final bool isDeleted;
+
   bool get isExpired =>
       expiresAt != null && expiresAt!.isBefore(DateTime.now());
 
-  CouponModel copyWith({
-    String? storeId,
-    String? merchantUid,
-    String? title,
-    int? ratio,
-    CouponStatus? status,
-    int? redemptionCount,
-    int? maxRedemptions,
-    DateTime? expiresAt,
-    DateTime? createdAt,
-    String? documentId,
-  }) {
-    return CouponModel(
-      storeId: storeId ?? this.storeId,
-      merchantUid: merchantUid ?? this.merchantUid,
-      title: title ?? this.title,
-      ratio: ratio ?? this.ratio,
-      status: status ?? this.status,
-      redemptionCount: redemptionCount ?? this.redemptionCount,
-      maxRedemptions: maxRedemptions ?? this.maxRedemptions,
-      expiresAt: expiresAt ?? this.expiresAt,
-      createdAt: createdAt ?? this.createdAt,
-      documentId: documentId ?? this.documentId,
-    );
+  bool get isUsageLimitReached {
+    final limit = usageLimit;
+    if (limit == null) return false;
+    return usageCount >= limit;
   }
+
+  bool get isInactive => isDeleted || isExpired || isUsageLimitReached;
 
   @override
   Map<String, dynamic> toJson() => _$CouponModelToJson(this);
 
   @override
+  CouponModel fromJson(Map<String, dynamic> json) => _$CouponModelFromJson(json);
+
+  @override
   CouponModel fromFirebase(DocumentSnapshot<Map<String, dynamic>> snapshot) {
     final data = snapshot.data();
-    if (data == null) return this;
-    return _$CouponModelFromJson(data).copyWith(documentId: snapshot.id);
+    if (data == null) return const CouponModel.empty();
+    return fromJson(data).copyWith(documentId: snapshot.id);
+  }
+
+  CouponModel copyWith({
+    String? storeId,
+    String? merchantUid,
+    String? desc,
+    int? ratio,
+    DateTime? expiresAt,
+    int? usageCount,
+    int? usageLimit,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? documentId,
+    bool? isDeleted,
+  }) {
+    return CouponModel(
+      storeId: storeId ?? this.storeId,
+      merchantUid: merchantUid ?? this.merchantUid,
+      desc: desc ?? this.desc,
+      ratio: ratio ?? this.ratio,
+      expiresAt: expiresAt ?? this.expiresAt,
+      usageCount: usageCount ?? this.usageCount,
+      usageLimit: usageLimit ?? this.usageLimit,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      documentId: documentId ?? this.documentId,
+      isDeleted: isDeleted ?? this.isDeleted,
+    );
   }
 
   @override
-  CouponModel fromJson(Map<String, dynamic> json) =>
-      _$CouponModelFromJson(json);
+  List<Object?> get props => [
+        storeId,
+        merchantUid,
+        desc,
+        ratio,
+        expiresAt,
+        usageCount,
+        usageLimit,
+        createdAt,
+        updatedAt,
+        documentId,
+        isDeleted,
+      ];
 }

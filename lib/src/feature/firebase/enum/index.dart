@@ -1,7 +1,6 @@
 export 'app_permission.dart';
 export 'collection_paths.dart';
 export 'community_counter_fields.dart';
-export 'coupon_status.dart';
 export 'file_sizes.dart';
 export 'firestore_collection_path.dart';
 export 'firestore_fields.dart';

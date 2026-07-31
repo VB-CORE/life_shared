@@ -7,34 +7,28 @@ part of 'coupon_model.dart';
 // **************************************************************************
 
 CouponModel _$CouponModelFromJson(Map<String, dynamic> json) => CouponModel(
-  storeId: json['storeId'] as String,
-  merchantUid: json['merchantUid'] as String,
-  title: json['title'] as String,
-  ratio: (json['ratio'] as num).toInt(),
+  storeId: json['storeId'] as String?,
+  merchantUid: json['merchantUid'] as String?,
+  desc: json['desc'] as String?,
+  ratio: (json['ratio'] as num?)?.toInt(),
   expiresAt: FirebaseTimeParse.datetimeFromTimestamp(json['expiresAt']),
-  status:
-      $enumDecodeNullable(_$CouponStatusEnumMap, json['status']) ??
-      CouponStatus.active,
-  redemptionCount: (json['redemptionCount'] as num?)?.toInt() ?? 0,
-  maxRedemptions: (json['maxRedemptions'] as num?)?.toInt(),
+  usageCount: (json['usageCount'] as num?)?.toInt() ?? 0,
+  usageLimit: (json['usageLimit'] as num?)?.toInt(),
   createdAt: FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
+  updatedAt: FirebaseTimeParse.datetimeFromTimestamp(json['updatedAt']),
+  isDeleted: json['isDeleted'] as bool? ?? false,
 );
 
 Map<String, dynamic> _$CouponModelToJson(CouponModel instance) =>
     <String, dynamic>{
-      'storeId': instance.storeId,
-      'merchantUid': instance.merchantUid,
-      'title': instance.title,
-      'ratio': instance.ratio,
-      'status': _$CouponStatusEnumMap[instance.status]!,
-      'redemptionCount': instance.redemptionCount,
-      'maxRedemptions': ?instance.maxRedemptions,
+      'storeId': ?instance.storeId,
+      'merchantUid': ?instance.merchantUid,
+      'desc': ?instance.desc,
+      'ratio': ?instance.ratio,
+      'usageCount': instance.usageCount,
+      'usageLimit': ?instance.usageLimit,
       'expiresAt': ?FirebaseTimeParse.dateTimeToTimestamp(instance.expiresAt),
       'createdAt': ?FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
+      'updatedAt': ?FirebaseTimeParse.dateTimeToTimestamp(instance.updatedAt),
+      'isDeleted': instance.isDeleted,
     };
-
-const _$CouponStatusEnumMap = {
-  CouponStatus.active: 'active',
-  CouponStatus.expired: 'expired',
-  CouponStatus.disabled: 'disabled',
-};
