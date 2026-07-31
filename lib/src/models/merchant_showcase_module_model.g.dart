@@ -41,8 +41,7 @@ Map<String, dynamic> _$MerchantShowcaseModuleModelToJson(
 };
 
 const _$MerchantShowcaseTypeEnumMap = {
-  MerchantShowcaseType.announcement: 1,
-  MerchantShowcaseType.campaign: 2,
-  MerchantShowcaseType.product: 3,
-  MerchantShowcaseType.gallery: 4,
+  MerchantShowcaseType.campaign: 1,
+  MerchantShowcaseType.announcement: 2,
+  MerchantShowcaseType.event: 3,
 };

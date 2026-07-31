@@ -7,7 +7,7 @@ part 'redemption_model.g.dart';
 
 @immutable
 @JsonSerializable(includeIfNull: false)
-class RedemptionModel extends BaseFirebaseModel<RedemptionModel>
+final class RedemptionModel extends BaseFirebaseModel<RedemptionModel>
     implements BaseFirebaseConvert<RedemptionModel> {
   const RedemptionModel({
     required this.couponId,

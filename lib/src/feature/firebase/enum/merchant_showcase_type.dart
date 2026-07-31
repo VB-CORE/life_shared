@@ -3,13 +3,11 @@ import 'package:json_annotation/json_annotation.dart';
 /// Kind of card a merchant pins to their storefront.
 enum MerchantShowcaseType {
   @JsonValue(1)
-  announcement(1),
+  campaign(1),
   @JsonValue(2)
-  campaign(2),
+  announcement(2),
   @JsonValue(3)
-  product(3),
-  @JsonValue(4)
-  gallery(4);
+  event(3);
 
   const MerchantShowcaseType(this.value);
 

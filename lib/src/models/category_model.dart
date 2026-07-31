@@ -6,7 +6,7 @@ import 'package:life_shared/life_shared.dart';
 part 'category_model.g.dart';
 
 @JsonSerializable()
-class CategoryModel extends BaseFirebaseModel<CategoryModel>
+final class CategoryModel extends BaseFirebaseModel<CategoryModel>
     with BaseDropDownModel, Equatable {
   const CategoryModel({
     required this.name,
