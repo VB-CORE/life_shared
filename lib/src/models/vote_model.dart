@@ -15,6 +15,8 @@ final class VoteModel extends BaseFirebaseModel<VoteModel> with Equatable {
     this.userName = '',
     this.score = 0,
     this.comment,
+    this.merchantReply,
+    this.merchantReplyAt,
     this.avatarType = 1,
     this.createdAt,
     this.updatedAt,
@@ -31,6 +33,16 @@ final class VoteModel extends BaseFirebaseModel<VoteModel> with Equatable {
   final String userName;
   final int score;
   final String? comment;
+
+  @JsonKey(includeIfNull: true)
+  final String? merchantReply;
+
+  @JsonKey(
+    toJson: FirebaseTimeParse.dateTimeToTimestamp,
+    fromJson: FirebaseTimeParse.datetimeFromTimestamp,
+  )
+  final DateTime? merchantReplyAt;
+
   final int avatarType;
 
   @JsonKey(
@@ -72,6 +84,8 @@ final class VoteModel extends BaseFirebaseModel<VoteModel> with Equatable {
     String? userName,
     int? score,
     String? comment,
+    String? merchantReply,
+    DateTime? merchantReplyAt,
     int? avatarType,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -83,6 +97,8 @@ final class VoteModel extends BaseFirebaseModel<VoteModel> with Equatable {
       userName: userName ?? this.userName,
       score: score ?? this.score,
       comment: comment ?? this.comment,
+      merchantReply: merchantReply ?? this.merchantReply,
+      merchantReplyAt: merchantReplyAt ?? this.merchantReplyAt,
       avatarType: avatarType ?? this.avatarType,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
@@ -97,6 +113,8 @@ final class VoteModel extends BaseFirebaseModel<VoteModel> with Equatable {
     userName,
     score,
     comment,
+    merchantReply,
+    merchantReplyAt,
     avatarType,
     createdAt,
     updatedAt,
