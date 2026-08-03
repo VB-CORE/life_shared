@@ -17,6 +17,8 @@ AppNotificationModel _$AppNotificationModelFromJson(
   title: json['title'] as String?,
   documentId: json['documentId'] as String? ?? '',
   type: $enumDecodeNullable(_$AppNotificationTypeEnumMap, json['type']),
+  read: json['read'] as bool? ?? false,
+  targetId: json['targetId'] as String?,
 );
 
 Map<String, dynamic> _$AppNotificationModelToJson(
@@ -26,14 +28,15 @@ Map<String, dynamic> _$AppNotificationModelToJson(
   'id': instance.id,
   'title': instance.title,
   'type': _$AppNotificationTypeEnumMap[instance.type],
+  'read': instance.read,
+  'targetId': instance.targetId,
   'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
   'documentId': instance.documentId,
 };
 
 const _$AppNotificationTypeEnumMap = {
-  AppNotificationType.store: 'store',
-  AppNotificationType.campaign: 'campaign',
-  AppNotificationType.news: 'news',
-  AppNotificationType.advertise: 'advertise',
-  AppNotificationType.link: 'link',
+  AppNotificationType.place: 'place',
+  AppNotificationType.event: 'event',
+  AppNotificationType.memory: 'memory',
+  AppNotificationType.system: 'system',
 };
