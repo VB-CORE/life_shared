@@ -36,6 +36,7 @@ StoreModel _$StoreModelFromJson(Map<String, dynamic> json) => StoreModel(
   isCommentEnabled: json['isCommentEnabled'] as bool? ?? true,
   ratingSum: (json['ratingSum'] as num?)?.toInt() ?? 0,
   ratingCount: (json['ratingCount'] as num?)?.toInt() ?? 0,
+  likeCount: (json['likeCount'] as num?)?.toInt() ?? 0,
 );
 
 Map<String, dynamic> _$StoreModelToJson(StoreModel instance) =>
@@ -57,6 +58,7 @@ Map<String, dynamic> _$StoreModelToJson(StoreModel instance) =>
       'ownerId': instance.ownerId,
       'ratingSum': instance.ratingSum,
       'ratingCount': instance.ratingCount,
+      'likeCount': instance.likeCount,
       'category': instance.category?.toJson(),
       'latLong': const FirebaseGeoParser().toJson(instance.latLong),
       'createdAt': instance.createdAt?.toIso8601String(),
