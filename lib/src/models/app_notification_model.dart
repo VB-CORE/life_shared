@@ -7,7 +7,7 @@ part 'app_notification_model.g.dart';
 
 @JsonSerializable()
 final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
-    with Equatable {
+    with EquatableMixin {
   AppNotificationModel({
     this.createdAt,
     this.body,
@@ -15,8 +15,6 @@ final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
     this.title,
     this.documentId = '',
     this.type,
-    this.read = false,
-    this.targetId,
   });
 
   factory AppNotificationModel.fromJson(Map<String, dynamic> json) =>
@@ -25,8 +23,6 @@ final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
   final String id;
   final String? title;
   final AppNotificationType? type;
-  final bool read;
-  final String? targetId;
   @JsonKey(
     toJson: FirebaseTimeParse.dateTimeToTimestamp,
     fromJson: FirebaseTimeParse.datetimeFromTimestamp,
@@ -41,7 +37,7 @@ final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
   Map<String, dynamic> toJson() => _$AppNotificationModelToJson(this);
 
   @override
-  List<Object?> get props => [body, id, title, read, targetId];
+  List<Object?> get props => [body, id, title];
 
   AppNotificationModel copyWith({
     String? body,
@@ -50,8 +46,6 @@ final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
     String? documentId,
     DateTime? createdAt,
     AppNotificationType? type,
-    bool? read,
-    String? targetId,
   }) {
     return AppNotificationModel(
       body: body ?? this.body,
@@ -60,8 +54,6 @@ final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
       documentId: documentId ?? this.documentId,
       createdAt: createdAt ?? this.createdAt,
       type: type ?? this.type,
-      read: read ?? this.read,
-      targetId: targetId ?? this.targetId,
     );
   }
 
@@ -71,9 +63,9 @@ final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
   ) {
     if (json.data() == null) return this;
 
-    return AppNotificationModel.fromJson(
-      json.data()!,
-    ).copyWith(documentId: json.id);
+    return AppNotificationModel.fromJson(json.data()!).copyWith(
+      documentId: json.id,
+    );
   }
 
   @override
@@ -83,6 +75,16 @@ final class AppNotificationModel extends BaseFirebaseModel<AppNotificationModel>
 }
 
 enum AppNotificationType {
+  @JsonValue('store')
+  store,
+  @JsonValue('campaign')
+  campaign,
+  @JsonValue('news')
+  news,
+  @JsonValue('advertise')
+  advertise,
+  @JsonValue('link')
+  link,
   @JsonValue('place')
   place,
   @JsonValue('event')

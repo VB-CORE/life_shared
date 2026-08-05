@@ -7,34 +7,35 @@ part of 'app_notification_model.dart';
 // **************************************************************************
 
 AppNotificationModel _$AppNotificationModelFromJson(
-  Map<String, dynamic> json,
-) => AppNotificationModel(
-  createdAt: json['createdAt'] == null
-      ? DateTime.now()
-      : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
-  body: json['body'] as String?,
-  id: json['id'] as String? ?? '',
-  title: json['title'] as String?,
-  documentId: json['documentId'] as String? ?? '',
-  type: $enumDecodeNullable(_$AppNotificationTypeEnumMap, json['type']),
-  read: json['read'] as bool? ?? false,
-  targetId: json['targetId'] as String?,
-);
+        Map<String, dynamic> json) =>
+    AppNotificationModel(
+      createdAt: json['createdAt'] == null
+          ? DateTime.now()
+          : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
+      body: json['body'] as String?,
+      id: json['id'] as String? ?? '',
+      title: json['title'] as String?,
+      documentId: json['documentId'] as String? ?? '',
+      type: $enumDecodeNullable(_$AppNotificationTypeEnumMap, json['type']),
+    );
 
 Map<String, dynamic> _$AppNotificationModelToJson(
-  AppNotificationModel instance,
-) => <String, dynamic>{
-  'body': instance.body,
-  'id': instance.id,
-  'title': instance.title,
-  'type': _$AppNotificationTypeEnumMap[instance.type],
-  'read': instance.read,
-  'targetId': instance.targetId,
-  'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
-  'documentId': instance.documentId,
-};
+        AppNotificationModel instance) =>
+    <String, dynamic>{
+      'body': instance.body,
+      'id': instance.id,
+      'title': instance.title,
+      'type': _$AppNotificationTypeEnumMap[instance.type],
+      'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
+      'documentId': instance.documentId,
+    };
 
 const _$AppNotificationTypeEnumMap = {
+  AppNotificationType.store: 'store',
+  AppNotificationType.campaign: 'campaign',
+  AppNotificationType.news: 'news',
+  AppNotificationType.advertise: 'advertise',
+  AppNotificationType.link: 'link',
   AppNotificationType.place: 'place',
   AppNotificationType.event: 'event',
   AppNotificationType.memory: 'memory',
