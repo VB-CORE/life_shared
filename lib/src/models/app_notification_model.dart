@@ -85,12 +85,4 @@ enum AppNotificationType {
   advertise,
   @JsonValue('link')
   link,
-  @JsonValue('place')
-  place,
-  @JsonValue('event')
-  event,
-  @JsonValue('memory')
-  memory,
-  @JsonValue('system')
-  system,
 }

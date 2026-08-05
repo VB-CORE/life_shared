@@ -12,7 +12,6 @@ final class NotificationModel with Equatable {
     this.campaignId,
     this.newsId,
     this.advertiseId,
-    this.memoryId,
     this.link,
   });
 
@@ -22,29 +21,24 @@ final class NotificationModel with Equatable {
   final String? campaignId;
   final String? newsId;
   final String? advertiseId;
-  final String? memoryId;
   final String? link;
 
   Map<String, dynamic> toJson() => _$NotificationModelToJson(this);
 
   @override
-  List<Object?> get props => [id, campaignId, newsId, advertiseId, memoryId, link];
+  List<Object?> get props => [id, campaignId, newsId];
 
   NotificationModel copyWith({
     String? id,
     String? campaignId,
     String? newsId,
     String? advertiseId,
-    String? memoryId,
-    String? link,
   }) {
     return NotificationModel(
       id: id ?? this.id,
       campaignId: campaignId ?? this.campaignId,
       newsId: newsId ?? this.newsId,
       advertiseId: advertiseId ?? this.advertiseId,
-      memoryId: memoryId ?? this.memoryId,
-      link: link ?? this.link,
     );
   }
 }
