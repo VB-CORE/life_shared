@@ -7,28 +7,28 @@ part of 'app_notification_model.dart';
 // **************************************************************************
 
 AppNotificationModel _$AppNotificationModelFromJson(
-  Map<String, dynamic> json,
-) => AppNotificationModel(
-  createdAt: json['createdAt'] == null
-      ? DateTime.now()
-      : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
-  body: json['body'] as String?,
-  id: json['id'] as String? ?? '',
-  title: json['title'] as String?,
-  documentId: json['documentId'] as String? ?? '',
-  type: $enumDecodeNullable(_$AppNotificationTypeEnumMap, json['type']),
-);
+        Map<String, dynamic> json) =>
+    AppNotificationModel(
+      createdAt: json['createdAt'] == null
+          ? DateTime.now()
+          : FirebaseTimeParse.datetimeFromTimestamp(json['createdAt']),
+      body: json['body'] as String?,
+      id: json['id'] as String? ?? '',
+      title: json['title'] as String?,
+      documentId: json['documentId'] as String? ?? '',
+      type: $enumDecodeNullable(_$AppNotificationTypeEnumMap, json['type']),
+    );
 
 Map<String, dynamic> _$AppNotificationModelToJson(
-  AppNotificationModel instance,
-) => <String, dynamic>{
-  'body': instance.body,
-  'id': instance.id,
-  'title': instance.title,
-  'type': _$AppNotificationTypeEnumMap[instance.type],
-  'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
-  'documentId': instance.documentId,
-};
+        AppNotificationModel instance) =>
+    <String, dynamic>{
+      'body': instance.body,
+      'id': instance.id,
+      'title': instance.title,
+      'type': _$AppNotificationTypeEnumMap[instance.type],
+      'createdAt': FirebaseTimeParse.dateTimeToTimestamp(instance.createdAt),
+      'documentId': instance.documentId,
+    };
 
 const _$AppNotificationTypeEnumMap = {
   AppNotificationType.store: 'store',
@@ -36,4 +36,8 @@ const _$AppNotificationTypeEnumMap = {
   AppNotificationType.news: 'news',
   AppNotificationType.advertise: 'advertise',
   AppNotificationType.link: 'link',
+  AppNotificationType.place: 'place',
+  AppNotificationType.event: 'event',
+  AppNotificationType.memory: 'memory',
+  AppNotificationType.system: 'system',
 };
