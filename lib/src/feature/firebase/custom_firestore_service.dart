@@ -69,6 +69,15 @@ abstract class CustomFirestoreService {
     T model,
   );
 
+  /// Runs [query] and returns the parsed documents. An empty result is a
+  /// success with an empty list; documents that cannot be parsed are skipped
+  /// and logged.
+  Future<FirestoreResult<List<T>>>
+  getListFromQuery<T extends BaseFirebaseConvert<T>>(Query<T?> query);
+
+  /// Aggregate count of [query], without reading the documents.
+  Future<FirestoreResult<int>> countQuery(Query<Object?> query);
+
   Query<T?> queryWithOrderBy<T extends BaseFirebaseConvert<T>>({
     required FirestoreCollectionPath path,
     required T model,
