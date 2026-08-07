@@ -137,6 +137,26 @@ final class FirestoreService extends CustomFirestoreService {
   }
 
   @override
+  Future<FirestoreResult<List<T>>>
+  getListFromQuery<T extends BaseFirebaseConvert<T>>(Query<T?> query) {
+    return _guard(() async {
+      final snapshot = await query.get();
+      return snapshot.docs
+          .map((document) => document.data())
+          .whereType<T>()
+          .toList();
+    });
+  }
+
+  @override
+  Future<FirestoreResult<int>> countQuery(Query<Object?> query) {
+    return _guard(() async {
+      final snapshot = await query.count().get();
+      return snapshot.count ?? 0;
+    });
+  }
+
+  @override
   Query<T?> queryWithOrderBy<T extends BaseFirebaseConvert<T>>({
     required FirestoreCollectionPath path,
     required T model,
