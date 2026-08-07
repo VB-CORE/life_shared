@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.1.0
+
+### Added
+
+- `FirestoreService.getListFromQuery` and `FirestoreService.countQuery` — run a
+  caller-built `Query` through the same guard as the rest of the service.
+  `collectionReference` handed out a raw query the caller had to execute
+  itself, so those calls threw `FirebaseException` instead of returning a
+  `FirestoreResult`.
+
 ## 6.0.0
 
 Breaking. Both apps must move to this tag together.
