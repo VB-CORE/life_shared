@@ -1,6 +1,8 @@
 import 'dart:async';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+// cloud_firestore 6 exports a pipeline-expression class named `Type` from its
+// barrel, which shadows dart:core's Type in `_fromFirestoreCache`.
+import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 import 'package:flutter/foundation.dart';
 import 'package:life_shared/src/core/base_firebase_model.dart';
 import 'package:life_shared/src/feature/firebase/custom_firestore_service.dart';

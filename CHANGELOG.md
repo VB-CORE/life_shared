@@ -1,5 +1,32 @@
 # Changelog
 
+## 7.0.0
+
+Breaking. Both apps must move to this tag together; consumers stay on 6.1.0
+until they are ready.
+
+### Changed
+
+- Firebase majors: `cloud_firestore` 5 → 6, `firebase_storage` 12 → 13,
+  `firebase_ui_firestore` 1 → 2. These constraints were what pinned both
+  consumer apps to the old Firebase suite.
+- `image_cropper` 8 → 11, `kartal` → 4.2.0, plus routine bumps across
+  `intl`, `json_annotation`, `equatable`, `image_picker`, `logger`, `uuid`,
+  `collection`, `flutter_image_compress`.
+- Minimum Flutter raised to 3.38.0 (`image_picker` 1.2.3 requires it).
+- `image_cropper` stops at 11, not 12: with Swift Package Manager enabled,
+  `file_picker` pins DKImagePickerController to a branch requiring
+  `TOCropViewController` 2.6–3.0, while image_cropper 12.1+ moved to 3.x.
+  image_cropper 12.0.0 is not a middle ground — its SPM manifest asks for
+  TOCrop 2.8.0 while its Objective-C sources include 3.x headers, so it fails
+  to compile.
+
+### Fixed
+
+- `FirestoreService` — cloud_firestore 6 exports a pipeline-expression class
+  named `Type` from its barrel, shadowing `dart:core`'s `Type` and breaking
+  the `_fromFirestoreCache` map. The import now hides it.
+
 ## 6.1.0
 
 ### Added
