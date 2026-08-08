@@ -21,12 +21,6 @@ until they are ready.
   TOCrop 2.8.0 while its Objective-C sources include 3.x headers, so it fails
   to compile.
 
-### Fixed
-
-- `FirestoreService` — cloud_firestore 6 exports a pipeline-expression class
-  named `Type` from its barrel, shadowing `dart:core`'s `Type` and breaking
-  the `_fromFirestoreCache` map. The import now hides it.
-
 ## 6.1.0
 
 ### Added

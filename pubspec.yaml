@@ -37,9 +37,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   json_serializable: ^6.14.1
-  # 2.16.0 needs analyzer >=13.3.0 -> meta ^1.18.3, but Flutter 3.44.9 pins
-  # meta 1.18.0 via flutter_test. Raise once the SDK ships a newer meta.
   build_runner: ^2.15.1
   very_good_analysis: ^10.0.0
-  # Same meta 1.18.0 ceiling as build_runner above.
   mockito: ^5.7.0
