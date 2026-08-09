@@ -28,6 +28,7 @@ export 'regional_town_model.dart';
 export 'scholarship_model.dart';
 export 'special_agency_model.dart';
 export 'store_city_model.dart';
+export 'store_like_model.dart';
 export 'store_model.dart';
 export 'topic_model.dart';
 export 'touristic_places_model.dart';

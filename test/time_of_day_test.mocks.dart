@@ -155,6 +155,15 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
           as int);
 
   @override
+  int get likeCount =>
+      (super.noSuchMethod(
+            Invocation.getter(#likeCount),
+            returnValue: 0,
+            returnValueForMissingStub: 0,
+          )
+          as int);
+
+  @override
   String get documentId =>
       (super.noSuchMethod(
             Invocation.getter(#documentId),
@@ -235,6 +244,7 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
     bool? isCommentEnabled,
     int? ratingSum,
     int? ratingCount,
+    int? likeCount,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#copyWith, [], {
@@ -260,6 +270,7 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
               #isCommentEnabled: isCommentEnabled,
               #ratingSum: ratingSum,
               #ratingCount: ratingCount,
+              #likeCount: likeCount,
             }),
             returnValue: _FakeStoreModel_0(
               this,
@@ -286,6 +297,7 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
                 #isCommentEnabled: isCommentEnabled,
                 #ratingSum: ratingSum,
                 #ratingCount: ratingCount,
+                #likeCount: likeCount,
               }),
             ),
             returnValueForMissingStub: _FakeStoreModel_0(
@@ -313,6 +325,7 @@ class MockStoreModel extends _i1.Mock implements _i2.StoreModel {
                 #isCommentEnabled: isCommentEnabled,
                 #ratingSum: ratingSum,
                 #ratingCount: ratingCount,
+                #likeCount: likeCount,
               }),
             ),
           )
