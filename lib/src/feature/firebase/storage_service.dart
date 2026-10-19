@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:life_shared/src/feature/firebase/custom_storage_service.dart';
@@ -15,6 +16,10 @@ import 'package:life_shared/src/utility/product_logger.dart';
 final class StorageService extends CustomStorageService {
   const StorageService({super.timeoutDuration});
 
+  /// Custom metadata key the Storage rules compare with `request.auth.uid`;
+  /// only the uploader (or an admin) may overwrite or delete the object.
+  static const String ownerUidKey = 'ownerUid';
+
   @override
   Future<StorageResult<String>> uploadImage({
     required RootStorageName root,
@@ -22,13 +27,13 @@ final class StorageService extends CustomStorageService {
     required Uint8List fileBytes,
     StorageTypes type = StorageTypes.image,
   }) {
+    final metadata = _ownedMetadata(type);
+    if (metadata == null) return Future.value(_signedOutFailure());
+
     final name = '${root.name}/$key';
     return _guard(() async {
       final reference = FirebaseStorage.instance.ref(name);
-      await reference.putData(
-        fileBytes,
-        SettableMetadata(contentType: type.value),
-      );
+      await reference.putData(fileBytes, metadata);
       return reference.getDownloadURL();
     });
   }
@@ -51,11 +56,12 @@ final class StorageService extends CustomStorageService {
       );
     }
 
+    final metadata = _ownedMetadata(type);
+    if (metadata == null) return _signedOutFailure();
+
     final name = '${root.name}/$key';
     return _guard(() async {
-      await FirebaseStorage.instance
-          .ref(name)
-          .putFile(file, SettableMetadata(contentType: type.value));
+      await FirebaseStorage.instance.ref(name).putFile(file, metadata);
       return name;
     });
   }
@@ -94,6 +100,18 @@ final class StorageService extends CustomStorageService {
       return _failure(StorageError.unknown, '$error');
     }
   }
+
+  SettableMetadata? _ownedMetadata(StorageTypes type) {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return null;
+    return SettableMetadata(
+      contentType: type.value,
+      customMetadata: {ownerUidKey: uid},
+    );
+  }
+
+  StorageResult<T> _signedOutFailure<T>() =>
+      _failure(StorageError.unauthorized, 'Upload requires a signed-in user');
 
   StorageResult<T> _failure<T>(StorageError error, String? message) {
     ProductLogger.log('StorageService ${error.name}: ${message ?? ''}');
